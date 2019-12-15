@@ -6,8 +6,8 @@ import React, {Component} from 'react';
 class External extends Component {
   render() {
     return (
-        <h1>External Projects</h1>
         <div className="container">
+          <h1>External Projects</h1>
         <div className="row">
           <div className="col-sm-6">
             <h2>Rush (Incomplete) 

@@ -16,8 +16,7 @@ class Footer extends Component {
             </ul>
             <div className="col-sm-6">
               <div className="follow-us">
-                <a className="fa fa-envelope big-icon" href="mailto:paul_luu.work@hotmail.com">E-mail</a>
-                <a className="fab fa-linkedin big-icon" href="http://www.linkedin.com/in/paul-luu-55bb0614a">Linkedin</a>
+                <button class="p-button--neutral" onClick="/contact">About me</button>
               </div>
             </div>
           </div>
