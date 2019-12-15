@@ -9,11 +9,16 @@ import Internal from './Internal.js';
 import External from './External.js';
 import Blogs from './Blogs.js';
 import NotFound from './NotFound';
+import Showcase from './Showcase';
 
 /**
  * Main starting app component
  */
 class App extends Component {
+  /**
+   * Rendering app component
+   * @return { html } Rendering html
+   */
   render() {
     return (
       <BrowserRouter>
@@ -35,6 +40,9 @@ class App extends Component {
           </Route>
           <Route path="/contact">
             <Contact/>
+          </Route>
+          <Route path="/showcase">
+            <Showcase/>
           </Route>
           <Route exact path="/">
             <Home/>

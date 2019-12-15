@@ -5,6 +5,10 @@ import {Link} from 'react-router-dom';
  * Navigation bar component. Is displayed throughout all pages.
  */
 class NavBar extends Component {
+  /**
+   * Rendering app component
+   * @return { html } Rendering html
+   */
   render() {
     return (
       <header id="navigation" className="p-navigation is-dark">
