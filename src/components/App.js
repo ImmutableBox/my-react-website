@@ -4,6 +4,7 @@ import Contact from './Contact.js';
 import NavBar from './NavBar.js';
 import Home from './Home.js';
 import '../styles/App.scss';
+import Footer from './Footer.js';
 
 /**
  * Main starting app component
@@ -29,6 +30,7 @@ class App extends Component {
             <Home/>
           </Route>
         </Switch>
+        <Footer/>
       </BrowserRouter>
     );
   }
