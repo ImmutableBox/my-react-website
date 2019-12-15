@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Switch, StaticRouter} from 'react-router-dom';
+import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import Contact from './Contact.js';
 import NavBar from './NavBar.js';
 import Home from './Home.js';
@@ -11,7 +11,7 @@ import '../styles/App.scss';
 class App extends Component {
   render() {
     return (
-      <StaticRouter>
+      <BrowserRouter>
         <NavBar/>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -29,7 +29,7 @@ class App extends Component {
             <Home/>
           </Route>
         </Switch>
-      </StaticRouter>
+      </BrowserRouter>
     );
   }
 }
