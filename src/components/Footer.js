@@ -6,12 +6,14 @@ import React, {Component} from 'react';
 class Footer extends Component {
   render() {
     return (
-      <footer id="footer" className="p-navigation is-dark">
-        <div className="p-navigation__row">
-          <div className="p-navigation__nav" role="menu">
-            <ul className="p-navigation__links" role="menuitem">
-                <li className="p-navigation__link is-selected" role="menuitem">
-                    Copyright Paul Luu-2018
+      <footer id="footer" class="p-footer p-strip u-clearfix">
+        <div className="u-fixed-width p-footer__container">
+            <ul className="p-navigation__links">
+                <li className="u-hide--small p-inline-list__item">
+                    Copyright Paul Luu-2019
+                </li>
+                <li className="u-hide--small p-inline-list__item">
+                  <button class="p-button--neutral" onClick="/contact">About me</button>
                 </li>
             </ul>
             <div className="col-sm-6">
@@ -19,7 +21,6 @@ class Footer extends Component {
                 <button class="p-button--neutral" onClick="/contact">About me</button>
               </div>
             </div>
-          </div>
         </div>
       </footer>
     );
