@@ -13,14 +13,6 @@
     "react-scripts": "3.3.0",
     "vanilla-framework": "^2.5.0"
   },
-  "jest": {
-    "collectCoverage": true,
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "automock": false
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
