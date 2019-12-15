@@ -16,6 +16,7 @@ class Home extends Component {
             </h2>
             <div className="thumbnail">
               <div className="caption" align="center">
+               <img src=".\src\assets\images\hardtime.png" alt=""/>
                 <a className="btn-primary" href="/rush">Click here to play</a>
               </div>
             </div>
@@ -29,6 +30,7 @@ class Home extends Component {
             </h2>
             <div className="thumbnail">
               <div className="caption" align="center">
+                <img src=".\src\assets\images\rush.png" alt=""/>
                 <a className="btn-primary" href="/hardtime">Click here to play</a>
               </div>
             </div>
