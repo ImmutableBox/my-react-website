@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 /**
  * NotFound component. Is displayed if user enters a link that doesn't exist.
  */
-class NotFound extends Component {
+class NotFound extends React.PureComponent {
   /**
    * Rendering app component
    * @return { html } Rendering html

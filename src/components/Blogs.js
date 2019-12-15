@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 /**
  * Blog component. Contains my blog feed.
  */
+// eslint-disable-next-line react/prefer-stateless-function
 class Blogs extends Component {
   /**
    * Rendering app component

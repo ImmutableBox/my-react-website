@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 /**
  * Footer component, is displayed on every page.
  */
+// eslint-disable-next-line react/prefer-stateless-function
 class Footer extends Component {
   /**
    * Rendering app component
@@ -17,7 +18,7 @@ class Footer extends Component {
                 © 2019 Paul Luu
             </li>
             <li className="u-hide--small p-inline-list__item">
-              <button className="p-button--neutral">About me</button>
+              <button type="button" className="p-button--neutral">About me</button>
             </li>
           </ul>
         </div>

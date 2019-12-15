@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * Navigation bar component. Is displayed throughout all pages.
  */
+// eslint-disable-next-line react/prefer-stateless-function
 class NavBar extends Component {
   /**
    * Rendering app component

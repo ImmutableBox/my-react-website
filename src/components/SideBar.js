@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 /**
  * Sidebar component.
  */
+// eslint-disable-next-line react/prefer-stateless-function
 class SideBar extends Component {
   /**
    * Rendering app component
@@ -9,8 +10,7 @@ class SideBar extends Component {
    */
   render() {
     return (
-      <div>
-      </div>
+      <div />
     );
   }
 }

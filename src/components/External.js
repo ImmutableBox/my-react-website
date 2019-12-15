@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 /**
  * External project component.
  * This component contains projects I have worked on externally.
  */
+// eslint-disable-next-line react/prefer-stateless-function
 class External extends Component {
   /**
    * Rendering app component
@@ -15,19 +16,20 @@ class External extends Component {
         <h1>External Projects</h1>
         <div className="row">
           <div className="col-sm-6">
-            <h2>Rush (Incomplete)
-              <span className="logo"><i className="fas fa-gamepad">
-              </i>
+            <h2>
+Rush (Incomplete)
+              <span className="logo">
+                <i className="fas fa-gamepad" />
               </span>
             </h2>
             <div className="thumbnail">
               <div className="caption" align="center">
-                <img src="../../public/images/hardtime.png" alt=""/>
+                <img src="../../public/images/hardtime.png" alt="" />
                 <a className="btn-primary" href="/hardtime">Click here to play</a>
               </div>
             </div>
             <div className="col-sm-12">
-              <iframe src="../../assets/projects/NutshellRPG/index.html" name="Rush" width="1024px" height="768px"></iframe>
+              <iframe title="Rush" src="../../assets/projects/NutshellRPG/index.html" name="Rush" width="1024px" height="768px" />
               <section>
                 <article>
                   <p>Controls: Up or W</p>
@@ -41,22 +43,27 @@ class External extends Component {
           </div>
 
           <div className="col-sm-6">
-            <h2>Hard Time
-              <span className="logo"><i className="fas fa-gamepad">
-              </i>
+            <h2>
+Hard Time
+              <span className="logo">
+                <i className="fas fa-gamepad" />
               </span>
             </h2>
             <div className="thumbnail">
               <div className="caption" align="center">
-                <img src="../../public/images/rush.png" alt=""/>
+                <img src="../../public/images/rush.png" alt="" />
                 <a className="btn-primary" href="/rush">Click here to play</a>
               </div>
             </div>
             <div className="col-sm-6">
-              <h2>Hard Time<span className="logo"></span></h2>
+              <h2>
+Hard Time
+                <span className="logo" />
+              </h2>
               <section>
                 <article>
-                  <p>Try to escape from jail!
+                  <p>
+Try to escape from jail!
                     (More levels will be added later)
                   </p>
                   <p>Controls: Up or W</p>

@@ -1,19 +1,20 @@
-import React, {Component} from 'react';
-import {Route, Switch, BrowserRouter} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import '../styles/App.scss';
-import Contact from './Contact.js';
-import NavBar from './NavBar.js';
-import Home from './Home.js';
-import Footer from './Footer.js';
-import Internal from './Internal.js';
-import External from './External.js';
-import Blogs from './Blogs.js';
+import Contact from './Contact';
+import NavBar from './NavBar';
+import Home from './Home';
+import Footer from './Footer';
+import Internal from './Internal';
+import External from './External';
+import Blogs from './Blogs';
 import NotFound from './NotFound';
 import Showcase from './Showcase';
 
 /**
  * Main starting app component
  */
+// eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   /**
    * Rendering app component
@@ -22,36 +23,36 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <NavBar/>
+        <NavBar />
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/about">
-            <Home/>
+            <Home />
           </Route>
           <Route path="/external">
-            <External/>
+            <External />
           </Route>
           <Route path="/internal">
-            <Internal/>
+            <Internal />
           </Route>
           <Route path="/blogs">
-            <Blogs/>
+            <Blogs />
           </Route>
           <Route path="/contact">
-            <Contact/>
+            <Contact />
           </Route>
           <Route path="/showcase">
-            <Showcase/>
+            <Showcase />
           </Route>
           <Route exact path="/">
-            <Home/>
+            <Home />
           </Route>
           <Route>
-            <NotFound/>
+            <NotFound />
           </Route>
         </Switch>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     );
   }

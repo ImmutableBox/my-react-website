@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 /**
  * Contact information component
  */
+// eslint-disable-next-line react/prefer-stateless-function
 class Contact extends Component {
   /**
    * Rendering app component
@@ -26,12 +27,14 @@ class Contact extends Component {
                 http://www.linkedin.com/in/paul-luu-55bb0614a
               </a>
             </li>
-            <li className="p-list__item">GitHub:
+            <li className="p-list__item">
+GitHub:
               <a href="https://github.com/ImmutableBox">
                 https://github.com/ImmutableBox
               </a>
             </li>
-            <li className="p-list__item">Blog:
+            <li className="p-list__item">
+Blog:
               <a href="https://paulopensourceblog.wordpress.com">
                 https://paulopensourceblog.wordpress.com
               </a>

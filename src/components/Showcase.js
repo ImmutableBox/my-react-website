@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 /**
  * Showcase component.
  * This component will showcase games selected on.
  */
+// eslint-disable-next-line react/prefer-stateless-function
 class Showcase extends Component {
   /**
    * Rendering app component
@@ -22,8 +23,8 @@ class Showcase extends Component {
                     data-target="#main-slider"
                     data-slide-to="0"
                     className="active"
-                  ></li>
-                  <li data-target="#main-slider" data-slide-to="1"></li>
+                  />
+                  <li data-target="#main-slider" data-slide-to="1" />
                 </ol>
                 <div className="carousel-inner">
                   <div
@@ -40,7 +41,7 @@ class Showcase extends Component {
                               abilities while working on this project. This game
                               is still incomplete.
                             </span>
-                            <a className="btn-slide" routerLink="/rush">
+                            <a className="btn-slide" href="/rush">
                               Click here to play!
                             </a>
                           </div>
@@ -63,9 +64,10 @@ class Showcase extends Component {
                               to improve my programming solving skills and
                               analytical skills while creating this game.
                             </span>
-                            <a className="btn-slide" routerLink="/hardtime">
+                            <a className="btn-slide" href="/hardtime">
                               Click here to play!
-                            </a>{' '}
+                            </a>
+                            {' '}
                           </div>
                         </div>
                       </div>
@@ -75,11 +77,14 @@ class Showcase extends Component {
               </div>
               <a className="prev hidden-xs" href="#main-slider">
                 {' '}
-                <i className="fa fa-chevron-left"></i>{' '}
-              </a>{' '}
+                <i className="fa fa-chevron-left" />
+                {' '}
+              </a>
+              {' '}
               <a className="next hidden-xs" href="#main-slider">
                 {' '}
-                <i className="fa fa-chevron-right"></i>{' '}
+                <i className="fa fa-chevron-right" />
+                {' '}
               </a>
             </section>
           </div>
