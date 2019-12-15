@@ -12,7 +12,7 @@ class Contact extends Component {
           <section>
             <article>
               <p>
-                <a class="fab fa-envelope big-icon" href="mailto:paul_luu.work@hotmail.com">
+                <a className="fab fa-envelope big-icon" href="mailto:paul_luu.work@hotmail.com">
                   paul_luu.work@hotmail.com
                 </a>
               </p>
@@ -22,7 +22,7 @@ class Contact extends Component {
                 </a>
               </p>
               <p>GitHub:
-                <i class="fab fa-github"></i>
+                <i className="fab fa-github"></i>
                 <a href="http://www.linkedin.com/in/paul-luu-55bb0614a">
                   www.linkedin.com/in/paul-luu-55bb0614a
                 </a>
