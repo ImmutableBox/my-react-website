@@ -6,7 +6,7 @@ import React, {Component} from 'react';
 class Internal extends Component {
   render() {
     return (
-      <p>Internal Projects</p>
+      <h1>Internal Projects</h1>
     );
   }
 }

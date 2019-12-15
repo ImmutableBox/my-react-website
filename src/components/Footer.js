@@ -16,11 +16,6 @@ class Footer extends Component {
                   <button className="p-button--neutral">About me</button>
                 </li>
             </ul>
-            <div className="col-sm-6">
-              <div className="follow-us">
-                <button className="p-button--neutral">About me</button>
-              </div>
-            </div>
         </div>
       </footer>
     );
