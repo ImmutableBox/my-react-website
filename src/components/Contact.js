@@ -23,13 +23,13 @@ class Contact extends Component {
               </p>
               <p>GitHub:
                 <i className="fab fa-github"></i>
-                <a href="http://www.linkedin.com/in/paul-luu-55bb0614a">
-                  www.linkedin.com/in/paul-luu-55bb0614a
+                <a href="https://github.com/ImmutableBox">
+                https://github.com/ImmutableBox
                 </a>
               </p>
               <p>Blog:
-                <a href="http://www.linkedin.com/in/paul-luu-55bb0614a">
-                  www.linkedin.com/in/paul-luu-55bb0614a
+                <a href="https://paulopensourceblog.wordpress.com">
+                https://paulopensourceblog.wordpress.com
                 </a>
               </p>
             </article>
