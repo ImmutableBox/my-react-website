@@ -24,7 +24,7 @@ Rush (Incomplete)
             </h2>
             <div className="thumbnail">
               <div className="caption" align="center">
-                <img src="/public/images/hardtime.png" alt="" />
+                <img src="/images/rush.png" alt="" />
                 <a className="btn-primary" href="/hardtime">Click here to play</a>
               </div>
             </div>
@@ -51,7 +51,7 @@ Hard Time
             </h2>
             <div className="thumbnail">
               <div className="caption" align="center">
-                <img src="/public/images/rush.png" alt="" />
+                <img src="/images/hardescape.png" alt="" />
                 <a className="btn-primary" href="/rush">Click here to play</a>
               </div>
             </div>

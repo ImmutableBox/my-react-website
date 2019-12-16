@@ -13,7 +13,7 @@ class Internal extends Component {
   render() {
     return (
       <div>
-        <h1>https://github.com/ImmutableBox/my-react-website</h1>
+        <p>https://github.com/ImmutableBox/my-react-website</p>
       </div>
     );
   }
