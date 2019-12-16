@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaGamepad } from 'react-icons/fa';
 
 /**
  * Home component page
@@ -17,7 +18,7 @@ class Home extends Component {
             <h2>
               Rush (Incomplete)
               <span className="logo">
-                <i className="fas fa-gamepad" />
+                <FaGamepad />
               </span>
             </h2>
             <div className="thumbnail">
@@ -40,7 +41,7 @@ class Home extends Component {
             <div className="thumbnail">
               <div className="caption" align="center">
                 <img src="/images/rush.png" alt="" />
-                <a className="btn-primary" href="/hardtime">
+                <a className="btn-primary" href="/hardescape">
                   Click here to play
                 </a>
               </div>

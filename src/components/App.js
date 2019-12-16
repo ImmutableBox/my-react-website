@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import '../styles/App.scss';
-import Contact from './Contact';
+import Contact from './About';
 import NavBar from './NavBar';
 import Home from './Home';
 import Footer from './Footer';
@@ -28,7 +28,7 @@ class App extends Component {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/about">
-            <Home />
+            <Contact />
           </Route>
           <Route path="/external">
             <External />

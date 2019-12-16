@@ -28,15 +28,23 @@ class Contact extends Component {
               </a>
             </li>
             <li className="p-list__item">
-GitHub:
+              GitHub:
               <a href="https://github.com/ImmutableBox">
                 https://github.com/ImmutableBox
               </a>
             </li>
             <li className="p-list__item">
-Blog:
+              Blog:
               <a href="https://paulopensourceblog.wordpress.com">
                 https://paulopensourceblog.wordpress.com
+              </a>
+            </li>
+          </ul>
+          <ul className="p-list">
+            <li className="p-list__item">
+              Sumo icon link:
+              <a href="https://icon-icons.com/icon/japan-culture-traditional-sumo-japanese-sport/127327">
+                https://icon-icons.com/icon/japan-culture-traditional-sumo-japanese-sport/127327
               </a>
             </li>
           </ul>

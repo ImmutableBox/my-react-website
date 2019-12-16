@@ -24,12 +24,12 @@ Rush (Incomplete)
             </h2>
             <div className="thumbnail">
               <div className="caption" align="center">
-                <img src="/images/rush.png" alt="" />
-                <a className="btn-primary" href="/hardtime">Click here to play</a>
+                <img className="p-image--bordered" src="/images/rush.png" alt="" />
+                <a className="btn-primary" href="/hardescape">Click here to play</a>
               </div>
             </div>
             <div className="col-sm-12">
-              <iframe title="Rush" src="../../assets/projects/NutshellRPG/index.html" name="Rush" width="1024px" height="768px" />
+              <iframe title="Rush" src="/projects/NutshellRPG/index.html" name="Rush" width="1024px" height="768px" />
               <section>
                 <article>
                   <p>Controls: Up or W</p>

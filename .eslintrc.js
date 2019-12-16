@@ -42,5 +42,7 @@ module.exports = {
     "webpackDevServer.config.js",
     "serviceWorker.js",
     "webpack.config.js",
-    "paths.js"],
+    "paths.js",
+    "UnityProgress.js",
+    "UnityLoader.js"],
 };

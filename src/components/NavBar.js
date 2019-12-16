@@ -16,25 +16,22 @@ class NavBar extends Component {
         <div className="p-navigation__row">
           <nav className="p-navigation__banner">
             <div className="p-navigation__logo">
-              <a className="p-navigation__link" href="/">
-                <img className="p-navigation__image" alt="" width="95" />
-              </a>
+              <Link to="/">
+                <img className="p-navigation__image" src="images/logo512.png" alt="" />
+              </Link>
             </div>
             <ul className="p-navigation__links" role="menu">
               <li className="p-navigation__link is-selected" role="menuitem">
-                <Link to="/">Home</Link>
-              </li>
-              <li className="p-subnav__item is-selected" role="menuitem">
                 <Link to="/external">External Projects</Link>
               </li>
               <li className="p-navigation__link is-selected" role="menuitem">
                 <Link to="/internal">Website Projects</Link>
               </li>
               <li className="p-navigation__link is-selected" role="menuitem">
-                <Link to="/blogs">Blogs</Link>
+                <Link to="/blogs">Blog Feed</Link>
               </li>
               <li className="p-navigation__link is-selected" role="menuitem">
-                <Link to="/contact">Contact</Link>
+                <Link to="/about">About</Link>
               </li>
             </ul>
           </nav>

@@ -11,7 +11,7 @@ class Blogs extends Component {
    */
   render() {
     return (
-      <h1>Blogs</h1>
+      <h1>Blogs feed</h1>
     );
   }
 }

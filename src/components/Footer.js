@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {
+  FaLinkedin, FaGithub, FaEnvelope, FaWordpress,
+} from 'react-icons/fa';
 
 /**
  * Footer component, is displayed on every page.
@@ -15,10 +18,32 @@ class Footer extends Component {
         <div className="u-fixed-width p-footer__container">
           <ul className="p-navigation__links">
             <li className="u-hide--small p-inline-list__item">
-                © 2019 Paul Luu
+              © 2019 Paul Luu
             </li>
             <li className="u-hide--small p-inline-list__item">
-              <button type="button" className="p-button--neutral">About me</button>
+              <button type="button" className="p-button--neutral">
+                About me
+              </button>
+            </li>
+            <li className="u-hide--small p-inline-list__item">
+              <a href="http://www.linkedin.com/in/paul-luu-55bb0614a" style={{ color: '#0099ff' }}>
+                <FaLinkedin size={64} />
+              </a>
+            </li>
+            <li className="u-hide--small p-inline-list__item">
+              <a href="https://github.com/ImmutableBox" style={{ color: '#000000' }}>
+                <FaGithub size={64} />
+              </a>
+            </li>
+            <li className="u-hide--small p-inline-list__item">
+              <a href="mailto:paul_luu.work@hotmail.com" style={{ color: '#000000' }}>
+                <FaEnvelope size={64} />
+              </a>
+            </li>
+            <li className="u-hide--small p-inline-list__item">
+              <a href="https://paulopensourceblog.wordpress.com" style={{ color: '#000000' }}>
+                <FaWordpress size={64} />
+              </a>
             </li>
           </ul>
         </div>
