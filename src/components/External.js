@@ -29,7 +29,6 @@ Rush (Incomplete)
               </div>
             </div>
             <div className="col-sm-12">
-              <iframe title="Rush" src="/projects/NutshellRPG/index.html" name="Rush" width="1024px" height="768px" />
               <section>
                 <article>
                   <p>Controls: Up or W</p>
@@ -60,6 +59,9 @@ Hard Time
 Hard Time
                 <span className="logo" />
               </h2>
+              <div className="col-sm-6">
+                <object width="600" height="450" data="/projects/HardEscape.swf"> HardEscape </object>
+              </div>
               <section>
                 <article>
                   <p>
