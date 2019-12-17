@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { FaGamepad } from 'react-icons/fa';
 
 /**
@@ -12,38 +13,20 @@ class Home extends Component {
    */
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-6">
-            <h2>
-              Rush (Incomplete)
-              <span className="logo">
+      <div className="wrapper u-no-margin--top">
+        <div className="main-content inner-wrapper">
+          <div className="row">
+            <div className="carousel-wrapper">
+              <div className="carousel">
+                <img className="carousel__photo initial" src="assets/img_1.jpg" alt="" />
+                <Link to="https://medium.com/@marcusmichaels/how-to-build-a-carousel-from-scratch-in-vanilla-js-9a096d3b98c9" />
                 <FaGamepad />
-              </span>
-            </h2>
-            <div className="thumbnail">
-              <div className="caption" align="center">
-                <img src="/images/hardescape.png" alt="" />
-                <a className="btn-primary" href="/rush">
-                  Click here to play
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-sm-6">
-            <h2>
-              Hard Time
-              <span className="logo">
-                <i className="fas fa-gamepad" />
-              </span>
-            </h2>
-            <div className="thumbnail">
-              <div className="caption" align="center">
-                <img src="/images/rush.png" alt="" />
-                <a className="btn-primary" href="/hardescape">
-                  Click here to play
-                </a>
+                <img className="carousel__photo" src="assets/img_2.jpg" alt="" />
+                <img className="carousel__photo" src="assets/img_3.jpg" alt="" />
+                <img className="carousel__photo" src="assets/img_4.jpg" alt="" />
+                <img className="carousel__photo" src="assets/img_5.jpg" alt="" />
+                <div className="carousel__button--next" />
+                <div className="carousel__button--prev" />
               </div>
             </div>
           </div>

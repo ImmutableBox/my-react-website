@@ -13,25 +13,29 @@ class Internal extends Component {
    */
   render() {
     return (
-      <div>
-        <div className="p-slider__wrapper">
-          <Slider />
-          <input
-            className="p-slider"
-            type="range"
-            min="0"
-            max="100"
-            id="slider3"
-          />
-          <input className="p-slider__input" type="text" maxLength="3" id="slider3-input" />
+      <div className="wrapper u-no-margin--top">
+        <div className="main-content inner-wrapper">
+          <div className="row">
+            <div className="p-slider__wrapper">
+              <Slider />
+              <input
+                className="p-slider"
+                type="range"
+                min="0"
+                max="100"
+                id="slider3"
+              />
+              <input className="p-slider__input" type="text" maxLength="3" id="slider3-input" />
+            </div>
+            <div className="p-slider__wrapper">
+              <input className="p-slider__input" type="text" maxLength="3" id="slider3-input" />
+            </div>
+            <div className="p-slider__wrapper">
+              <input className="p-slider__input" type="text" maxLength="3" id="slider3-input" />
+            </div>
+            <p>Source code for this website: https://github.com/ImmutableBox/my-react-website</p>
+          </div>
         </div>
-        <div className="p-slider__wrapper">
-          <input className="p-slider__input" type="text" maxLength="3" id="slider3-input" />
-        </div>
-        <div className="p-slider__wrapper">
-          <input className="p-slider__input" type="text" maxLength="3" id="slider3-input" />
-        </div>
-        <p>Source code for this website: https://github.com/ImmutableBox/my-react-website</p>
       </div>
     );
   }

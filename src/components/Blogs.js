@@ -11,7 +11,13 @@ class Blogs extends Component {
    */
   render() {
     return (
-      <h1>Blogs feed</h1>
+      <div className="wrapper u-no-margin--top">
+        <div className="main-content inner-wrapper">
+          <div className="row">
+            <h1>Blogs feed</h1>
+          </div>
+        </div>
+      </div>
     );
   }
 }
