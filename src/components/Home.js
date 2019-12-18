@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Carousel.css';
+import '../styles/Home.css';
 
 /**
  * Home component page
@@ -13,7 +14,31 @@ class Home extends Component {
   render() {
     return (
       <div className="wrapper u-no-margin--top">
-        <div className="main-content inner-wrapper">
+        <section className="p-takeover--dark js-takeover">
+          <div className="p-strip is-deep">
+            <div className="row">
+              <h2>Welcome to my website!</h2>
+              <p>This is my personal website used for the purpose of displaying projects.</p>
+            </div>
+          </div>
+        </section>
+        <div className="p-strip is-deep">
+          <div className="row">
+            <h2>Game development projects</h2>
+            <div className="carousel-wrapper">
+              <div className="carousel">
+                <img className="carousel_photo initial" src="/images/rush.png" alt="" />
+                <img className="carousel_photo" src="/images/rush.png" alt="" />
+                <img className="carousel_photo" src="/images/hardescape.png" alt="" />
+                <img className="carousel_photo" src="/images/rush.png" alt="" />
+                <img className="carousel_photo" src="/images/hardescape.png" alt="" />
+                <div className="carousel_button--next" />
+                <div className="carousel_button--prev" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="p-strip is-deep">
           <div className="row">
             <div className="carousel-wrapper">
               <div className="carousel">

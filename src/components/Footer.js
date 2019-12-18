@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  FaLinkedin, FaGithub, FaEnvelope, FaWordpress,
+  FaLinkedin, FaGithub, FaRegEnvelope, FaWordpress,
 } from 'react-icons/fa';
 
 /**
@@ -47,13 +47,13 @@ class Footer extends Component {
                     href="mailto:paul_luu.work@hotmail.com"
                     style={{ color: '#000000' }}
                   >
-                    <FaEnvelope size={64} />
+                    <FaRegEnvelope size={64} />
                   </a>
                 </li>
                 <li className="u-hide--small p-inline-list__item">
                   <a
                     href="https://paulopensourceblog.wordpress.com"
-                    style={{ color: '#000000' }}
+                    style={{ color: '#80dfff' }}
                   >
                     <FaWordpress size={64} />
                   </a>

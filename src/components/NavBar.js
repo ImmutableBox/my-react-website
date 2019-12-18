@@ -14,12 +14,14 @@ class NavBar extends Component {
     return (
       <header id="navigation" className="p-navigation is-dark">
         <div className="p-navigation__row">
-          <nav className="p-navigation__banner">
+          <div className="p-navigation__banner">
             <div className="p-navigation__logo">
               <Link to="/">
-                <img className="p-navigation__image" src="images/logo512.png" alt="" />
+                <img align="middle" src="images/logo96.png" alt="" width="50" />
               </Link>
             </div>
+          </div>
+          <nav className="p-navigation__nav">
             <ul className="p-navigation__links" role="menu">
               <li className="p-navigation__link is-selected" role="menuitem">
                 <Link to="/external">External Projects</Link>
