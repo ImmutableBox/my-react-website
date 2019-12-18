@@ -22,11 +22,6 @@ class Footer extends Component {
                 <li className="u-hide--small p-inline-list__item">
                   © 2019 Paul Luu
                 </li>
-                <li className="u-hide--small p-inline-list__item">
-                  <button type="button" className="p-button--neutral">
-                    About me
-                  </button>
-                </li>
               </ul>
             </div>
             <div className="col-4">

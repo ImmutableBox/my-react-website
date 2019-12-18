@@ -15,6 +15,10 @@ class Blogs extends Component {
         <div className="main-content inner-wrapper">
           <div className="row">
             <h1>Blogs feed</h1>
+            <p>Link to blog:</p>
+            <a href="https://paulopensourceblog.wordpress.com">
+              https://paulopensourceblog.wordpress.com
+            </a>
           </div>
         </div>
       </div>
