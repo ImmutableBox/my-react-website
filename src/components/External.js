@@ -36,7 +36,7 @@ class External extends Component {
                 </div>
               </div>
             </div>
-
+            <hr />
             <div className="col-sm-6">
               <div className="p-card">
                 <h2>

@@ -12,7 +12,7 @@ class NavBar extends Component {
    */
   render() {
     return (
-      <header id="navigation" className="p-navigation is-dark">
+      <header id="navigation" className="p-navigation">
         <div className="p-navigation__row">
           <div className="p-navigation__banner">
             <div className="p-navigation__logo">
