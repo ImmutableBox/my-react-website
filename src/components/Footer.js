@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  FaLinkedin, FaGithub, FaRegEnvelope, FaWordpress,
+  FaLinkedin, FaGithub, FaRegEnvelope, FaWordpress, FaSortUp,
 } from 'react-icons/fa';
 
 /**
@@ -21,6 +21,12 @@ class Footer extends Component {
               <ul className="p-navigation__links">
                 <li className="u-hide--small p-inline-list__item">
                   © 2019 Paul Luu
+                </li>
+                <li className="u-hide--small p-inline-list__item">
+                  <a className="p-link--soft" href="#top">
+                    Back to top
+                    <FaSortUp />
+                  </a>
                 </li>
               </ul>
             </div>

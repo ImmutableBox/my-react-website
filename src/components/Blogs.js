@@ -18,7 +18,7 @@ class Blogs extends Component {
   }
 
   getFeed = () => {
-    fetch('http://localhost:5000/getFeed')
+    fetch('/api/getBlogFeed')
       .then((res) => res.json())
       .then((items) => this.setState({ items }));
   }
@@ -32,12 +32,25 @@ class Blogs extends Component {
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
+          <div className="p-suru">
+            <div className="p-strip is-deep">
+              <div className="row">
+                <h2>My Blog feed</h2>
+                <p>
+                  A blog created to share my adventures in contributing to open source projects.
+                  I also blog about software optimization for my software optimization course.
+                  Created with WordPress.
+                </p>
+                <p>
+                  Link to blog:
+                  <a href="https://paulopensourceblog.wordpress.com">
+                    https://paulopensourceblog.wordpress.com
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
           <div className="row">
-            <h1>Blogs feed</h1>
-            <p>Link to blog:</p>
-            <a href="https://paulopensourceblog.wordpress.com">
-              https://paulopensourceblog.wordpress.com
-            </a>
             {/* Check to see if any items are found */}
             {items.length ? (
               <div>
