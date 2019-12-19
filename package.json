@@ -2,7 +2,7 @@
   "name": "paul-pluu3",
   "version": "1.0.0",
   "description": "[![Build Status](https://travis-ci.org/ImmutableBox/my-react-website.svg?branch=master)](https://travis-ci.org/ImmutableBox/my-react-website)",
-  "main": ".eslintrc.js",
+  "main": "api.js",
   "dependencies": {
     "express": "^4.17.1"
   },
