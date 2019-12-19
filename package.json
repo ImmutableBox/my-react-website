@@ -75,7 +75,8 @@
     "eslint-fix": "eslint --fix --ignore-path .gitignore .",
     "start": "node scripts/start.js",
     "server": "node api.js",
-    "build": "node scripts/build.js",
+    "build": "npm run server",
+    "heroku-postbuild": "node scripts/build.js",
     "dev": "run-p start server",
     "pretest": "npm run eslint",
     "test": "node scripts/test.js --watchAll=false"
