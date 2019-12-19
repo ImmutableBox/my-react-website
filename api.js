@@ -14,8 +14,8 @@ app.get('/api/getBlogFeed', (req, res) => {
     timeout: 3000,
     gzip: true,
   };
-  feedparser.parse(httpOptions).then((items) => {
-    res.json(items);
+  feedparser.parse(httpOptions).then((feeds) => {
+    res.json(feeds);
   });
 });
 

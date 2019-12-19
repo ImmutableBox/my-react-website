@@ -8,7 +8,7 @@ class Blogs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      feeds: [],
     };
   }
 
@@ -20,7 +20,7 @@ class Blogs extends Component {
   getFeed = () => {
     fetch('/api/getBlogFeed')
       .then((res) => res.json())
-      .then((items) => this.setState({ items }));
+      .then((feeds) => this.setState({ feeds }));
   }
 
   /**
@@ -28,7 +28,7 @@ class Blogs extends Component {
    * @return { html } Rendering html
    */
   render() {
-    const { items } = this.state;
+    const { feeds } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
@@ -52,9 +52,9 @@ class Blogs extends Component {
           </div>
           <div className="row">
             {/* Check to see if any items are found */}
-            {items.length ? (
+            {feeds.length ? (
               <div>
-                {items.map((item) => (
+                {feeds.map((item) => (
                   <div>
                     {item.summary}
                   </div>

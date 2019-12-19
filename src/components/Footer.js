@@ -18,17 +18,13 @@ class Footer extends Component {
         <div className="u-fixed-width p-footer__container">
           <div className="row">
             <div className="col-8">
-              <ul className="p-navigation__links">
-                <li className="u-hide--small p-inline-list__item">
-                  © 2019 Paul Luu
-                </li>
-                <li className="u-hide--small p-inline-list__item">
-                  <a className="p-link--soft" href="#top">
-                    Back to top
-                    <FaSortUp />
-                  </a>
-                </li>
-              </ul>
+              <p className="u-hide--small p-inline-list__item">
+                <p>© 2019 Paul Luu</p>
+                <a href="#top">
+                  Back to top
+                  <FaSortUp />
+                </a>
+              </p>
             </div>
             <div className="col-4">
               <ul className="p-navigation__links">

@@ -76,6 +76,7 @@
     "start": "node scripts/start.js",
     "server": "node api.js",
     "build": "node scripts/build.js",
+    "dev": "run-p start server",
     "pretest": "npm run eslint",
     "test": "node scripts/test.js --watchAll=false"
   },
@@ -152,7 +153,8 @@
   },
   "devDependencies": {
     "eslint": "^6.7.2",
-    "eslint-plugin-react": "^7.17.0"
+    "eslint-plugin-react": "^7.17.0",
+    "npm-run-all": "^4.1.5"
   },
   "proxy": "http://localhost:5000"
 }
