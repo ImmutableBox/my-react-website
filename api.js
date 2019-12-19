@@ -1,0 +1,34 @@
+const express = require('express');
+const path = require('path');
+const cors = require('cors');
+
+const app = express();
+
+app.use(cors());
+
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, 'public')));
+
+// An api endpoint that returns a short list of items
+app.get('/getFeed', (req, res) => {
+  const feedparser = require('feedparser-promised');
+  const httpOptions = {
+    uri: 'https://paulopensourceblog.wordpress.com/feed/',
+    timeout: 3000,
+    gzip: true,
+  };
+  feedparser.parse(httpOptions).then((items) => {
+    console.log(items);
+    res.json(items);
+  });
+});
+
+// Handles any request that don't match the ones above
+app.get('*', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/public/index.html`));
+});
+
+const port = process.env.PORT || 5000;
+app.listen(port);
+
+console.log(`App is listening on port ${port}`);

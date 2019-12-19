@@ -18,6 +18,7 @@
     "babel-preset-react-app": "^9.1.0",
     "camelcase": "^5.3.1",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
+    "cors": "^2.8.5",
     "css-loader": "3.2.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
@@ -28,6 +29,8 @@
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react-hooks": "^1.6.1",
+    "express": "^4.17.1",
+    "feedparser-promised": "^2.0.1",
     "file-loader": "4.3.0",
     "fs-extra": "^8.1.0",
     "html-webpack-plugin": "4.0.0-beta.5",
@@ -52,6 +55,7 @@
     "react-icons": "^3.8.0",
     "react-router-dom": "^5.1.2",
     "react-slick": "^0.25.2",
+    "request": "^2.88.0",
     "resolve": "1.12.2",
     "resolve-url-loader": "3.1.1",
     "sass-loader": "8.0.0",
@@ -71,9 +75,10 @@
     "eslint": "eslint --ignore-path .gitignore .",
     "eslint-fix": "eslint --fix --ignore-path .gitignore .",
     "start": "node scripts/start.js",
+    "server": "node api.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --watchAll=false",
-    "pretest": "npm run eslint"
+    "pretest": "npm run eslint",
+    "test": "node scripts/test.js --watchAll=false"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -94,6 +99,7 @@
     "roots": [
       "<rootDir>/src"
     ],
+    "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.d.ts"
