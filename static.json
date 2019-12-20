@@ -1,4 +1,4 @@
 {
-    "root": "client/",
+    "root": "client/public/",
     "clean_urls": false
   }
