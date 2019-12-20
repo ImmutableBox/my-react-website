@@ -1,14 +1,13 @@
 {
   "name": "paul-pluu3",
   "version": "1.0.0",
-  "main": "api.js",
+  "main": "index.js",
   "dependencies": {
     "express": "^4.17.1",
     "feedparser-promised": "^2.0.1"
   },
-  "devDependencies": {},
   "scripts": {
-    "start": "node api.js",
+    "start": "node index.js",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "test": "cd client && npm install --only=dev && npm install && npm test"
   },
