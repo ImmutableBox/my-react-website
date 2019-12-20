@@ -1,4 +1,4 @@
 {
-    "root": "client/build/",
+    "root": "client/**",
     "clean_urls": false
   }
