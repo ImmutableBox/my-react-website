@@ -9,7 +9,8 @@
   "devDependencies": {},
   "scripts": {
     "start": "node api.js",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
+    "build": "cd client && npm install --only=dev && npm install && npm run build",
+    "heroku-postbuild": "node api.js",
     "test": "cd client && npm install --only=dev && npm install && npm test"
   },
   "repository": {
