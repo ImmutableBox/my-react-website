@@ -1,7 +1,6 @@
 {
   "name": "paul-pluu3",
   "version": "1.0.0",
-  "description": "[![Build Status](https://travis-ci.org/ImmutableBox/my-react-website.svg?branch=master)](https://travis-ci.org/ImmutableBox/my-react-website)",
   "main": "api.js",
   "dependencies": {
     "express": "^4.17.1"
@@ -10,7 +9,7 @@
   "scripts": {
     "start": "node api.js",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
-    "test": "cd client && && npm install --only=dev && npm install && npm test"
+    "test": "cd client && npm install --only=dev && npm install && npm test"
   },
   "repository": {
     "type": "git",
@@ -22,5 +21,5 @@
   "bugs": {
     "url": "https://github.com/ImmutableBox/my-react-website/issues"
   },
-  "homepage": "https://github.com/ImmutableBox/my-react-website#readme"
+  "homepage": "https://github.com/ImmutableBox/my-react-website#readme",
 }
