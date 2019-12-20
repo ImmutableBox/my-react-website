@@ -13,8 +13,18 @@ class About extends Component {
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
+          <div className="p-suru">
+            <div className="p-strip is-deep">
+              <div className="row">
+                <h2>Contact information:</h2>
+                <p>
+                  Below are links if where you can find me! I tend to be active with
+                  the social medias below.
+                </p>
+              </div>
+            </div>
+          </div>
           <div className="row">
-            <h2>Contact information:</h2>
             <ul className="p-list">
               <li className="p-list__item">
                 Email:

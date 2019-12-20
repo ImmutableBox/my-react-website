@@ -14,6 +14,17 @@ class External extends Component {
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
+          <div className="p-suru">
+            <div className="p-strip is-deep">
+              <div className="row">
+                <h2>Game development projects</h2>
+                <p>
+                  I find great enjoyment in game development. Whatever I have free-time
+                  I tend to turn to game development. Below are the list of games I have developed.
+                </p>
+              </div>
+            </div>
+          </div>
           <div className="row">
             <div className="col-sm-6">
               <div className="p-card">
