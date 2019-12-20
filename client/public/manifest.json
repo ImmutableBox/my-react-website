@@ -1,6 +1,6 @@
 {
   "short_name": "my_website",
-  "name": "my_react_webiste",
+  "name": "my_react_website",
   "icons": [
     {
       "src": "favicon.ico",
@@ -23,7 +23,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
