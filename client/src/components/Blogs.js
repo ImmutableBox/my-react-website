@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactLoading from 'react-loading';
 
 /**
  * Blog component. Contains my blog feed.
@@ -9,6 +10,7 @@ class Blogs extends Component {
     super(props);
     this.state = {
       feeds: [],
+      loading: false,
     };
   }
 
@@ -18,9 +20,14 @@ class Blogs extends Component {
   }
 
   getFeed = () => {
-    fetch('/api/getBlogFeed')
-      .then((res) => res.json())
-      .then((feeds) => this.setState({ feeds }));
+    this.setState({ loading: true }, () => {
+      fetch('/api/getBlogFeed')
+        .then((res) => res.json())
+        .then((feeds) => this.setState({
+          feeds,
+          loading: false,
+        }));
+    });
   }
 
   /**
@@ -29,6 +36,7 @@ class Blogs extends Component {
    */
   render() {
     const { feeds } = this.state;
+    const { loading } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
@@ -51,18 +59,24 @@ class Blogs extends Component {
             </div>
           </div>
           <div className="row">
-            {/* Check to see if any items are found */}
-            {feeds.length ? (
-              <div>
-                {feeds.map((item) => (
-                  <div>
-                    {item.summary}
-                  </div>
-                ))}
-              </div>
+            {loading ? (
+              <ReactLoading type="spin" color="#000000" height="20%" width="20%" />
             ) : (
-              <div>
-                <h2>No items were found.</h2>
+              <div className="p-card">
+                {feeds.length ? (
+                  <div>
+                    {/* Check to see if any items are found */}
+                    {feeds.map((item) => (
+                      <div className="p-card">
+                        {item.summary}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div>
+                      No data found!
+                  </div>
+                )}
               </div>
             )}
           </div>

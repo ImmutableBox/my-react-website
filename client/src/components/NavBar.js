@@ -24,10 +24,10 @@ class NavBar extends Component {
           <nav className="p-navigation__nav">
             <ul className="p-navigation__links" role="menu">
               <li className="p-navigation__link is-selected" role="menuitem">
-                <Link to="/external">External Projects</Link>
+                <Link to="/external">Game Development Projects</Link>
               </li>
               <li className="p-navigation__link is-selected" role="menuitem">
-                <Link to="/internal">Website Projects</Link>
+                <Link to="/internal">Website source code</Link>
               </li>
               <li className="p-navigation__link is-selected" role="menuitem">
                 <Link to="/blogs">Blog Feed</Link>
