@@ -58,27 +58,31 @@ class Blogs extends Component {
               </div>
             </div>
           </div>
-          <div className="row">
-            {loading ? (
-              <ReactLoading type="spin" color="#000000" height="20%" width="20%" />
-            ) : (
-              <div className="p-card">
-                {feeds.length ? (
-                  <div>
-                    {/* Check to see if any items are found */}
-                    {feeds.map((item) => (
-                      <div className="p-card">
-                        {item.summary}
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div>
-                      No data found!
-                  </div>
-                )}
-              </div>
-            )}
+          <div className="p-strip is-deep" style={{ background: '#5c8a8a', color: '#FFF' }}>
+            <div className="row">
+              {loading ? (
+                <div className="center">
+                  <ReactLoading type="spin" color="#FFF" height="20%" width="20%" />
+                </div>
+              ) : (
+                <div className="p-card">
+                  {feeds.length ? (
+                    <div>
+                      {/* Check to see if any items are found */}
+                      {feeds.map((item) => (
+                        <div className="p-card">
+                          {item.summary}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div>
+                        No data found!
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

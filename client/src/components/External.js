@@ -19,7 +19,7 @@ class External extends Component {
               <div className="row">
                 <h2>Game development projects</h2>
                 <p>
-                  I find great enjoyment in game development. Whatever I have free-time
+                  I find great enjoyment in game development. Whenever I have free-time
                   I tend to turn to game development. Below are the list of games I have developed.
                 </p>
               </div>
