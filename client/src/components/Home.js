@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 import '../styles/style.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -27,33 +28,48 @@ class Home extends Component {
         <div className="p-strip is-deep" style={{ background: '#3498db', color: '#FFF' }}>
           <div className="row">
             <h2>Game development projects</h2>
-            <Slider dots infinite speed={500} slidesToShow={3} slidesToScroll={3}>
+            <Slider dots infinite speed={500} slidesToShow={3} slidesToScroll={3} autoplay>
               <div className="p-card">
-                <img src="/images/rush.png" alt="" />
-                <p>Description</p>
-              </div>
-              <div className="p-card">
-                <img src="/images/hardescape.png" alt="" />
+                <Link to="/external">
+                  <img src="/images/rush.png" alt="" />
+                </Link>
                 <p>
-                  Created using ActionScript. This game was created
-                  for the purpose of expanding my knowledge and
-                  learning a new language (ActionScript). I was able
-                  to improve my programming solving skills and
-                  analytical skills while creating this game.
+                  Created by using Unity and C#. This game
+                  is still in development.
                 </p>
               </div>
               <div className="p-card">
-                <img src="/images/rush.png" alt="" />
-                <p>Description</p>
+                <Link to="/external">
+                  <img src="/images/hardescape.png" alt="" />
+                </Link>
+                <p>
+                  Created using ActionScript and FlashDevelop. This game was created
+                  for the purpose of expanding my knowledge and
+                  learning a new language (ActionScript).
+                </p>
               </div>
               <div className="p-card">
-                <img src="/images/rush.png" alt="" />
-                <p>Description</p>
+                <Link to="/external">
+                  <img src="/images/rush.png" alt="" />
+                </Link>
+                <p>
+                  Created by using Unity and C#. This game
+                  is still in development.
+                </p>
+              </div>
+              <div className="p-card">
+                <Link to="/external">
+                  <img src="/images/rush.png" alt="" />
+                </Link>
+                <p>
+                  Created by using Unity and C#. This game
+                  is still in development.
+                </p>
               </div>
             </Slider>
           </div>
         </div>
-        <div className="p-strip is-deep" style={{ background: '#5c8a8a', color: '#FFF' }}>
+        <div className="p-strip is-deep" style={{ background: '#ff8080', color: '#FFF' }}>
           <div className="row">
             <h2>Blog feed</h2>
           </div>

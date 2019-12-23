@@ -26,7 +26,13 @@ class Blogs extends Component {
         .then((feeds) => this.setState({
           feeds,
           loading: false,
-        }));
+        })).catch((err) => {
+          // eslint-disable-next-line
+          console.log(err);
+          this.setState({
+            loading: false,
+          });
+        });
     });
   }
 

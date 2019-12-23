@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {
+  FaLinkedin, FaGithub, FaRegEnvelope, FaWordpress,
+} from 'react-icons/fa';
 
 /**
  * Contact information component
@@ -24,41 +27,48 @@ class About extends Component {
               </div>
             </div>
           </div>
-          <div className="row">
-            <ul className="p-list">
-              <li className="p-list__item">
-                Email:
-                <a href="mailto:paul_luu.work@hotmail.com">
-                  paul_luu.work@hotmail.com
-                </a>
-              </li>
-              <li className="p-list__item">
-                Linkedin:
-                <a href="http://www.linkedin.com/in/paul-luu-55bb0614a">
-                  http://www.linkedin.com/in/paul-luu-55bb0614a
-                </a>
-              </li>
-              <li className="p-list__item">
-                GitHub:
-                <a href="https://github.com/ImmutableBox">
-                  https://github.com/ImmutableBox
-                </a>
-              </li>
-              <li className="p-list__item">
-                Blog:
-                <a href="https://paulopensourceblog.wordpress.com">
-                  https://paulopensourceblog.wordpress.com
-                </a>
-              </li>
-            </ul>
-            <ul className="p-list">
-              <li className="p-list__item">
-                Sumo icon link:
-                <a href="https://icon-icons.com/icon/japan-culture-traditional-sumo-japanese-sport/127327">
-                  https://icon-icons.com/icon/japan-culture-traditional-sumo-japanese-sport/127327
-                </a>
-              </li>
-            </ul>
+          <div className="p-strip is-deep" style={{ background: '#f7f7f7', color: '#000000' }}>
+            <div className="row">
+              <ul className="p-list--divided">
+                <li className="p-list__item">
+                  <FaRegEnvelope />
+                  &nbsp;Email:
+                  <a href="mailto:paul_luu.work@hotmail.com">
+                    paul_luu.work@hotmail.com
+                  </a>
+                </li>
+                <li className="p-list__item">
+                  <FaLinkedin />
+                  &nbsp;Linkedin:
+                  <a href="http://www.linkedin.com/in/paul-luu-55bb0614a">
+                    http://www.linkedin.com/in/paul-luu-55bb0614a
+                  </a>
+                </li>
+                <li className="p-list__item">
+                  <FaGithub />
+                  &nbsp;GitHub:
+                  <a href="https://github.com/ImmutableBox">
+                    https://github.com/ImmutableBox
+                  </a>
+                </li>
+                <li className="p-list__item">
+                  <FaWordpress />
+                  &nbsp;Blog:
+                  <a href="https://paulopensourceblog.wordpress.com">
+                    https://paulopensourceblog.wordpress.com
+                  </a>
+                </li>
+              </ul>
+              <h2>Assests</h2>
+              <ul className="p-list">
+                <li className="p-list__item">
+                  Sumo icon link:
+                  <a href="https://icon-icons.com/icon/japan-culture-traditional-sumo-japanese-sport/127327">
+                    https://icon-icons.com/icon/japan-culture-traditional-sumo-japanese-sport/127327
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
