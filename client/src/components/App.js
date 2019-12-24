@@ -33,6 +33,7 @@ class App extends Component {
           <Route path="/blogs" component={Blogs} />
           <Route path="/contact" component={About} />
           <Route path="/showcase" component={Showcase} />
+          <Route path="/home" component={Home} />
           <Route exact path="/" component={Home} />
           <Route component={NotFound} />
         </Switch>
