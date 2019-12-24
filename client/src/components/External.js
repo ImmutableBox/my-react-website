@@ -26,39 +26,57 @@ class External extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-6">
-              <div className="p-card">
-                <h2>
-                Rush (Incomplete)
-                </h2>
-                <iframe title="Rush" src="/projects/Rush/index.html" name="Rush" width="1024px" height="768px" />
-                <div className="col-sm-12">
-                  <div className="p-card">
+            <div className="p-card">
+              <h2>
+                Friendly Encounter - Created for my Project Management Course
+              </h2>
+              <iframe title="Friendly Encounter" src="/projects/FE-Web/index.html" name="FE" width="1024px" height="768px" />
+              <div className="col-sm-12">
+                <div className="p-card">
                   Controls: Up or W
-                    <br />
+                  <br />
                   Left or A
-                    <br />
+                  <br />
                   Down or S
-                    <br />
+                  <br />
                   Right or D
-                    <br />
+                  <br />
                   Click to shoot
-                  </div>
                 </div>
               </div>
             </div>
             <hr />
-            <div className="col-sm-6">
-              <div className="p-card">
-                <h2>
+            <div className="p-card">
+              <h2>
                   Hard Time
-                </h2>
-                <div className="col-sm-6">
-                  <object width="600" height="450" data="/projects/HardEscape.swf"> HardEscape </object>
-                </div>
-                <div className="p-card">
+              </h2>
+              <object width="600" height="450" data="/projects/HardEscape.swf"> HardEscape </object>
+              <div className="p-card">
                   Try to escape from jail!
-                  <br />
+                <br />
+                  Controls: Up or W
+                <br />
+                  Left or A
+                <br />
+                  Down or S
+                <br />
+                  Right or D
+                <br />
+                  Spacebar - Interact with objects/Open doors
+                <br />
+                  Escape or P- Pauses the game
+                <br />
+                  R - Reset the level
+              </div>
+            </div>
+            <hr />
+            <div className="p-card">
+              <h2>
+                Rush (Incomplete)
+              </h2>
+              <iframe title="Rush" src="/projects/Rush/index.html" name="Rush" width="1024px" height="768px" />
+              <div className="col-sm-12">
+                <div className="p-card">
                   Controls: Up or W
                   <br />
                   Left or A
@@ -67,14 +85,11 @@ class External extends Component {
                   <br />
                   Right or D
                   <br />
-                  Spacebar - Interact with objects/Open doors
-                  <br />
-                  Escape or P- Pauses the game
-                  <br />
-                  R - Reset the level
+                  Click to shoot
                 </div>
               </div>
             </div>
+            <hr />
           </div>
         </div>
       </div>

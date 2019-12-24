@@ -4,13 +4,27 @@ import React, { Component } from 'react';
  * Internal projects component.
  * This component contains projects I have worked on internally on the website.
  */
-// eslint-disable-next-line react/prefer-stateless-function
 class Internal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 50,
+    };
+  }
+
+  onChange(event) {
+    this.setState({
+      value: parseFloat(event.target.value),
+    });
+  }
+
+
   /**
    * Rendering app component
    * @return { html } Rendering html
    */
   render() {
+    const { value } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
@@ -31,6 +45,20 @@ class Internal extends Component {
             <a href="https://github.com/ImmutableBox/my-react-website">
               https://github.com/ImmutableBox/my-react-website
             </a>
+          </div>
+          <br />
+          <hr />
+          <div className="row">
+            <h2>Color Picker</h2>
+            <p>
+              R- Red&nbsp;
+              {String(value)}
+            </p>
+            <input className="p-slider" type="range" min="0" max="255" step="1" id="slider1" onChange={this.onChange.bind(this)} value={value} />
+            <p>B- Blue</p>
+            <input className="p-slider" type="range" min="0" max="255" step="1" id="slider2" onChange={this.onChange.bind(this)} value={value} />
+            <p>G- Green</p>
+            <input className="p-slider" type="range" min="0" max="255" step="1" id="slider3" onChange={this.onChange.bind(this)} value={value} />
           </div>
         </div>
       </div>

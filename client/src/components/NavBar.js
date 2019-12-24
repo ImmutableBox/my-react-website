@@ -27,7 +27,7 @@ class NavBar extends Component {
                 <Link to="/external">Game Development Projects</Link>
               </li>
               <li className="p-navigation__link is-selected" role="menuitem">
-                <Link to="/internal">Website source code</Link>
+                <Link to="/internal">Website Source Code</Link>
               </li>
               <li className="p-navigation__link is-selected" role="menuitem">
                 <Link to="/blogs">Blog Feed</Link>
