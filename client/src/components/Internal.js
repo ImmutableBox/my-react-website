@@ -8,13 +8,21 @@ class Internal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 50,
+      sliders: [50, 50, 50],
     };
   }
 
-  onChange(event) {
-    this.setState({
-      value: parseFloat(event.target.value),
+  onChange(index, event) {
+    /**
+     * The setState function is executed in asynchronous context.
+     * By the time the state is updated the event.target reference might or might not be gone
+     * const can be used to "remember" the value as in your example.
+     */
+    const value = parseFloat(event.target.value);
+    this.setState((previousState) => {
+      const sliders = [...previousState.sliders];
+      sliders[index] = value;
+      return { sliders };
     });
   }
 
@@ -24,7 +32,7 @@ class Internal extends Component {
    * @return { html } Rendering html
    */
   render() {
-    const { value } = this.state;
+    const { sliders } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
@@ -50,15 +58,26 @@ class Internal extends Component {
           <hr />
           <div className="row">
             <h2>Color Picker</h2>
-            <p>
-              R- Red&nbsp;
-              {String(value)}
-            </p>
-            <input className="p-slider" type="range" min="0" max="255" step="1" id="slider1" onChange={this.onChange.bind(this)} value={value} />
-            <p>B- Blue</p>
-            <input className="p-slider" type="range" min="0" max="255" step="1" id="slider2" onChange={this.onChange.bind(this)} value={value} />
+            <p>R- Red</p>
             <p>G- Green</p>
-            <input className="p-slider" type="range" min="0" max="255" step="1" id="slider3" onChange={this.onChange.bind(this)} value={value} />
+            <p>B- Blue</p>
+            {sliders.map((slider, index) => (
+              // eslint-disable-next-line
+              <div key={index}>
+                <input
+                  className="p-slider"
+                  type="range"
+                  min="0"
+                  max="255"
+                  step="1"
+                  // eslint-disable-next-line
+                  key={index}
+                  onChange={(event) => this.onChange(index, event)}
+                  value={slider}
+                />
+                <p>{slider}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
