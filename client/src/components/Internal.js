@@ -8,6 +8,7 @@ class Internal extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      colours: ['R- Red', 'B - Blue', 'G - Green'],
       sliders: [50, 50, 50],
     };
   }
@@ -33,6 +34,7 @@ class Internal extends Component {
    */
   render() {
     const { sliders } = this.state;
+    const { colours } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
@@ -41,29 +43,28 @@ class Internal extends Component {
               <div className="row">
                 <h2>Website source code/projects</h2>
                 <p>
-                  Here you can find the source code for the website. I also like
-                  experimenting/developing different programs that involved with this
-                  website listed below.
+                  Here you can find the source code for the website. I like
+                  experimenting/developing different programs using this website as testing ground.
+                </p>
+                <p>
+                  Source code for this website:&nbsp;
+                  <a href="https://github.com/ImmutableBox/my-react-website">
+                    https://github.com/ImmutableBox/my-react-website
+                  </a>
                 </p>
               </div>
             </div>
           </div>
           <div className="row">
-            <p>Source code for this website:</p>
-            <a href="https://github.com/ImmutableBox/my-react-website">
-              https://github.com/ImmutableBox/my-react-website
-            </a>
-          </div>
-          <br />
-          <hr />
-          <div className="row">
             <h2>Color Picker</h2>
-            <p>R- Red</p>
-            <p>G- Green</p>
-            <p>B- Blue</p>
             {sliders.map((slider, index) => (
               // eslint-disable-next-line
               <div key={index}>
+                <p>
+                  {colours[index]}
+                  :&nbsp;
+                  {slider}
+                </p>
                 <input
                   className="p-slider"
                   type="range"
@@ -75,7 +76,6 @@ class Internal extends Component {
                   onChange={(event) => this.onChange(index, event)}
                   value={slider}
                 />
-                <p>{slider}</p>
               </div>
             ))}
           </div>

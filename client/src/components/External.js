@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaGamepad } from 'react-icons/fa';
 
 /**
  * External project component.
@@ -17,7 +18,10 @@ class External extends Component {
           <div className="p-suru">
             <div className="p-strip is-deep">
               <div className="row">
-                <h2>Game development projects</h2>
+                <h2>
+                  <FaGamepad />
+                  &nbsp;Game development projects
+                </h2>
                 <p>
                   I find great enjoyment in game development. Whenever I have free-time
                   I tend to turn to game development. Below are the list of games I have developed.

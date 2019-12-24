@@ -60,6 +60,7 @@ class About extends Component {
                 </li>
               </ul>
               <h2>Assests</h2>
+              <p>I love Japanese Grand Sumo! Hence the little sumo icon!</p>
               <ul className="p-list">
                 <li className="p-list__item">
                   Sumo icon link:

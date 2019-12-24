@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
+import { FaChild, FaGamepad, FaWordpress } from 'react-icons/fa';
 import '../styles/style.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -20,22 +21,28 @@ class Home extends Component {
         <div className="p-suru">
           <div className="p-strip is-deep">
             <div className="row">
-              <h2>Welcome to my website!</h2>
+              <h2>
+                <FaChild />
+                &nbsp;Welcome to my website!
+              </h2>
               <p>This is my personal website used for the purpose of displaying projects.</p>
             </div>
           </div>
         </div>
         <div className="p-strip is-deep" style={{ background: '#3498db', color: '#FFF' }}>
           <div className="row">
-            <h2>Game development projects</h2>
+            <h2>
+              <FaGamepad />
+              &nbsp;Game development projects
+            </h2>
             <Slider dots infinite speed={500} slidesToShow={3} slidesToScroll={3} autoplay>
               <div className="p-card">
                 <Link to="/external">
                   <img src="/images/rush.png" alt="" />
                 </Link>
                 <p>
-                  Created by using Unity and C#. This game
-                  is still in development.
+                  Created using Unity and C#. This game
+                  is still in very early development. Assets were drawn by me.
                 </p>
               </div>
               <div className="p-card">
@@ -43,18 +50,17 @@ class Home extends Component {
                   <img src="/images/hardescape.png" alt="" />
                 </Link>
                 <p>
-                  Created using ActionScript and FlashDevelop. This game was created
-                  for the purpose of expanding my knowledge and
-                  learning a new language (ActionScript).
+                  Created using ActionScript and FlashDevelop. This game requires
+                  flash to work. There are currently only 10 levels for this game
                 </p>
               </div>
               <div className="p-card">
                 <Link to="/external">
-                  <img src="/images/rush.png" alt="" />
+                  <img src="/images/fe.png" alt="" />
                 </Link>
                 <p>
-                  Created by using Unity and C#. This game
-                  is still in development.
+                  Created using Unity and C#. This game was created for my project management class
+                  This game is still in development.
                 </p>
               </div>
               <div className="p-card">
@@ -71,7 +77,10 @@ class Home extends Component {
         </div>
         <div className="p-strip is-deep" style={{ background: '#ff8080', color: '#FFF' }}>
           <div className="row">
-            <h2>Blog feed</h2>
+            <h2>
+              <FaWordpress />
+              &nbsp;Blog feed
+            </h2>
           </div>
         </div>
       </div>
