@@ -68,8 +68,8 @@ class Home extends Component {
                   <img src="/images/rush.png" alt="" />
                 </Link>
                 <p>
-                  Created by using Unity and C#. This game
-                  is still in development.
+                  Created using Unity and C#. This game
+                  is still in very early development. Assets were drawn by me.
                 </p>
               </div>
             </Slider>
