@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaCubes } from 'react-icons/fa';
 import { fullColourHex, rgbToHex } from '../utils/colour';
 /**
  * Internal projects component.
@@ -40,7 +41,11 @@ class Internal extends Component {
           <div className="p-suru">
             <div className="p-strip is-deep">
               <div className="row">
-                <h2>Website source code/projects</h2>
+                <h2>
+                  <FaCubes />
+                  &nbsp;
+                  Website source code/projects
+                </h2>
                 <p>
                   Here you can find the source code for this website. I like
                   experimenting/developing different programs using this website

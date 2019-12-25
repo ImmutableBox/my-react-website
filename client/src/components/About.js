@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  FaLinkedin, FaGithub, FaRegEnvelope, FaWordpress,
+  FaLinkedin, FaGithub, FaRegEnvelope, FaWordpress, FaPersonBooth,
 } from 'react-icons/fa';
 
 /**
@@ -19,7 +19,10 @@ class About extends Component {
           <div className="p-suru">
             <div className="p-strip is-deep">
               <div className="row">
-                <h2>Contact information:</h2>
+                <h2>
+                  <FaPersonBooth />
+                  &nbsp;Contact information:
+                </h2>
                 <p>
                   Below are links if where you can find me! I tend to be active with
                   the social medias below.

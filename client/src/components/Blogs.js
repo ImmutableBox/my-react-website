@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactLoading from 'react-loading';
+import { FaWordpress } from 'react-icons/fa';
 
 /**
  * Blog component. Contains my blog feed.
@@ -49,7 +50,10 @@ class Blogs extends Component {
           <div className="p-suru">
             <div className="p-strip is-deep">
               <div className="row">
-                <h2>My Blog feed</h2>
+                <h2>
+                  <FaWordpress />
+                  &nbsp;My Blog feed
+                </h2>
                 <p>
                   A blog created to share my adventures in contributing to open source projects.
                   I also blog about software optimization for my software optimization course.
