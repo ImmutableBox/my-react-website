@@ -37,15 +37,10 @@ class External extends Component {
               <iframe title="Friendly Encounter" src="/projects/FE-Web/index.html" name="FE" width="1024px" height="768px" />
               <div className="col-sm-12">
                 <div className="p-card">
-                  Controls: Up or W
-                  <br />
-                  Left or A
-                  <br />
-                  Down or S
-                  <br />
-                  Right or D
-                  <br />
-                  Click to shoot
+                  Source code:
+                  <a href="https://github.com/ThomasNolte/PRJ666-Friendly-Encounters">
+                    https://github.com/ThomasNolte/PRJ666-Friendly-Encounters
+                  </a>
                 </div>
               </div>
             </div>
@@ -90,6 +85,11 @@ class External extends Component {
                   Right or D
                   <br />
                   Click to shoot
+                  <br />
+                  Source code:
+                  <a href="https://github.com/ImmutableBox/Mob-Swarm">
+                    https://github.com/ImmutableBox/Mob-Swarm
+                  </a>
                 </div>
               </div>
             </div>
