@@ -63,7 +63,7 @@ class Internal extends Component {
                 <div key={index}>
                   <p>
                     {texts[index]}
-                    : Decimal value:
+                    - Decimal value:
                     {slider}
                     : Hex value:
                     {rgbToHex(slider)}

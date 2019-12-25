@@ -60,9 +60,13 @@ class About extends Component {
                 </li>
               </ul>
               <h2>Assests</h2>
-              <p>I love Japanese Grand Sumo! Hence the little sumo icon!</p>
-              <ul className="p-list">
+              <hr />
+              <ul className="p-list--divided">
                 <li className="p-list__item">
+                  <p>I love Japanese Grand Sumo! Hence the little sumo icon!</p>
+                </li>
+                <li className="p-list__item">
+                  <img align="middle" src="logo96.png" alt="" width="50" />
                   Sumo icon link:
                   <a href="https://icon-icons.com/icon/japan-culture-traditional-sumo-japanese-sport/127327">
                     https://icon-icons.com/icon/japan-culture-traditional-sumo-japanese-sport/127327
