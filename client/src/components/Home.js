@@ -56,7 +56,7 @@ class Home extends Component {
               </div>
               <div className="p-card">
                 <Link to="/external">
-                  <img src="/images/fe.png" alt="" />
+                  <img src="/images/FE.png" alt="" />
                 </Link>
                 <p>
                   Created using Unity and C#. This game was created for my project management class
