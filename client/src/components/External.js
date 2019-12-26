@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FaGamepad, FaAdobe } from 'react-icons/fa';
 import { DiUnitySmall } from 'react-icons/di';
+import { Link } from 'react-router-dom';
 
 /**
  * External project component.
@@ -30,12 +31,46 @@ class External extends Component {
               </div>
             </div>
           </div>
+          <hr />
           <div className="p-strip is-deep">
             <div className="row">
               <h2>
                 <DiUnitySmall />
                 &nbsp;Games developed in Unity:
               </h2>
+              <div className="col-3">
+                <div className="p-card">
+                  <Link to="/external">
+                    <img src="/images/FE.png" alt="" />
+                  </Link>
+                </div>
+              </div>
+              <div className="col-3">
+                <div className="p-card">
+                  <Link to="/external">
+                    <img src="/images/FE.png" alt="" />
+                  </Link>
+                </div>
+              </div>
+              <div className="col-3">
+                <div className="p-card">
+                  <Link to="/external">
+                    <img src="/images/FE.png" alt="" />
+                  </Link>
+                </div>
+              </div>
+              <div className="col-3">
+                <div className="p-card">
+                  <Link to="/external">
+                    <img src="/images/FE.png" alt="" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div className="p-strip is-deep">
+            <div className="row">
               <div className="p-card">
                 <h2>
                   Friendly Encounter - Created for my Project Management Course
