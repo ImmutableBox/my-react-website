@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
-  FaLinkedin, FaGithub, FaRegEnvelope, FaWordpress, FaPersonBooth,
+  FaLinkedin, FaGithub, FaWordpress, FaPersonBooth,
 } from 'react-icons/fa';
+import { IoMdMailOpen } from 'react-icons/io';
 
 /**
  * Contact information component
@@ -34,7 +35,7 @@ class About extends Component {
             <div className="row">
               <ul className="p-list--divided">
                 <li className="p-list__item">
-                  <FaRegEnvelope />
+                  <IoMdMailOpen />
                   &nbsp;Email:
                   <a href="mailto:paul_luu.work@hotmail.com">
                     paul_luu.work@hotmail.com
@@ -62,7 +63,7 @@ class About extends Component {
                   </a>
                 </li>
               </ul>
-              <h2>Assests</h2>
+              <h2>Assets</h2>
               <hr />
               <ul className="p-list--divided">
                 <li className="p-list__item">

@@ -57,7 +57,7 @@ class Blogs extends Component {
                 <p>
                   A blog created to share my adventures in contributing to open source projects.
                   I also blog about software optimization for my software optimization course.
-                  Created with WordPress.
+                  I create blogs on WordPress.
                 </p>
                 <p>
                   Link to blog:
@@ -86,7 +86,7 @@ class Blogs extends Component {
                               {item.title}
                             </a>
                           </h3>
-                          <br />
+                          <hr />
                           {item.summary}
                         </div>
                       ))}

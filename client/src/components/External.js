@@ -31,12 +31,49 @@ class External extends Component {
               </div>
             </div>
           </div>
-          <hr />
           <div className="p-strip is-deep">
             <div className="row">
               <h2>
                 <DiUnitySmall />
                 &nbsp;Games developed in Unity:
+              </h2>
+              <div className="col-3">
+                <div className="p-card">
+                  <Link to="/external">
+                    <img src="/images/FE.png" alt="" />
+                  </Link>
+                </div>
+              </div>
+              <div className="col-3">
+                <div className="p-card">
+                  <Link to="/external">
+                    <img src="/images/FE.png" alt="" />
+                  </Link>
+                </div>
+              </div>
+              <div className="col-3">
+                <div className="p-card">
+                  <Link to="/external">
+                    <img src="/images/FE.png" alt="" />
+                  </Link>
+                </div>
+              </div>
+              <div className="col-3">
+                <div className="p-card">
+                  <Link to="/external">
+                    <img src="/images/FE.png" alt="" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div className="p-strip is-deep">
+            <div className="row">
+
+              <h2>
+                <FaAdobe />
+                &nbsp;Games developed in Flash/ActionScript:
               </h2>
               <div className="col-3">
                 <div className="p-card">
@@ -78,6 +115,10 @@ class External extends Component {
                 <iframe title="Friendly Encounter" src="/projects/FE-Web/index.html" name="FE" width="1024px" height="768px" />
                 <div className="col-sm-12">
                   <div className="p-card">
+                    <p>
+                      Created using Unity and C#. This game was created for my project
+                      management class This game is still in development.
+                    </p>
                     Source code:
                     <a href="https://github.com/ThomasNolte/PRJ666-Friendly-Encounters">
                       https://github.com/ThomasNolte/PRJ666-Friendly-Encounters
@@ -93,6 +134,10 @@ class External extends Component {
                 <iframe title="Rush" src="/projects/Rush/index.html" name="Rush" width="1024px" height="768px" />
                 <div className="col-sm-12">
                   <div className="p-card">
+                    <p>
+                      Created using Unity and C#. This game
+                      is still in very early development. Assets were drawn by me.
+                    </p>
                     Controls: Up or W
                     <br />
                     Left or A
@@ -115,17 +160,18 @@ class External extends Component {
           </div>
           <div className="p-strip is-deep">
             <div className="row">
-              <h2>
-                <FaAdobe />
-                &nbsp;Games developed in Flash/ActionScript:
-              </h2>
               <div className="p-card">
                 <h2>
                     Hard Time
                 </h2>
                 <object width="600" height="450" data="/projects/HardEscape.swf"> HardEscape </object>
                 <div className="p-card">
+                  <p>
+                    Created using ActionScript and FlashDevelop. This game requires
+                    flash to work. There are currently only 10 levels for this game
+                  </p>
                     Try to escape from jail!
+                  <br />
                   <br />
                     Controls: Up or W
                   <br />

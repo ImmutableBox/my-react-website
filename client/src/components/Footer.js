@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
-  FaLinkedin, FaGithub, FaRegEnvelope, FaWordpress, FaSortUp,
+  FaLinkedin, FaGithub, FaWordpress, FaSortUp,
 } from 'react-icons/fa';
+import { IoMdMailOpen } from 'react-icons/io';
 
 /**
  * Footer component, is displayed on every page.
@@ -49,7 +50,7 @@ class Footer extends Component {
                     href="mailto:paul_luu.work@hotmail.com"
                     style={{ color: '#000000' }}
                   >
-                    <FaRegEnvelope size={64} />
+                    <IoMdMailOpen size={64} />
                   </a>
                 </li>
                 <li className="u-hide--small p-inline-list__item">
