@@ -72,7 +72,12 @@ class Blogs extends Component {
             <div className="row">
               {loading ? (
                 <div className="center">
-                  <ReactLoading type="spin" color="#FFF" height="20%" width="20%" />
+                  <ReactLoading
+                    type="spin"
+                    color="#FFF"
+                    height="20%"
+                    width="20%"
+                  />
                 </div>
               ) : (
                 <div className="p-card">
@@ -82,19 +87,23 @@ class Blogs extends Component {
                       {feeds.map((item) => (
                         <div className="p-card">
                           <h3>
-                            <a href={item.link}>
-                              {item.title}
-                            </a>
+                            <a href={item.link}>{item.title}</a>
                           </h3>
                           <hr />
-                          {item.summary}
+                          {item.summary
+                            .replace('[&#8230;]', '...')
+                            .replace('&#8217;', '\'')}
+                          <a href={item.link}>Read more</a>
+                          <br />
+                          <br />
+                          Published Date:
+                          {new Date(item.pubDate).toDateString()}
+                          <br />
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <div>
-                        No data found!
-                    </div>
+                    <div>No data found!</div>
                   )}
                 </div>
               )}

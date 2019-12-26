@@ -40,7 +40,7 @@ class External extends Component {
               <div className="col-3">
                 <div className="p-card">
                   <Link to="/external">
-                    <img src="/images/FE.png" alt="" />
+                    <img src="/images/rush.png" alt="" />
                   </Link>
                 </div>
               </div>
@@ -51,20 +51,8 @@ class External extends Component {
                   </Link>
                 </div>
               </div>
-              <div className="col-3">
-                <div className="p-card">
-                  <Link to="/external">
-                    <img src="/images/FE.png" alt="" />
-                  </Link>
-                </div>
-              </div>
-              <div className="col-3">
-                <div className="p-card">
-                  <Link to="/external">
-                    <img src="/images/FE.png" alt="" />
-                  </Link>
-                </div>
-              </div>
+              <div className="col-3" />
+              <div className="col-3" />
             </div>
           </div>
           <hr />
@@ -78,31 +66,13 @@ class External extends Component {
               <div className="col-3">
                 <div className="p-card">
                   <Link to="/external">
-                    <img src="/images/FE.png" alt="" />
+                    <img src="/images/hardescape.png" alt="" />
                   </Link>
                 </div>
               </div>
-              <div className="col-3">
-                <div className="p-card">
-                  <Link to="/external">
-                    <img src="/images/FE.png" alt="" />
-                  </Link>
-                </div>
-              </div>
-              <div className="col-3">
-                <div className="p-card">
-                  <Link to="/external">
-                    <img src="/images/FE.png" alt="" />
-                  </Link>
-                </div>
-              </div>
-              <div className="col-3">
-                <div className="p-card">
-                  <Link to="/external">
-                    <img src="/images/FE.png" alt="" />
-                  </Link>
-                </div>
-              </div>
+              <div className="col-3" />
+              <div className="col-3" />
+              <div className="col-3" />
             </div>
           </div>
           <hr />

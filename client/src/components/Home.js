@@ -138,7 +138,15 @@ class Home extends Component {
                           <a href={item.link}>{item.title}</a>
                         </h3>
                         <hr />
-                        {item.summary}
+                        {item.summary
+                          .replace('[&#8230;]', '...')
+                          .replace('&#8217;', '\'')}
+                        <a href={item.link}>Read more</a>
+                        <br />
+                        <br />
+                        Published Date:
+                        {new Date(item.pubDate).toDateString()}
+                        <br />
                       </div>
                     ))}
                   </div>
