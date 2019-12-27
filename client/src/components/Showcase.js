@@ -42,10 +42,10 @@ class Showcase extends Component {
                   <iframe title="Rush" src={gamePath} name="Rush" width="1024px" height="768px" />
                 )}
                 <div className="p-card">
+                  {description}
+                  <br />
+                  <br />
                   <p>
-                    {description}
-                    <br />
-                    <br />
                     {controls !== undefined ? (
                       <p>
                         <h5>Controls:</h5>

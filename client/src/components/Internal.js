@@ -10,7 +10,7 @@ class Internal extends Component {
     super(props);
     this.state = {
       texts: ['R- Red', 'B - Blue', 'G - Green'],
-      sliders: [171, 213, 249],
+      sliders: [255, 255, 255],
     };
   }
 
