@@ -41,7 +41,12 @@ class Internal extends Component {
             <div className="p-strip is-deep">
               <div className="row">
                 <h2>
-                  <FaCubes />
+                  <a
+                    href="https://github.com/ImmutableBox/my-react-website"
+                    style={{ color: '#FFF' }}
+                  >
+                    <FaCubes />
+                  </a>
                   &nbsp;
                   Website source code/projects
                 </h2>
@@ -51,10 +56,7 @@ class Internal extends Component {
                   as a testing ground.
                 </p>
                 <p>
-                  Source code for this website:&nbsp;
-                  <a href="https://github.com/ImmutableBox/my-react-website">
-                    https://github.com/ImmutableBox/my-react-website
-                  </a>
+                  Click on the icon for the source code!
                 </p>
               </div>
             </div>

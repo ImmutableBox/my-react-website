@@ -51,19 +51,21 @@ class Blogs extends Component {
             <div className="p-strip is-deep">
               <div className="row">
                 <h2>
-                  <FaWordpress />
+                  <a
+                    href="https://paulopensourceblog.wordpress.com"
+                    style={{ color: '#FFF' }}
+                  >
+                    <FaWordpress />
+                  </a>
                   &nbsp;My Blog feed
                 </h2>
                 <p>
-                  A blog created to share my adventures in contributing to open source projects.
-                  I also blog about software optimization for my software optimization course.
-                  I create blogs on WordPress.
+                  A blog created using WordPress to share my adventures in contributing to&nbsp;
+                  open source projects. I also blog about software optimization for my&nbsp;
+                  software optimization course.
                 </p>
                 <p>
-                  Link to blog:
-                  <a href="https://paulopensourceblog.wordpress.com">
-                    https://paulopensourceblog.wordpress.com
-                  </a>
+                  Click on the icon for the source!
                 </p>
               </div>
             </div>
