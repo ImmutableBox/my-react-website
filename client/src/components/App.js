@@ -52,6 +52,8 @@ class App extends Component {
                           <br>
                           Click to shoot"
                 sourceCode="https://github.com/ImmutableBox/Mob-Swarm"
+                width="1024px"
+                height="768px"
               />
             )}
           />
@@ -70,6 +72,8 @@ class App extends Component {
                     Spacebar - Interact with objects/Open doors<br>
                     Escape or P- Pauses the game<br>
                     R - Reset the level"
+                width="600"
+                height="450"
               />
             )}
           />
@@ -82,6 +86,8 @@ class App extends Component {
                 gameType="unity"
                 description="Created using Unity and C#. This game was created for my project management class This game is still in development."
                 sourceCode="https://github.com/ThomasNolte/PRJ666-Friendly-Encounters"
+                width="1024px"
+                height="768px"
               />
             )}
           />

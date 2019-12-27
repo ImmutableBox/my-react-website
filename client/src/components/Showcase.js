@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { FaGamepad } from 'react-icons/fa';
 import GameSlider from './GameSlider';
-
 /**
  * Showcase component.
  * This component will showcase games selected on.
@@ -20,6 +19,8 @@ class Showcase extends Component {
       description,
       controls,
       sourceCode,
+      width,
+      height,
     } = this.props;
     return (
       <div className="wrapper u-no-margin--top">
@@ -37,9 +38,9 @@ class Showcase extends Component {
                 style={{ background: '#bfbfbf', color: '#FFF' }}
               >
                 {gameType === 'actionscript' ? (
-                  <object width="600" height="450" data={gamePath}> HardEscape </object>
+                  <object width={width} height={height} data={gamePath}> HardEscape </object>
                 ) : (
-                  <iframe title="Rush" src={gamePath} name="Rush" width="1024px" height="768px" />
+                  <iframe title="Rush" src={gamePath} name="Rush" width={width} height={height} />
                 )}
                 <div className="p-card">
                   {description}
