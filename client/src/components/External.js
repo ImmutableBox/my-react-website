@@ -39,7 +39,7 @@ class External extends Component {
               </h2>
               <div className="col-3">
                 <div className="p-card">
-                  <Link to="/external">
+                  <Link to="/rush">
                     <img src="/images/rush.png" alt="" />
                   </Link>
                 </div>
@@ -132,7 +132,7 @@ class External extends Component {
             <div className="row">
               <div className="p-card">
                 <h2>
-                    Hard Time
+                    Hard Escape
                 </h2>
                 <object width="600" height="450" data="/projects/HardEscape.swf"> HardEscape </object>
                 <div className="p-card">
@@ -141,22 +141,7 @@ class External extends Component {
                     flash to work. There are currently only 10 levels for this game.
                     Assets were hand-drawn by me.
                   </p>
-                    Try to escape from jail!
                   <br />
-                  <br />
-                    Controls: Up or W
-                  <br />
-                    Left or A
-                  <br />
-                    Down or S
-                  <br />
-                    Right or D
-                  <br />
-                    Spacebar - Interact with objects/Open doors
-                  <br />
-                    Escape or P- Pauses the game
-                  <br />
-                    R - Reset the level
                 </div>
               </div>
             </div>

@@ -10,7 +10,7 @@ class Internal extends Component {
     super(props);
     this.state = {
       texts: ['R- Red', 'B - Blue', 'G - Green'],
-      sliders: [90, 68, 164],
+      sliders: [171, 213, 249],
     };
   }
 
@@ -33,8 +33,7 @@ class Internal extends Component {
    * @return { html } Rendering html
    */
   render() {
-    const { sliders } = this.state;
-    const { texts } = this.state;
+    const { sliders, texts } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
@@ -63,6 +62,7 @@ class Internal extends Component {
           <div className="p-strip is-deep" style={{ backgroundColor: `#${fullColourHex(...sliders)}` }}>
             <div className="row">
               <h2>Color Picker</h2>
+              <hr />
               {sliders.map((slider, index) => (
                 // eslint-disable-next-line
                 <div key={index}>

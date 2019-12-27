@@ -47,8 +47,7 @@ class Home extends Component {
    * @return { html } Rendering html
    */
   render() {
-    const { feeds } = this.state;
-    const { loading } = this.state;
+    const { feeds, loading } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
         <div className="p-suru">

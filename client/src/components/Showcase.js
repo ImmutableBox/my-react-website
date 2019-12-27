@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 /**
  * Showcase component.
  * This component will showcase games selected on.
@@ -11,18 +10,24 @@ class Showcase extends Component {
    * @return { html } Rendering html
    */
   render() {
+    const { title } = this.props;
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
-          <div className="p-suru">
-            <div className="p-strip is-deep">
-              <div className="row">
-                <h2>Game Title</h2>
+          <div className="row">
+            <h2 className="text-center">
+              {title}
+            </h2>
+            <div className="p-card">
+              <p>
+                App
+              </p>
+              <div className="p-card">
+                <p>
+                  App
+                </p>
               </div>
             </div>
-          </div>
-          <div className="row">
-            <h1>Game</h1>
           </div>
         </div>
       </div>

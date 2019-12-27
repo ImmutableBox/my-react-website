@@ -72,7 +72,10 @@ class Blogs extends Component {
             <div className="row">
               {categories.map((value) => (
                 <div>
-                  <h2>{value.toUpperCase()}</h2>
+                  <h2>
+                    BLOG&apos;S ON:&nbsp;
+                    {value.toUpperCase()}
+                  </h2>
                   {loading ? (
                     <div className="center">
                       <ReactLoading

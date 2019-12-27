@@ -32,6 +32,9 @@ class App extends Component {
           <Route path="/internal" component={Internal} />
           <Route path="/blogs" component={Blogs} />
           <Route path="/contact" component={About} />
+          <Route path="/rush" component={() => <Showcase title="rush" />} />
+          <Route path="/hardescape" component={() => <Showcase title="rush" />} />
+          <Route path="/friendlyencounters" component={() => <Showcase title="rush" />} />
           <Route path="/showcase" component={Showcase} />
           <Route path="/home" component={Home} />
           <Route exact path="/" component={Home} />
