@@ -138,7 +138,8 @@ class External extends Component {
                 <div className="p-card">
                   <p>
                     Created using ActionScript and FlashDevelop. This game requires
-                    flash to work. There are currently only 10 levels for this game
+                    flash to work. There are currently only 10 levels for this game.
+                    Assets were hand-drawn by me.
                   </p>
                     Try to escape from jail!
                   <br />

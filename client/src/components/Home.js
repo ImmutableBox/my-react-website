@@ -144,7 +144,7 @@ class Home extends Component {
                         <a href={item.link}>Read more</a>
                         <br />
                         <br />
-                        Published Date:
+                        Published Date:&nbsp;
                         {new Date(item.pubDate).toDateString()}
                         <br />
                       </div>

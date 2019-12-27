@@ -10,7 +10,7 @@ class Internal extends Component {
     super(props);
     this.state = {
       texts: ['R- Red', 'B - Blue', 'G - Green'],
-      sliders: [255, 255, 255],
+      sliders: [90, 68, 164],
     };
   }
 
@@ -68,9 +68,11 @@ class Internal extends Component {
                 <div key={index}>
                   <p>
                     {texts[index]}
-                    - Decimal value:
+                    <br />
+                    Decimal value:&nbsp;
                     {slider}
-                    : Hex value:
+                    <br />
+                    Hex value:&nbsp;
                     {rgbToHex(slider)}
                   </p>
                   <input
@@ -87,7 +89,7 @@ class Internal extends Component {
                 </div>
               ))}
               <p>
-                Full hex value:
+                Full hex value: #
                 {fullColourHex(...sliders)}
               </p>
             </div>
