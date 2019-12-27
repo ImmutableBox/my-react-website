@@ -65,13 +65,19 @@ class App extends Component {
                 gamePath="/projects/HardEscape.swf"
                 gameType="actionscript"
                 description="Try to escape from jail! Created using ActionScript and FlashDevelop. This game requires flash to work. There are currently only 10 levels for this game. Assets were hand-drawn by me."
-                controls="Up or W<br>
-                    Left or A<br>
-                    Down or S<br>
-                    Right or D<br>
-                    Spacebar - Interact with objects/Open doors<br>
-                    Escape or P- Pauses the game<br>
-                    R - Reset the level"
+                controls="Up or W
+                          <br>
+                          Left or A
+                          <br>
+                          Down or S
+                          <br>
+                          Right or D
+                          <br>
+                          Spacebar - Interact with objects/Open doors
+                          <br>
+                          Escape or P- Pauses the game
+                          <br>
+                          R - Reset the level"
                 width="600"
                 height="450"
               />
@@ -86,8 +92,8 @@ class App extends Component {
                 gameType="unity"
                 description="Created using Unity and C#. This game was created for my project management class This game is still in development."
                 sourceCode="https://github.com/ThomasNolte/PRJ666-Friendly-Encounters"
-                width="1024px"
-                height="768px"
+                width="1280px"
+                height="800px"
               />
             )}
           />

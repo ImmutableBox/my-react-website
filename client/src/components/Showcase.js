@@ -27,22 +27,25 @@ class Showcase extends Component {
         <div className="main-content inner-wrapper">
           <div
             className="p-strip is-deep"
-            style={{ background: '#808080', color: '#FFF' }}
+            style={{ background: '#4d638d', color: '#FFF' }}
           >
             <div className="row">
               <h2 className="text-center">
                 {title}
               </h2>
-              <div
-                className="p-card"
-                style={{ background: '#bfbfbf', color: '#FFF' }}
-              >
-                {gameType === 'actionscript' ? (
-                  <object width={width} height={height} data={gamePath}> HardEscape </object>
-                ) : (
-                  <iframe title="Rush" src={gamePath} name="Rush" width={width} height={height} />
-                )}
-                <div className="p-card">
+              <hr />
+            </div>
+            {gameType === 'actionscript' ? (
+              <object width={width} height={height} data={gamePath}> HardEscape </object>
+            ) : (
+              <iframe title={title} src={gamePath} name={title} width={width} height={height} />
+            )}
+            <div className="row">
+              <div>
+                <div
+                  className="p-card"
+                  style={{ background: '#7b90b7', color: '#FFF' }}
+                >
                   {description}
                   <br />
                   <br />
