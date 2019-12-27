@@ -3,6 +3,7 @@ import {
   FaLinkedin, FaGithub, FaWordpress, FaPersonBooth,
 } from 'react-icons/fa';
 import { IoMdMailOpen } from 'react-icons/io';
+import { AiFillPicture } from 'react-icons/ai';
 
 /**
  * Contact information component
@@ -33,6 +34,10 @@ class About extends Component {
           </div>
           <div className="p-strip is-deep" style={{ background: '#f7f7f7', color: '#000000' }}>
             <div className="row">
+              <h2>
+                <FaPersonBooth />
+                &nbsp;Links:
+              </h2>
               <ul className="p-list--divided">
                 <li className="p-list__item">
                   <IoMdMailOpen />
@@ -63,17 +68,19 @@ class About extends Component {
                   </a>
                 </li>
               </ul>
-              <h2>Assets</h2>
+              <h2>
+                <AiFillPicture />
+                &nbsp;Assets:
+              </h2>
               <hr />
               <ul className="p-list--divided">
                 <li className="p-list__item">
-                  <p>I love Japanese Grand Sumo! Hence the little sumo icon!</p>
-                </li>
-                <li className="p-list__item">
-                  <img align="middle" src="logo96.png" alt="" width="50" />
-                  Sumo icon link:
+                  I love Japanese Grand Sumo! Hence the little sumo icon!
+                  <br />
+                  Click the icon for the source:
+                  <br />
                   <a href="https://icon-icons.com/icon/japan-culture-traditional-sumo-japanese-sport/127327">
-                    https://icon-icons.com/icon/japan-culture-traditional-sumo-japanese-sport/127327
+                    <img align="middle" src="logo96.png" alt="" width="50" />
                   </a>
                 </li>
               </ul>

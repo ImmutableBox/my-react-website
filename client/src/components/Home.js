@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import Slider from 'react-slick';
-import { Link } from 'react-router-dom';
 import { FaChild, FaGamepad, FaWordpress } from 'react-icons/fa';
 import ReactLoading from 'react-loading';
 import '../styles/style.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import GameSlider from './GameSlider';
 
 /**
  * Home component page
@@ -73,39 +72,7 @@ class Home extends Component {
               <FaGamepad />
               &nbsp;Game development projects
             </h2>
-            <Slider
-              dots
-              infinite
-              speed={500}
-              slidesToShow={3}
-              slidesToScroll={3}
-              autoplay
-            >
-              <div className="p-card">
-                <Link to="/rush">
-                  <img src="/images/rush.png" alt="" />
-                </Link>
-                <h4 className="text-center">Rush</h4>
-              </div>
-              <div className="p-card">
-                <Link to="/hardescape">
-                  <img src="/images/hardescape.png" alt="" />
-                </Link>
-                <h4 className="text-center">Hard Escape</h4>
-              </div>
-              <div className="p-card">
-                <Link to="/friendlyencounters">
-                  <img src="/images/FE.png" alt="" />
-                </Link>
-                <h4 className="text-center">Friendly Encounters</h4>
-              </div>
-              <div className="p-card">
-                <Link to="/rush">
-                  <img src="/images/rush.png" alt="" />
-                </Link>
-                <h4 className="text-center">Rush</h4>
-              </div>
-            </Slider>
+            <GameSlider />
           </div>
         </div>
         <div

@@ -41,16 +41,17 @@ class App extends Component {
                 title="Rush"
                 gamePath="/projects/Rush/index.html"
                 gameType="unity"
-                description="Try to escape from jail!
-                Created using ActionScript and FlashDevelop. This game requires flash to work.
-                There are currently only 10 levels for this game. Assets were hand-drawn by me."
-                controls="Up or W<br>
-                    Left or A<br>
-                    Down or S<br>
-                    Right or D<br>
-                    Spacebar - Interact with objects/Open doors<br>
-                    Escape or P- Pauses the game<br>
-                    R - Reset the level"
+                description="Created using Unity and C#. This game is still in very early development. Assets were drawn by me."
+                controls="Up or W
+                          <br>
+                          Left or A
+                          <br>
+                          Down or S
+                          <br>
+                          Right or D
+                          <br>
+                          Click to shoot"
+                sourceCode="https://github.com/ImmutableBox/Mob-Swarm"
               />
             )}
           />
@@ -61,9 +62,7 @@ class App extends Component {
                 title="Hard Escape"
                 gamePath="/projects/HardEscape.swf"
                 gameType="actionscript"
-                description="Try to escape from jail!
-                Created using ActionScript and FlashDevelop. This game requires flash to work.
-                There are currently only 10 levels for this game. Assets were hand-drawn by me."
+                description="Try to escape from jail! Created using ActionScript and FlashDevelop. This game requires flash to work. There are currently only 10 levels for this game. Assets were hand-drawn by me."
                 controls="Up or W<br>
                     Left or A<br>
                     Down or S<br>
@@ -78,17 +77,11 @@ class App extends Component {
             path="/friendlyencounters"
             component={() => (
               <Showcase
-                title="Friendly Encounters"
+                title="Friendly Encounter - Created for my Project Management Course"
                 gamePath="/projects/FE-Web/index.html"
                 gameType="unity"
-                description=""
-                controls="Up or W<br>
-                    Left or A<br>
-                    Down or S<br>
-                    Right or D<br>
-                    Spacebar - Interact with objects/Open doors<br>
-                    Escape or P- Pauses the game<br>
-                    R - Reset the level"
+                description="Created using Unity and C#. This game was created for my project management class This game is still in development."
+                sourceCode="https://github.com/ThomasNolte/PRJ666-Friendly-Encounters"
               />
             )}
           />

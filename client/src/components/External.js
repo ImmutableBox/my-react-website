@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FaGamepad, FaAdobe } from 'react-icons/fa';
 import { DiUnitySmall } from 'react-icons/di';
 import { Link } from 'react-router-dom';
+import GameSlider from './GameSlider';
 
 /**
  * External project component.
@@ -76,74 +77,16 @@ class External extends Component {
             </div>
           </div>
           <hr />
-          <div className="p-strip is-deep">
+          <div
+            className="p-strip is-deep"
+            style={{ background: '#3498db', color: '#FFF' }}
+          >
             <div className="row">
-              <div className="p-card">
-                <h2>
-                  Friendly Encounter - Created for my Project Management Course
-                </h2>
-                <iframe title="Friendly Encounter" src="/projects/FE-Web/index.html" name="FE" width="1024px" height="768px" />
-                <div className="col-sm-12">
-                  <div className="p-card">
-                    <p>
-                      Created using Unity and C#. This game was created for my project
-                      management class This game is still in development.
-                    </p>
-                    Source code:
-                    <a href="https://github.com/ThomasNolte/PRJ666-Friendly-Encounters">
-                      https://github.com/ThomasNolte/PRJ666-Friendly-Encounters
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <hr />
-              <div className="p-card">
-                <h2>
-                  Rush (Incomplete)
-                </h2>
-                <iframe title="Rush" src="/projects/Rush/index.html" name="Rush" width="1024px" height="768px" />
-                <div className="col-sm-12">
-                  <div className="p-card">
-                    <p>
-                      Created using Unity and C#. This game
-                      is still in very early development. Assets were drawn by me.
-                    </p>
-                    Controls: Up or W
-                    <br />
-                    Left or A
-                    <br />
-                    Down or S
-                    <br />
-                    Right or D
-                    <br />
-                    Click to shoot
-                    <br />
-                    Source code:
-                    <a href="https://github.com/ImmutableBox/Mob-Swarm">
-                      https://github.com/ImmutableBox/Mob-Swarm
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <hr />
-            </div>
-          </div>
-          <div className="p-strip is-deep">
-            <div className="row">
-              <div className="p-card">
-                <h2>
-                    Hard Escape
-                </h2>
-                <object width="600" height="450" data="/projects/HardEscape.swf"> HardEscape </object>
-                <div className="p-card">
-                  <p>
-                    Try to escape from jail!
-                    Created using ActionScript and FlashDevelop. This game requires
-                    flash to work. There are currently only 10 levels for this game.
-                    Assets were hand-drawn by me.
-                  </p>
-                </div>
-              </div>
+              <h2>
+                <FaGamepad />
+                &nbsp;Game development projects
+              </h2>
+              <GameSlider />
             </div>
           </div>
         </div>
