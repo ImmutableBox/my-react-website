@@ -46,7 +46,7 @@ class External extends Component {
               </div>
               <div className="col-3">
                 <div className="p-card">
-                  <Link to="/external">
+                  <Link to="/friendlyencounters">
                     <img src="/images/FE.png" alt="" />
                   </Link>
                 </div>
@@ -65,7 +65,7 @@ class External extends Component {
               </h2>
               <div className="col-3">
                 <div className="p-card">
-                  <Link to="/external">
+                  <Link to="/hardescape">
                     <img src="/images/hardescape.png" alt="" />
                   </Link>
                 </div>
@@ -137,11 +137,11 @@ class External extends Component {
                 <object width="600" height="450" data="/projects/HardEscape.swf"> HardEscape </object>
                 <div className="p-card">
                   <p>
+                    Try to escape from jail!
                     Created using ActionScript and FlashDevelop. This game requires
                     flash to work. There are currently only 10 levels for this game.
                     Assets were hand-drawn by me.
                   </p>
-                  <br />
                 </div>
               </div>
             </div>

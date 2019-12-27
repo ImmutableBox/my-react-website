@@ -82,25 +82,25 @@ class Home extends Component {
               autoplay
             >
               <div className="p-card">
-                <Link to="/external">
+                <Link to="/rush">
                   <img src="/images/rush.png" alt="" />
                 </Link>
                 <h4 className="text-center">Rush</h4>
               </div>
               <div className="p-card">
-                <Link to="/external">
+                <Link to="/hardescape">
                   <img src="/images/hardescape.png" alt="" />
                 </Link>
                 <h4 className="text-center">Hard Escape</h4>
               </div>
               <div className="p-card">
-                <Link to="/external">
+                <Link to="/friendlyencounters">
                   <img src="/images/FE.png" alt="" />
                 </Link>
                 <h4 className="text-center">Friendly Encounters</h4>
               </div>
               <div className="p-card">
-                <Link to="/external">
+                <Link to="/rush">
                   <img src="/images/rush.png" alt="" />
                 </Link>
                 <h4 className="text-center">Rush</h4>
