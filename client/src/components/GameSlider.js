@@ -41,10 +41,10 @@ class GameSlider extends Component {
           <h4 className="text-center">Friendly Encounters</h4>
         </div>
         <div className="p-card">
-          <Link to="/rush">
-            <img src="/images/rush.png" alt="" />
+          <Link to="/farming">
+            <img src="/images/farming.png" alt="" />
           </Link>
-          <h4 className="text-center">Rush</h4>
+          <h4 className="text-center">Farming</h4>
         </div>
       </Slider>
     );

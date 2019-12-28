@@ -42,6 +42,7 @@ class External extends Component {
                 <div className="p-card">
                   <Link to="/rush">
                     <img src="/images/rush.png" alt="" />
+                    <h4 className="text-center">Rush</h4>
                   </Link>
                 </div>
               </div>
@@ -49,6 +50,7 @@ class External extends Component {
                 <div className="p-card">
                   <Link to="/friendlyencounters">
                     <img src="/images/FE.png" alt="" />
+                    <h4 className="text-center">Friendly Encounters</h4>
                   </Link>
                 </div>
               </div>
@@ -68,10 +70,18 @@ class External extends Component {
                 <div className="p-card">
                   <Link to="/hardescape">
                     <img src="/images/hardescape.png" alt="" />
+                    <h4 className="text-center">Hard Escape</h4>
                   </Link>
                 </div>
               </div>
-              <div className="col-3" />
+              <div className="col-3">
+                <div className="p-card">
+                  <Link to="/farming">
+                    <img src="/images/farming.png" alt="" />
+                    <h4 className="text-center">Farming</h4>
+                  </Link>
+                </div>
+              </div>
               <div className="col-3" />
               <div className="col-3" />
             </div>
