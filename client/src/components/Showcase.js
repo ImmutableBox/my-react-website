@@ -36,7 +36,7 @@ class Showcase extends Component {
               <hr />
             </div>
             {gameType === 'actionscript' ? (
-              <object width={width} height={height} data={gamePath}> HardEscape </object>
+              <object width={width} height={height} data={gamePath}>Game</object>
             ) : (
               <iframe title={title} src={gamePath} name={title} width={width} height={height} />
             )}
