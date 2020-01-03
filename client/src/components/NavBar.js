@@ -33,7 +33,7 @@ class NavBar extends Component {
                 <Link to="/blogs">Blog Feed</Link>
               </li>
               <li className="p-navigation__link is-selected" role="menuitem">
-                <Link to="/about">About</Link>
+                <Link to="/about">Contact Information</Link>
               </li>
             </ul>
           </nav>
