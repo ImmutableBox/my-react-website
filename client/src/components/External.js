@@ -86,6 +86,15 @@ class External extends Component {
               <div className="col-3" />
             </div>
           </div>
+          <div className="p-strip is-deep">
+            <div className="row">
+              <h2>
+                &nbsp;Games developed in Java:
+              </h2>
+              <div className="col-3" />
+              <div className="col-3" />
+            </div>
+          </div>
           <hr />
           <div
             className="p-strip is-deep"
