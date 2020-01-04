@@ -94,12 +94,12 @@ class Home extends Component {
                 />
               </div>
             ) : (
-              <div className="p-card">
+              <div>
                 {feeds.length ? (
-                  <div>
+                  <div className="row">
                     {/* Check to see if any items are found */}
                     {feeds.map((item) => (
-                      <div className="p-card">
+                      <div key={item.title} className="p-card col-4">
                         <h3>
                           <a href={item.link}>{item.title}</a>
                         </h3>

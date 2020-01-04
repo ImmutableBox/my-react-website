@@ -12,7 +12,6 @@ class Blogs extends Component {
     this.state = {
       feeds: [],
       loading: false,
-      categories: ['open-source', 'spo600'],
     };
   }
 
@@ -43,7 +42,7 @@ class Blogs extends Component {
    * @return { html } Rendering html
    */
   render() {
-    const { feeds, loading, categories } = this.state;
+    const { feeds, loading } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
@@ -72,54 +71,47 @@ class Blogs extends Component {
           </div>
           <div className="p-strip is-deep" style={{ background: '#5c8a8a', color: '#FFF' }}>
             <div className="row">
-              {categories.map((value) => (
-                <div>
-                  <h2>
-                    BLOG&apos;S ON:&nbsp;
-                    {value.toUpperCase()}
-                  </h2>
-                  {loading ? (
-                    <div className="center">
-                      <ReactLoading
-                        type="spin"
-                        color="#FFF"
-                        height="20%"
-                        width="20%"
-                      />
-                    </div>
-                  ) : (
-                    <div className="p-card">
-                      {feeds.length ? (
-                        <div>
-                          {/* Check to see if any items are found */}
-                          {feeds.map((item) => (
-                            <div>
-                              {item.categories[0].toUpperCase() === value.toUpperCase() ? (
-                                <div className="p-card">
-                                  <h3>
-                                    <a href={item.link}>{item.title}</a>
-                                  </h3>
-                                  <hr />
-                                  {item.summary
-                                    .replace('[&#8230;]', '...')
-                                    .replace('&#8217;', '\'')}
-                                  <a href={item.link}>Read more</a>
-                                  <br />
-                                  <br />
-                              Published Date:&nbsp;
-                                  {new Date(item.pubDate).toDateString()}
-                                </div>
-                              ) : null}
+              <div>
+                {loading ? (
+                  <div className="center">
+                    <ReactLoading
+                      type="spin"
+                      color="#FFF"
+                      height="20%"
+                      width="20%"
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    {feeds.length ? (
+                      <div className="row">
+                        {/* Check to see if any items are found */}
+                        {feeds.map((item) => (
+                          <div key={item.title} className="col-4">
+                            <div className="p-card">
+                              <h3>
+                                <a href={item.link}>{item.title}</a>
+                              </h3>
+                              <hr />
+                              {item.summary
+                                .replace('[&#8230;]', '...')
+                                .replace('&#8217;', '\'')}
+                              <a href={item.link}>Read more</a>
+                              <br />
+                              <br />
+                                Published Date:&nbsp;
+                              {new Date(item.pubDate).toDateString()}
+                              <br />
                             </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <div>No data found!</div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div>No data found!</div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
