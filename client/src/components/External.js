@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { FaGamepad, FaAdobe } from 'react-icons/fa';
+import { FaGamepad, FaAdobe, FaJava } from 'react-icons/fa';
 import { DiUnitySmall } from 'react-icons/di';
 import { Link } from 'react-router-dom';
-import GameSlider from './GameSlider';
 
 /**
  * External project component.
@@ -61,7 +60,6 @@ class External extends Component {
           <hr />
           <div className="p-strip is-deep">
             <div className="row">
-
               <h2>
                 <FaAdobe />
                 &nbsp;Games developed in Flash/ActionScript:
@@ -86,26 +84,15 @@ class External extends Component {
               <div className="col-3" />
             </div>
           </div>
+          <hr />
           <div className="p-strip is-deep">
             <div className="row">
               <h2>
+                <FaJava />
                 &nbsp;Games developed in Java:
               </h2>
               <div className="col-3" />
               <div className="col-3" />
-            </div>
-          </div>
-          <hr />
-          <div
-            className="p-strip is-deep"
-            style={{ background: '#3498db', color: '#FFF' }}
-          >
-            <div className="row">
-              <h2>
-                <FaGamepad />
-                &nbsp;Game development projects
-              </h2>
-              <GameSlider />
             </div>
           </div>
         </div>
