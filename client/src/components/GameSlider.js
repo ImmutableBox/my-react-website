@@ -23,10 +23,10 @@ class GameSlider extends Component {
         autoplay
       >
         <div className="p-card">
-          <Link to="/rush">
-            <img src="/images/rush.png" alt="" />
+          <Link to="/mobswarm">
+            <img src="/images/mobswarm.png" alt="" />
           </Link>
-          <h4 className="text-center">Rush</h4>
+          <h4 className="text-center">Mob Swarm</h4>
         </div>
         <div className="p-card">
           <Link to="/hardescape">

@@ -35,11 +35,11 @@ class App extends Component {
           <Route path="/blogs" component={Blogs} />
           <Route path="/contact" component={About} />
           <Route
-            path="/rush"
+            path="/mobswarm"
             component={() => (
               <Showcase
-                title="Rush - (Incomplete)"
-                gamePath="/projects/Rush/index.html"
+                title="Mob Swarm - (Incomplete)"
+                gamePath="/projects/MobSwarm/index.html"
                 gameType="unity"
                 description="Created using Unity and C#. This game is still in very early development. Assets were drawn by me."
                 controls="Up or W

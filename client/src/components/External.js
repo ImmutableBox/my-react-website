@@ -39,8 +39,8 @@ class External extends Component {
               </h2>
               <div className="col-3">
                 <div className="p-card">
-                  <Link to="/rush">
-                    <img src="/images/rush.png" alt="" />
+                  <Link to="/mobswarm">
+                    <img src="/images/mobswarm.png" alt="" />
                     <h4 className="text-center">Rush</h4>
                   </Link>
                 </div>
