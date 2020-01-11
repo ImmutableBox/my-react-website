@@ -41,7 +41,7 @@ class External extends Component {
                 <div className="p-card">
                   <Link to="/mobswarm">
                     <img src="/images/mobswarm.png" alt="" />
-                    <h4 className="text-center">Rush</h4>
+                    <h4 className="text-center">Mob Swarm</h4>
                   </Link>
                 </div>
               </div>
