@@ -57,8 +57,7 @@ class External extends Component {
               <div className="col-3" />
             </div>
           </div>
-          <hr />
-          <div className="p-strip is-deep">
+          <div className="p-strip is-deep" style={{ background: '#dcdcdc' }}>
             <div className="row">
               <h2>
                 <FaAdobe />

@@ -27,7 +27,7 @@ class Showcase extends Component {
         <div className="main-content inner-wrapper">
           <div
             className="p-strip is-deep"
-            style={{ background: '#4d638d', color: '#FFF' }}
+            style={{ background: '#787878', color: '#FFF' }}
           >
             <div className="row">
               <h2 className="text-center">
@@ -44,7 +44,7 @@ class Showcase extends Component {
               <div>
                 <div
                   className="p-card"
-                  style={{ background: '#7b90b7', color: '#FFF' }}
+                  style={{ background: '#969696', color: '#FFF' }}
                 >
                   {description}
                   <br />
