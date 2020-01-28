@@ -20,8 +20,13 @@ class NavBar extends Component {
                 <img align="middle" src="logo96.png" alt="" width="50" />
               </Link>
             </div>
+            <a href="#navigation" className="p-navigation__toggle--open" title="menu">Menu</a>
+            <a href="#navigation-closed" className="p-navigation__toggle--close" title="close menu">Close menu</a>
           </div>
           <nav className="p-navigation__nav">
+            <span className="u-off-screen">
+              <a href="#main-content">Jump to main content</a>
+            </span>
             <ul className="p-navigation__links" role="menu">
               <li className="p-navigation__link is-selected" role="menuitem">
                 <Link to="/external">Game Development Projects</Link>
