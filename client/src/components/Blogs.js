@@ -59,9 +59,8 @@ class Blogs extends Component {
                   &nbsp;My Blog feed
                 </h2>
                 <p>
-                  A blog created using WordPress to share my adventures in contributing to&nbsp;
-                  open source projects. I also blog about software optimization for my&nbsp;
-                  software optimization course.
+                  A blog created using WordPress to share my adventures in contributing to
+                  open source projects.
                 </p>
                 <p>
                   Click on the icon for the source!
@@ -69,7 +68,7 @@ class Blogs extends Component {
               </div>
             </div>
           </div>
-          <div className="p-strip is-deep" style={{ background: '#5c8a8a', color: '#FFF' }}>
+          <div className="p-strip is-deep" style={{ color: '#000' }}>
             <div className="row">
               <div>
                 {loading ? (

@@ -64,26 +64,35 @@ class Home extends Component {
           </div>
         </div>
         <div
-          className="p-strip is-deep"
-          style={{ background: '#3498db', color: '#FFF' }}
+          className="p-strip is-bordered is-deep"
+          style={{ color: '#000' }}
         >
           <div className="row">
             <h2>
               <FaGamepad />
               &nbsp;Game development projects
             </h2>
+            <p>
+              I find great enjoyment in game development. Whenever I have free-time I tend
+              to turn to game development. Below are the list of games I have worked on or
+              developed.
+            </p>
             <GameSlider />
           </div>
         </div>
         <div
-          className="p-strip is-deep"
-          style={{ background: '#ff8080', color: '#FFF' }}
+          className="p-strip is-bordered is-deep"
+          style={{ background: '#dcdcdc' }}
         >
           <div className="row">
             <h2>
               <FaWordpress />
               &nbsp;Blog feed
             </h2>
+            <p>
+                A blog created using WordPress to share my adventures in contributing to
+                open source projects.
+            </p>
             {loading ? (
               <div className="center">
                 <ReactLoading
