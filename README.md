@@ -5,10 +5,9 @@ Hosted on the PasS Heroku: https://paul-pluu3.herokuapp.com/
 ### Run project instructions:
 
 1. `npm install`  
-1. `npm start`  
 1. `cd client`  
 1. `npm install`  
-1. `npm start`  
+1. `npm start`  && 1. `npm start` outside the client folder
 
 ### Run test instructions:
 1. `npm test`
