@@ -7,6 +7,7 @@ Hosted on the PasS Heroku: https://paul-pluu3.herokuapp.com/
 1. `npm install`  
 1. `npm start`  
 1. `cd client`  
+1. `npm install`  
 1. `npm start`  
 
 ### Run test instructions:
