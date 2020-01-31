@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FaCubes } from 'react-icons/fa';
 import { fullColourHex, rgbToHex } from '../utils/colour';
+
 /**
  * Internal projects component.
  * This component contains projects I have worked on internally on the website.
@@ -61,7 +62,7 @@ class Internal extends Component {
               </div>
             </div>
           </div>
-          <div className="p-strip is-deep" style={{ backgroundColor: `#${fullColourHex(...sliders)}` }}>
+          <div className="p-strip is-deep is-bordered" style={{ backgroundColor: `#${fullColourHex(...sliders)}` }}>
             <div className="row">
               <h2>Color Picker</h2>
               <hr />
@@ -94,6 +95,13 @@ class Internal extends Component {
                 Full hex value: #
                 {fullColourHex(...sliders)}
               </p>
+            </div>
+          </div>
+          <div className="p-strip is-deep">
+            <div className="row">
+              <h2>
+                Undirected graph - Java
+              </h2>
             </div>
           </div>
         </div>
