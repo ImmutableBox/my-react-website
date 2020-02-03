@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { FaCubes } from 'react-icons/fa';
+import { UnControlled as CodeMirror } from 'react-codemirror2';
 import { fullColourHex, rgbToHex } from '../utils/colour';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/material.css';
+
+require('codemirror/mode/xml/xml');
+require('codemirror/mode/javascript/javascript');
 
 /**
  * Internal projects component.
@@ -102,6 +108,16 @@ class Internal extends Component {
               <h2>
                 Undirected graph - Java
               </h2>
+              <div>
+                <CodeMirror
+                  value="Java undirected graph code goes here!"
+                  options={{
+                    mode: 'xml',
+                    theme: 'material',
+                    lineNumbers: true,
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>
