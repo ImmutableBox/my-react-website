@@ -68,7 +68,7 @@ class Blogs extends Component {
               </div>
             </div>
           </div>
-          <div className="p-strip is-deep" style={{ color: '#000' }}>
+          <div className="p-strip is-deep" style={{ background: '#dcdcdc' }}>
             <div className="row">
               <div>
                 {loading ? (
