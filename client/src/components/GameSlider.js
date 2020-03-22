@@ -23,6 +23,12 @@ class GameSlider extends Component {
         autoplay
       >
         <div className="p-card">
+          <a href="https://play.google.com/store/apps/details?id=com.immutablevoid.dontmoveback">
+            <img src="/images/feature_graphic_dontmoveback.png" alt="" />
+          </a>
+          <h4 className="text-center">Don&apos;t Move Back!</h4>
+        </div>
+        <div className="p-card">
           <Link to="/mobswarm">
             <img src="/images/mobswarm.png" alt="" />
           </Link>
