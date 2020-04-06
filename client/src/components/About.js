@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   FaLinkedin, FaGithub, FaWordpress, FaPersonBooth,
 } from 'react-icons/fa';
-import { IoMdMailOpen } from 'react-icons/io';
 import { AiFillPicture } from 'react-icons/ai';
 
 /**
@@ -39,13 +38,6 @@ class About extends Component {
                 &nbsp;Links:
               </h2>
               <ul className="p-list--divided">
-                <li className="p-list__item">
-                  <IoMdMailOpen />
-                  &nbsp;Email:
-                  <a href="mailto:paul_luu.work@hotmail.com">
-                    paul_luu.work@hotmail.com
-                  </a>
-                </li>
                 <li className="p-list__item">
                   <FaLinkedin />
                   &nbsp;Linkedin:
