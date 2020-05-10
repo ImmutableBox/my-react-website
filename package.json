@@ -13,13 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ImmutableBox/my-react-website.git"
+    "url": "git+https://github.com/Immutablevoid/my-react-website.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ImmutableBox/my-react-website/issues"
+    "url": "https://github.com/Immutablevoid/my-react-website/issues"
   },
-  "homepage": "https://github.com/ImmutableBox/my-react-website#readme"
+  "homepage": "https://github.com/Immutablevoid/my-react-website#readme"
 }

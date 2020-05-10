@@ -11,7 +11,7 @@ describe('rendering links', () => {
 
   test('renders github link', () => {
     const { getByText } = render(<About />);
-    const linkElement = getByText('https://github.com/ImmutableBox');
+    const linkElement = getByText('https://github.com/Immutablevoid');
     expect(linkElement).toBeInTheDocument();
   });
 

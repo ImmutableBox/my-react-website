@@ -48,8 +48,8 @@ class About extends Component {
                 <li className="p-list__item">
                   <FaGithub />
                   &nbsp;GitHub:
-                  <a href="https://github.com/ImmutableBox">
-                    https://github.com/ImmutableBox
+                  <a href="https://github.com/Immutablevoid">
+                    https://github.com/Immutablevoid
                   </a>
                 </li>
                 <li className="p-list__item">

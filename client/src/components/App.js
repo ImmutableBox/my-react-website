@@ -51,7 +51,7 @@ class App extends Component {
                           Right or D
                           <br>
                           Click to shoot"
-                sourceCode="https://github.com/ImmutableBox/Mob-Swarm"
+                sourceCode="https://github.com/Immutablevoid/Mob-Swarm"
                 width="1024px"
                 height="768px"
               />

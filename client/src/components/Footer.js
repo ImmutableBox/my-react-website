@@ -38,7 +38,7 @@ class Footer extends Component {
                 </li>
                 <li className="u-hide--small p-inline-list__item">
                   <a
-                    href="https://github.com/ImmutableBox"
+                    href="https://github.com/Immutablevoid"
                     style={{ color: '#000000' }}
                   >
                     <FaGithub size={64} />

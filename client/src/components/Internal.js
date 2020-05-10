@@ -49,7 +49,7 @@ class Internal extends Component {
               <div className="row">
                 <h2>
                   <a
-                    href="https://github.com/ImmutableBox/my-react-website"
+                    href="https://github.com/Immutablevoid/my-react-website"
                     style={{ color: '#FFF' }}
                   >
                     <FaCubes />
