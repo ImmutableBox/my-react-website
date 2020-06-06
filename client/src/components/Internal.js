@@ -58,9 +58,8 @@ class Internal extends Component {
                   Website source code/projects
                 </h2>
                 <p>
-                  Here you can find the source code for this website. I like
-                  experimenting/developing different programs using this website
-                  as a testing ground.
+                  Here you can find the source code for this website. My testing ground
+                  for React/Javascript code.
                 </p>
                 <p>
                   Click on the icon for the source code!
