@@ -29,12 +29,6 @@ class GameSlider extends Component {
           <h4 className="text-center">Don&apos;t Move Back!</h4>
         </div>
         <div className="p-card">
-          <Link to="/mobswarm">
-            <img src="/images/mobswarm.png" alt="" />
-          </Link>
-          <h4 className="text-center">Mob Swarm</h4>
-        </div>
-        <div className="p-card">
           <Link to="/hardescape">
             <img src="/images/hardescape.png" alt="" />
           </Link>
@@ -45,12 +39,6 @@ class GameSlider extends Component {
             <img src="/images/FE.png" alt="" />
           </Link>
           <h4 className="text-center">Friendly Encounters</h4>
-        </div>
-        <div className="p-card">
-          <Link to="/farming">
-            <img src="/images/farming.png" alt="" />
-          </Link>
-          <h4 className="text-center">Farming</h4>
         </div>
       </Slider>
     );

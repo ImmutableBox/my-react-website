@@ -35,29 +35,6 @@ class App extends Component {
           <Route path="/blogs" component={Blogs} />
           <Route path="/contact" component={About} />
           <Route
-            path="/mobswarm"
-            component={() => (
-              <Showcase
-                title="Mob Swarm - (Incomplete)"
-                gamePath="/projects/MobSwarm/index.html"
-                gameType="unity"
-                description="Created using Unity and C#. This game is still in very early development. Assets were drawn by me."
-                controls="Up or W
-                          <br>
-                          Left or A
-                          <br>
-                          Down or S
-                          <br>
-                          Right or D
-                          <br>
-                          Click to shoot"
-                sourceCode="https://github.com/Immutablevoid/Mob-Swarm"
-                width="1024px"
-                height="768px"
-              />
-            )}
-          />
-          <Route
             path="/hardescape"
             component={() => (
               <Showcase
@@ -94,19 +71,6 @@ class App extends Component {
                 sourceCode="https://github.com/ThomasNolte/PRJ666-Friendly-Encounters"
                 width="1280px"
                 height="800px"
-              />
-            )}
-          />
-          <Route
-            path="/farming"
-            component={() => (
-              <Showcase
-                title="Farming - (Incomplete)"
-                gamePath="/projects/Farming.swf"
-                gameType="actionscript"
-                description="Created using actionscript, assets also drawn by me. This game was created using Flixel, an open source game-making library."
-                width="600"
-                height="450"
               />
             )}
           />
