@@ -39,22 +39,12 @@ class External extends Component {
               </h2>
               <div className="col-3">
                 <div className="p-card">
-                  <Link to="/mobswarm">
-                    <img src="/images/mobswarm.png" alt="" />
-                    <h4 className="text-center">Mob Swarm</h4>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-3">
-                <div className="p-card">
                   <Link to="/friendlyencounters">
                     <img src="/images/FE.png" alt="" />
                     <h4 className="text-center">Friendly Encounters</h4>
                   </Link>
                 </div>
               </div>
-              <div className="col-3" />
-              <div className="col-3" />
             </div>
           </div>
           <div className="p-strip is-deep" style={{ background: '#dcdcdc' }}>
@@ -71,16 +61,6 @@ class External extends Component {
                   </Link>
                 </div>
               </div>
-              <div className="col-3">
-                <div className="p-card">
-                  <Link to="/farming">
-                    <img src="/images/farming.png" alt="" />
-                    <h4 className="text-center">Farming</h4>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-3" />
-              <div className="col-3" />
             </div>
           </div>
           <hr />
