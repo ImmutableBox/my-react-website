@@ -119,6 +119,16 @@ class Internal extends Component {
               </div>
             </div>
           </div>
+          <div className="p-strip is-deep">
+            <div className="row">
+              <h2>
+                Sumo form
+              </h2>
+              <div>
+                Adding sumo form here
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
