@@ -168,5 +168,6 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000",
+  "homepage": "."
 }
