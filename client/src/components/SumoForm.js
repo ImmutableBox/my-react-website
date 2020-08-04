@@ -12,7 +12,8 @@ class SumoForm extends Component {
 
   handleSubmit(event) {
     const { value } = this.state;
-    alert(`Your favorite flavor is: ${value}`);
+    // alert(`Your favorite flavor is: ${value}`);
+    console.log(value);
     event.preventDefault();
   }
 
