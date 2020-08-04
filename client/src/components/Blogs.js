@@ -98,7 +98,7 @@ class Blogs extends Component {
                               <a href={item.link}>Read more</a>
                               <br />
                               <br />
-                                Published Date:&nbsp;
+                              Published Date:&nbsp;
                               {new Date(item.pubDate).toDateString()}
                               <br />
                             </div>

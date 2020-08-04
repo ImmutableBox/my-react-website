@@ -90,8 +90,8 @@ class Home extends Component {
               &nbsp;Blog feed
             </h2>
             <p>
-                A blog created using WordPress to share my adventures in contributing to
-                open source projects.
+              A blog created using WordPress to share my adventures in contributing to
+              open source projects.
             </p>
             {loading ? (
               <div className="center">

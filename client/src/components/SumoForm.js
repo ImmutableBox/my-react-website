@@ -26,11 +26,11 @@ class SumoForm extends Component {
             <div className="p-strip is-deep">
               <div className="row">
                 <h2>
-                    Paul&apos;s fantasy sumo
+                  Paul&apos;s fantasy sumo
                 </h2>
                 <form onSubmit={this.handleSubmit}>
                   <label htmlFor="sumoform">
-                  Yokozuna/Ozeki:
+                    Yokozuna/Ozeki:
                     <select value={value} onChange={this.handleChange}>
                       {' '}
                       <option value="grapefruit">Grapefruit</option>
@@ -40,7 +40,7 @@ class SumoForm extends Component {
                     </select>
                   </label>
                   <label htmlFor="sumoform">
-                  Sekiwake/Komusubi:
+                    Sekiwake/Komusubi:
                     <select value={value} onChange={this.handleChange}>
                       {' '}
                       <option value="grapefruit">Grapefruit</option>
@@ -50,7 +50,7 @@ class SumoForm extends Component {
                     </select>
                   </label>
                   <label htmlFor="sumoform">
-                  Upper Maegashria (1-5):
+                    Upper Maegashria (1-5):
                     <select value={value} onChange={this.handleChange}>
                       {' '}
                       <option value="grapefruit">Grapefruit</option>
@@ -60,7 +60,7 @@ class SumoForm extends Component {
                     </select>
                   </label>
                   <label htmlFor="sumoform">
-                  Middle Maegashria (6-10):
+                    Middle Maegashria (6-10):
                     <select value={value} onChange={this.handleChange}>
                       {' '}
                       <option value="grapefruit">Grapefruit</option>
@@ -70,7 +70,7 @@ class SumoForm extends Component {
                     </select>
                   </label>
                   <label htmlFor="sumoform">
-                  Lower Maegashria (11-17):
+                    Lower Maegashria (11-17):
                     <select value={value} onChange={this.handleChange}>
                       {' '}
                       <option value="grapefruit">Grapefruit</option>
@@ -89,6 +89,5 @@ class SumoForm extends Component {
     );
   }
 }
-
 
 export default SumoForm;
