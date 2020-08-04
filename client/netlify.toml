@@ -2,5 +2,6 @@
 # unless otherwise overridden by more specific contexts.
 [build]
 
+
 [build.environment]
-  PUBLIC_URL = "public"
+  PUBLIC_URL = "client/public"
