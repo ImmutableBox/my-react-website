@@ -8,4 +8,10 @@ describe('checking text', () => {
     const notFoundText = getByText('Page Not Found');
     expect(notFoundText).toBeInTheDocument();
   });
+
+  test('page not found text', () => {
+    const { getByText } = render(<NotFound />);
+    const notFoundText = getByText('The page you are looking for was not found.');
+    expect(notFoundText).toBeInTheDocument();
+  });
 });
