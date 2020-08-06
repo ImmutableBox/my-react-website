@@ -26,7 +26,7 @@ class SumoForm extends Component {
             <div className="p-strip is-deep">
               <div className="row">
                 <h2>
-                  Paul&apos;s fantasy sumo
+                  Paul&apos;s fantasy sumo. (Incomplete/Not open)
                 </h2>
                 <form onSubmit={this.handleSubmit}>
                   <label htmlFor="sumoform">
