@@ -13,7 +13,7 @@ class SumoForm extends Component {
   handleSubmit(event) {
     const { value } = this.state;
     // alert(`Your favorite flavor is: ${value}`);
-    if (value === 'grapefruit');
+    if (value === 'lime');
     event.preventDefault();
   }
 
@@ -82,6 +82,13 @@ class SumoForm extends Component {
                   <input type="submit" value="Submit" />
                 </form>
               </div>
+            </div>
+          </div>
+          <div className="p-strip is-deep">
+            <div className="row">
+              <h2>
+                Sumo results here:
+              </h2>
             </div>
           </div>
         </div>
