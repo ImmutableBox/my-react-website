@@ -90,23 +90,35 @@ class SumoForm extends Component {
               <h2>
                 Sumo results here:
               </h2>
-              <table>
-                <tr>
-                  <th>Firstname</th>
-                  <th>Lastname</th>
-                  <th>Age</th>
-                </tr>
-                <tr>
-                  <td>Jill</td>
-                  <td>Smith</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>Eve</td>
-                  <td>Jackson</td>
-                  <td>94</td>
-                </tr>
+
+              <table className="p-table--sortable" role="grid">
+                <thead>
+                  <tr>
+                    <th id="t-name" aria-sort="none" role="columnheader">Status</th>
+                    <th id="t-users" aria-sort="none" role="columnheader" className="u-align--right">Cores</th>
+                    <th id="t-units" aria-sort="none" role="columnheader" className="u-align--right">RAM</th>
+                    <th id="t-revenue" aria-sort="none" role="columnheader" className="u-align--right">Disks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr role="row">
+                    <td role="gridcell" className="u-align--right">1</td>
+                    <td role="gridcell" className="u-align--right">1 GiB</td>
+                    <td role="gridcell" className="u-align--right">2</td>
+                  </tr>
+                  <tr role="row">
+                    <td role="gridcell" className="u-align--right">1</td>
+                    <td role="gridcell" className="u-align--right">1 GiB</td>
+                    <td role="gridcell" className="u-align--right">2</td>
+                  </tr>
+                  <tr role="row">
+                    <td role="gridcell" className="u-align--right">8</td>
+                    <td role="gridcell" className="u-align--right">3.9 GiB</td>
+                    <td role="gridcell" className="u-align--right">3</td>
+                  </tr>
+                </tbody>
               </table>
+
             </div>
           </div>
         </div>
