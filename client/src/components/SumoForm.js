@@ -27,6 +27,7 @@ class SumoForm extends Component {
               <div className="row">
                 <h2>
                   Paul&apos;s fantasy sumo. (Incomplete/Not open)
+                  Next tournament is in September 2020
                 </h2>
                 <form onSubmit={this.handleSubmit}>
                   <label htmlFor="sumoform">
@@ -89,6 +90,23 @@ class SumoForm extends Component {
               <h2>
                 Sumo results here:
               </h2>
+              <table>
+                <tr>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Age</th>
+                </tr>
+                <tr>
+                  <td>Jill</td>
+                  <td>Smith</td>
+                  <td>50</td>
+                </tr>
+                <tr>
+                  <td>Eve</td>
+                  <td>Jackson</td>
+                  <td>94</td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>
