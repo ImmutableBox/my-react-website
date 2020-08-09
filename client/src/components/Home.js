@@ -1,52 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FaChild, FaGamepad, FaWordpress } from 'react-icons/fa';
-import ReactLoading from 'react-loading';
 import '../styles/style.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import GameSlider from './GameSlider';
+import BlogList from './BlogList';
 
 /**
  * Home component page
  */
-class Home extends Component {
-  // Initialize the state
-  constructor(props) {
-    super(props);
-    this.state = {
-      feeds: [],
-      loading: false,
-    };
-  }
-
-  // Fetch the list of first mount
-  componentDidMount() {
-    this.getFeed();
-  }
-
-  getFeed = () => {
-    this.setState({ loading: true }, () => {
-      fetch('/api/getBlogFeed')
-        .then((res) => res.json())
-        .then((feeds) => this.setState({
-          feeds,
-          loading: false,
-        })).catch((err) => {
-          // eslint-disable-next-line
-          console.log(err);
-          this.setState({
-            loading: false,
-          });
-        });
-    });
-  }
-
+class Home extends React.PureComponent {
   /**
    * Rendering app component
    * @return { html } Rendering html
    */
   render() {
-    const { feeds, loading } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
         <div className="p-suru">
@@ -93,43 +61,7 @@ class Home extends Component {
               A blog created using WordPress to share my adventures in contributing to
               open source projects.
             </p>
-            {loading ? (
-              <div className="center">
-                <ReactLoading
-                  type="spin"
-                  color="#FFF"
-                  height="20%"
-                  width="20%"
-                />
-              </div>
-            ) : (
-              <div>
-                {feeds.length ? (
-                  <div className="row">
-                    {/* Check to see if any items are found */}
-                    {feeds.map((item) => (
-                      <div key={item.title} className="p-card col-4">
-                        <h3>
-                          <a href={item.link}>{item.title}</a>
-                        </h3>
-                        <hr />
-                        {item.summary
-                          .replace('[&#8230;]', '...')
-                          .replace('&#8217;', '\'')}
-                        <a href={item.link}>Read more</a>
-                        <br />
-                        <br />
-                        Published Date:&nbsp;
-                        {new Date(item.pubDate).toDateString()}
-                        <br />
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div>No data found!</div>
-                )}
-              </div>
-            )}
+            <BlogList />
           </div>
         </div>
       </div>

@@ -90,14 +90,14 @@ class SumoForm extends Component {
               <h2>
                 Sumo results here:
               </h2>
-
               <table className="p-table--sortable" role="grid">
                 <thead>
                   <tr>
-                    <th id="t-name" aria-sort="none" role="columnheader">Status</th>
-                    <th id="t-users" aria-sort="none" role="columnheader" className="u-align--right">Cores</th>
-                    <th id="t-units" aria-sort="none" role="columnheader" className="u-align--right">RAM</th>
-                    <th id="t-revenue" aria-sort="none" role="columnheader" className="u-align--right">Disks</th>
+                    <th id="t-yo" aria-sort="none" role="columnheader" className="u-align--right">Yokozuna/Ozeki</th>
+                    <th id="t-sk" aria-sort="none" role="columnheader" className="u-align--right">Sekiwake/Komusubi</th>
+                    <th id="t-um" aria-sort="none" role="columnheader" className="u-align--right">Upper Maegashria (1-5)</th>
+                    <th id="t-mm" aria-sort="none" role="columnheader" className="u-align--right">Middle Maegashria (6-10)</th>
+                    <th id="t-lm" aria-sort="none" role="columnheader" className="u-align--right">Lower Maegashria (11-17)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -113,8 +113,23 @@ class SumoForm extends Component {
                   </tr>
                   <tr role="row">
                     <td role="gridcell" className="u-align--right">8</td>
+                    <td role="gridcell" className="u-align--right">31.9 GiB</td>
+                    <td role="gridcell" className="u-align--right">3</td>
+                  </tr>
+                  <tr role="row">
+                    <td role="gridcell" className="u-align--right">8</td>
                     <td role="gridcell" className="u-align--right">3.9 GiB</td>
                     <td role="gridcell" className="u-align--right">3</td>
+                  </tr>
+                  <tr role="row">
+                    <td role="gridcell" className="u-align--right">4</td>
+                    <td role="gridcell" className="u-align--right">4 GiB</td>
+                    <td role="gridcell" className="u-align--right">2</td>
+                  </tr>
+                  <tr role="row">
+                    <td role="gridcell" className="u-align--right">8</td>
+                    <td role="gridcell" className="u-align--right">2 GiB</td>
+                    <td role="gridcell" className="u-align--right">31</td>
                   </tr>
                 </tbody>
               </table>
