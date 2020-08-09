@@ -2,8 +2,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/064854c2-c832-426d-b0a8-fd4fefd01189/deploy-status)](https://app.netlify.com/sites/paul-pluu3/deploys)
 
-## Hosted on Netlify: https://paul-pluu3.netlify.app/
-## Hosted on the PasS Heroku: https://paul-pluu3.herokuapp.com/
+Hosted on Netlify: https://paul-pluu3.netlify.app/  
+Hosted on Heroku: https://paul-pluu3.herokuapp.com/
 
 ---  
 ### Run project instructions:
