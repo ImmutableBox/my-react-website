@@ -116,6 +116,33 @@ class SumoForm extends Component {
                     http://sumo.or.jp
                   </a>
                 </p>
+                {loading ? (
+                  <div className="center">
+                    <ReactLoading
+                      type="spin"
+                      color="#000"
+                      height="20%"
+                      width="20%"
+                    />
+                  </div>
+                ) : (
+                  <div className="row">
+                    {hoshitori
+                      .map((s) => (
+                        <div key={s.rikishi_id} className="col-2">
+                          <div className="p-card">
+                            <p>{s.shikona_eng}</p>
+                            <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                              <img
+                                src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                alt={s.kakuzuke_id}
+                              />
+                            </a>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                )}
                 <form onSubmit={this.handleSubmit}>
                   <label htmlFor="sumoform">
                     Yokozuna/Ozeki:

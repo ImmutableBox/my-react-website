@@ -1,8 +1,14 @@
 import React from 'react';
-import { FaChild, FaGamepad, FaWordpress } from 'react-icons/fa';
+import {
+  FaChild,
+  FaGamepad,
+  FaWordpress,
+  FaTools,
+} from 'react-icons/fa';
 import '../styles/style.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Link } from 'react-router-dom';
 import GameSlider from './GameSlider';
 import BlogList from './BlogList';
 
@@ -33,7 +39,39 @@ class Home extends React.PureComponent {
         </div>
         <div
           className="p-strip is-bordered is-deep"
-          style={{ color: '#000' }}
+          style={{ background: '#FFF' }}
+        >
+          <div className="row">
+            <h2>
+              <FaTools />
+              &nbsp;News!
+            </h2>
+            <h3>About projects I am currently working on!</h3>
+            <div className="p-card">
+              <p>
+                <h4>
+                  Aug 15 2020 - Sumo form
+                </h4>
+                Pulling sumo tournament information from&nbsp;
+                <a href="http://sumo.or.jp">
+                  http://sumo.or.jp
+                </a>
+                &nbsp;basically keeping track of scores/adding scores.
+                If you know Paul, you know he&apos;s cray cray for Sumo :)
+                This project is pretty much fantasy football.
+                This project is mostly for me and my friends, I will count the points
+                and send a message at the end of the sumo tournament.
+                <br />
+                <br />
+                Project link:&nbsp;
+                <Link to="/sumoform">Sumo Form</Link>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="p-strip is-bordered is-deep"
+          style={{ background: '#2476ba' }}
         >
           <div className="row">
             <h2>
