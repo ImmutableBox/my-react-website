@@ -24,8 +24,21 @@ class SumoForm extends Component {
   }
 
   getFeed = () => {
+    const connectionOption = {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      ok: true,
+      redirected: false,
+      status: 200,
+      statusText: 'OK',
+      type: 'cors',
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    };
     this.setState({ loading: true }, () => {
-      fetch(`${CORS_PROXY}http://sumo.or.jp/EnHonbashoMain/hoshitori_ajax/1/1/`)
+      fetch(`${CORS_PROXY}http://sumo.or.jp/EnHonbashoMain/hoshitori_ajax/1/1/`, connectionOption)
         .then((res) => res.json())
         .then((feed) => {
           const {
@@ -44,7 +57,7 @@ class SumoForm extends Component {
             loading: false,
           });
         });
-      fetch(`${CORS_PROXY}http://sumo.or.jp/EnHonbashoMain/hoshitori_ajax/1/2/`)
+      fetch(`${CORS_PROXY}http://sumo.or.jp/EnHonbashoMain/hoshitori_ajax/1/2/`, connectionOption)
         .then((res) => res.json())
         .then((feed) => {
           const {
