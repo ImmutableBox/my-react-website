@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FaCubes } from 'react-icons/fa';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
+import { Link } from 'react-router-dom';
 import { fullColourHex, rgbToHex } from '../utils/colour';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
@@ -102,7 +103,7 @@ class Internal extends Component {
               </p>
             </div>
           </div>
-          <div className="p-strip is-deep">
+          <div className="p-strip is-deep is-bordered">
             <div className="row">
               <h2>
                 Undirected graph - Java
@@ -119,13 +120,30 @@ class Internal extends Component {
               </div>
             </div>
           </div>
-          <div className="p-strip is-deep">
+          <div className="p-strip is-deep is-bordered">
             <div className="row">
               <h2>
                 Sumo form
               </h2>
-              <div>
-                Adding sumo form here
+              <div className="p-card">
+                <h4>
+                  Aug 15 2020 - Sumo form
+                </h4>
+                <p>
+                  Pulling sumo tournament information from&nbsp;
+                  <a href="http://sumo.or.jp">
+                    http://sumo.or.jp
+                  </a>
+                  &nbsp;basically keeping track of scores/adding scores.
+                  If you know Paul, you know he&apos;s cray cray for Sumo :)
+                  This project is pretty much fantasy football.
+                  This project is mostly for me and my friends, I will count the points
+                  and send a message at the end of the sumo tournament.
+                  <br />
+                  <br />
+                  Project link:&nbsp;
+                  <Link to="/sumoform">Sumo Form</Link>
+                </p>
               </div>
             </div>
           </div>

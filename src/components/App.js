@@ -12,6 +12,7 @@ import NotFound from './NotFound';
 import Showcase from './Showcase';
 import ScrollToTop from './ScrollToTop';
 import SumoForm from './SumoForm';
+import SumoResults from './SumoResults';
 
 /**
  * Main starting app component
@@ -78,6 +79,7 @@ class App extends Component {
           <Route path="/showcase" component={Showcase} />
           <Route path="/home" component={Home} />
           <Route path="/sumoform" component={SumoForm} />
+          <Route path="/sumoresults" component={SumoResults} />
           <Route exact path="/" component={Home} />
           <Route component={NotFound} />
         </Switch>
