@@ -12,7 +12,7 @@ class NavBar extends Component {
    */
   render() {
     return (
-      <header id="navigation" className="p-navigation">
+      <header id="navigation" className="p-navigation is-dark">
         <div className="p-navigation__row">
           <div className="p-navigation__banner">
             <div className="p-navigation__logo">
@@ -28,19 +28,19 @@ class NavBar extends Component {
               <a href="#main-content">Jump to main content</a>
             </span>
             <ul className="p-navigation__links" role="menu">
-              <li className="p-navigation__link is-selected" role="menuitem">
+              <li className="p-navigation__link" role="menuitem">
                 <Link to="/external">Game Development Projects</Link>
               </li>
-              <li className="p-navigation__link is-selected" role="menuitem">
+              <li className="p-navigation__link" role="menuitem">
                 <Link to="/internal">Website Source Code</Link>
               </li>
-              <li className="p-navigation__link is-selected" role="menuitem">
+              <li className="p-navigation__link" role="menuitem">
                 <Link to="/blogs">Blog Feed</Link>
               </li>
-              <li className="p-navigation__link is-selected" role="menuitem">
+              <li className="p-navigation__link" role="menuitem">
                 <Link to="/sumoform">Sumo Form</Link>
               </li>
-              <li className="p-navigation__link is-selected" role="menuitem">
+              <li className="p-navigation__link" role="menuitem">
                 <Link to="/about">Contact Information</Link>
               </li>
             </ul>

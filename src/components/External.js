@@ -17,18 +17,17 @@ class External extends Component {
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
-          <div className="p-suru">
-            <div className="p-strip is-deep">
-              <div className="row">
-                <h2>
-                  <FaGamepad />
+          <div className="p-strip is-deep" style={{ background: '#00b0ab' }}>
+            <div className="row">
+              <h2>
+                <FaGamepad />
                   &nbsp;Game development projects
-                </h2>
-                <p>
-                  I find great enjoyment in game development. Whenever I have free-time
-                  I tend to turn to game development. Below are the list of games I have developed.
-                </p>
-              </div>
+              </h2>
+              <hr />
+              <p className="p-heading--4">
+                I find great enjoyment in game development. Whenever I have free-time
+                I tend to turn to game development. Below are the list of games I have developed.
+              </p>
             </div>
           </div>
           <div className="p-strip is-deep">

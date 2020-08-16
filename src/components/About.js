@@ -24,7 +24,7 @@ class About extends Component {
                   <FaPersonBooth />
                   &nbsp;Contact information:
                 </h2>
-                <p>
+                <p className="p-heading--4">
                   Below are links if where you can find me! I tend to be active with
                   the social medias below.
                 </p>

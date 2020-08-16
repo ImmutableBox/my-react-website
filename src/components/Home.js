@@ -30,7 +30,7 @@ class Home extends React.PureComponent {
                 <FaChild />
                 &nbsp;Welcome to my website!
               </h2>
-              <p>
+              <p className="p-heading--4">
                 This is my personal website used for the purpose of displaying
                 projects.
               </p>

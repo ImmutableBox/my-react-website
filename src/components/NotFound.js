@@ -21,7 +21,7 @@ class NotFound extends React.PureComponent {
             <h2 style={{ margin: 'auto' }}>
               Page Not Found
             </h2>
-            <p style={{ margin: 'auto' }}>
+            <p className="p-heading--4" style={{ margin: 'auto' }}>
               The page you are looking for was not found.
             </p>
           </div>

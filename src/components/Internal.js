@@ -57,7 +57,7 @@ class Internal extends Component {
                   &nbsp;
                   Website source code/projects
                 </h2>
-                <p>
+                <p className="p-heading--4">
                   Here you can find the source code for this website. My testing ground
                   for React/Javascript code.
                 </p>

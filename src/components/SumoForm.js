@@ -12,7 +12,6 @@ class SumoForm extends Component {
       torikumi: [],
       hoshitori: [],
       loading: false,
-      value: 'coconut',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -77,7 +76,6 @@ class SumoForm extends Component {
 
   render() {
     const {
-      value,
       torikumi,
       loading,
       hoshitori,
@@ -92,127 +90,122 @@ class SumoForm extends Component {
                   Paul&apos;s fantasy sumo. (Incomplete/Not open)
                   Next tournament is in September 2020
                 </h2>
-                <p>
+                <p className="p-heading--4">
                   This information is pulled from&nbsp;
                   <a href="http://sumo.or.jp">
                     http://sumo.or.jp
                   </a>
                 </p>
-                {loading ? (
-                  <div className="center">
-                    <ReactLoading
-                      type="spin"
-                      color="#000"
-                      height="20%"
-                      width="20%"
-                    />
-                  </div>
-                ) : (
-                  <div>
-                    {hoshitori.length ? (
-                      <div className="row">
-                        {hoshitori
-                          .map((s) => (
-                            <div key={s.rikishi_id} className="col-2">
-                              <div className="p-card">
-                                <p>
-                                  {s.shikona_eng}
-                                  <br />
-                                  {s.banzuke_name_eng}
-                                </p>
-                                <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                  <img
-                                    src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                    alt={s.kakuzuke_id}
-                                  />
-                                </a>
-                                <br />
-                                {
-                                torikumi[0][s.rikishi_id] !== undefined ? (
-                                  <p>
-                                    Wins:&nbsp;
-                                    {torikumi[0][s.rikishi_id].won_number}
-                                    <br />
-                                    Losses:&nbsp;
-                                    {torikumi[0][s.rikishi_id].lost_number}
-                                    <br />
-                                    Rest days:&nbsp;
-                                    {torikumi[0][s.rikishi_id].rest_number}
-                                  </p>
-                                ) : (
-                                  <p>
-                                    Wins:&nbsp;
-                                    {torikumi[1][s.rikishi_id].won_number}
-                                    <br />
-                                    Losses:&nbsp;
-                                    {torikumi[1][s.rikishi_id].lost_number}
-                                    <br />
-                                    Rest days:&nbsp;
-                                    {torikumi[1][s.rikishi_id].rest_number}
-                                  </p>
-                                )
-                              }
-                              </div>
-                            </div>
-                          ))}
-                      </div>
-                    ) : (
-                      <h2>Could not load wrestlers!</h2>
-                    )}
-                  </div>
-                )}
+                <hr />
                 <form onSubmit={this.handleSubmit}>
                   <label htmlFor="sumoform">
-                    Yokozuna/Ozeki:
-                    <select value={value} onChange={this.handleChange}>
-                      {' '}
-                      <option value="grapefruit">Grapefruit</option>
-                      <option value="lime">Lime</option>
-                      <option value="coconut">Coconut</option>
-                      <option value="mango">Mango</option>
-                    </select>
+                    <h2>Yokozuna/Ozeki:</h2>
+                    <label htmlFor="Radio1">
+                      Linux
+                      <input type="radio" name="RadioOptions" id="Radio1" value="option1" />
+                    </label>
+                    <label htmlFor="Radio2">
+                      Mac OS
+                      <input type="radio" name="RadioOptions" id="Radio2" value="option2" />
+                    </label>
+                    <label htmlFor="Radio4">
+                      Windows
+                      <input type="radio" name="RadioOptions" id="Radio4" value="option4" />
+                    </label>
                   </label>
+                  <hr />
                   <label htmlFor="sumoform">
-                    Sekiwake/Komusubi:
-                    <select value={value} onChange={this.handleChange}>
-                      {' '}
-                      <option value="grapefruit">Grapefruit</option>
-                      <option value="lime">Lime</option>
-                      <option value="coconut">Coconut</option>
-                      <option value="mango">Mango</option>
-                    </select>
+                    <h2>Sekiwake/Komusubi:</h2>
+                    <label htmlFor="Radio1">
+                      Linux
+                      <input type="radio" name="RadioOptions" id="Radio1" value="option1" />
+                    </label>
+                    <label htmlFor="Radio2">
+                      Mac OS
+                      <input type="radio" name="RadioOptions" id="Radio2" value="option2" />
+                    </label>
+                    <label htmlFor="Radio4">
+                      Windows
+                      <input type="radio" name="RadioOptions" id="Radio4" value="option4" />
+                    </label>
                   </label>
+                  <hr />
                   <label htmlFor="sumoform">
-                    Upper Maegashria (1-5):
-                    <select value={value} onChange={this.handleChange}>
-                      {' '}
-                      <option value="grapefruit">Grapefruit</option>
-                      <option value="lime">Lime</option>
-                      <option value="coconut">Coconut</option>
-                      <option value="mango">Mango</option>
-                    </select>
+                    <h2>Upper Maegashria (1-5):</h2>
+                    <label htmlFor="Radio1">
+                      Linux
+                      <input type="radio" name="RadioOptions" id="Radio1" value="option1" />
+                    </label>
+                    <label htmlFor="Radio2">
+                      Mac OS
+                      <input type="radio" name="RadioOptions" id="Radio2" value="option2" />
+                    </label>
+                    <label htmlFor="Radio4">
+                      Windows
+                      <input type="radio" name="RadioOptions" id="Radio4" value="option4" />
+                    </label>
                   </label>
+                  <hr />
                   <label htmlFor="sumoform">
-                    Middle Maegashria (6-10):
-                    <select value={value} onChange={this.handleChange}>
-                      {' '}
-                      <option value="grapefruit">Grapefruit</option>
-                      <option value="lime">Lime</option>
-                      <option value="coconut">Coconut</option>
-                      <option value="mango">Mango</option>
-                    </select>
+                    <h2>Middle Maegashria (6-10):</h2>
+                    <label htmlFor="Radio1">
+                      Linux
+                      <input type="radio" name="RadioOptions" id="Radio1" value="option1" />
+                    </label>
+                    <label htmlFor="Radio2">
+                      Mac OS
+                      <input type="radio" name="RadioOptions" id="Radio2" value="option2" />
+                    </label>
+                    <label htmlFor="Radio4">
+                      Windows
+                      <input type="radio" name="RadioOptions" id="Radio4" value="option4" />
+                    </label>
                   </label>
+                  <hr />
                   <label htmlFor="sumoform">
-                    Lower Maegashria (11-17):
-                    <select value={value} onChange={this.handleChange}>
-                      {' '}
-                      <option value="grapefruit">Grapefruit</option>
-                      <option value="lime">Lime</option>
-                      <option value="coconut">Coconut</option>
-                      <option value="mango">Mango</option>
-                    </select>
+                    <h2>Lower Maegashria (11-17):</h2>
+                    {loading ? (
+                      <div className="center">
+                        <ReactLoading
+                          type="spin"
+                          color="#000"
+                          height="20%"
+                          width="20%"
+                        />
+                      </div>
+                    ) : (
+                      <div>
+                        {hoshitori.length ? (
+                          <div className="row">
+                            {hoshitori
+                              .filter((i) => i.banzuke_name_eng.replace(/\D/g, '') >= 11)
+                              .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
+                              .map((s) => (
+                                <label htmlFor="sumoForm" key={s.rikishi_id} className="col-2">
+                                  <p>
+                                    {s.shikona_eng}
+                                    <br />
+                                    {s.banzuke_name_eng}
+                                  </p>
+                                  <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                    <img
+                                      src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                      alt={s.kakuzuke_id}
+                                    />
+                                  </a>
+                                  <input type="radio" name="RadioOptions" id="Radio4" value="option4" />
+                                  <br />
+                                </label>
+                              ))}
+                          </div>
+                        ) : (
+                          <h2>Could not load wrestlers!</h2>
+                        )}
+                      </div>
+                    )}
                   </label>
-                  <input type="submit" value="Submit" />
+                  <hr />
+                  <input className="p-button--positive" type="submit" value="Submit" />
                 </form>
               </div>
             </div>
@@ -265,6 +258,73 @@ class SumoForm extends Component {
                   </tr>
                 </tbody>
               </table>
+            </div>
+          </div>
+          <div className="p-strip is-deep">
+            <div className="row">
+              {loading ? (
+                <div className="center">
+                  <ReactLoading
+                    type="spin"
+                    color="#000"
+                    height="20%"
+                    width="20%"
+                  />
+                </div>
+              ) : (
+                <div>
+                  {hoshitori.length ? (
+                    <div className="row">
+                      {hoshitori
+                        .map((s) => (
+                          <div key={s.rikishi_id} className="col-2">
+                            <div className="p-card">
+                              <p>
+                                {s.shikona_eng}
+                                <br />
+                                {s.banzuke_name_eng}
+                              </p>
+                              <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                <img
+                                  src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                  alt={s.kakuzuke_id}
+                                />
+                              </a>
+                              <br />
+                              {
+                                torikumi[0][s.rikishi_id] !== undefined ? (
+                                  <p>
+                                    Wins:&nbsp;
+                                    {torikumi[0][s.rikishi_id].won_number}
+                                    <br />
+                                    Losses:&nbsp;
+                                    {torikumi[0][s.rikishi_id].lost_number}
+                                    <br />
+                                    Rest days:&nbsp;
+                                    {torikumi[0][s.rikishi_id].rest_number}
+                                  </p>
+                                ) : (
+                                  <p>
+                                    Wins:&nbsp;
+                                    {torikumi[1][s.rikishi_id].won_number}
+                                    <br />
+                                    Losses:&nbsp;
+                                    {torikumi[1][s.rikishi_id].lost_number}
+                                    <br />
+                                    Rest days:&nbsp;
+                                    {torikumi[1][s.rikishi_id].rest_number}
+                                  </p>
+                                )
+                              }
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  ) : (
+                    <h2>Could not load wrestlers!</h2>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
