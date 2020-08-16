@@ -48,10 +48,10 @@ class Home extends React.PureComponent {
             </h2>
             <h3>About projects I am currently working on!</h3>
             <div className="p-card">
+              <h4>
+                Aug 15 2020 - Sumo form
+              </h4>
               <p>
-                <h4>
-                  Aug 15 2020 - Sumo form
-                </h4>
                 Pulling sumo tournament information from&nbsp;
                 <a href="http://sumo.or.jp">
                   http://sumo.or.jp
