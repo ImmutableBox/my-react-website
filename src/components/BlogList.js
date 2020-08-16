@@ -88,7 +88,7 @@ class BlogList extends Component {
                 ))}
               </div>
             ) : (
-              <div>No data found!</div>
+              <h2>Could not load blogs!</h2>
             )}
           </div>
         )}

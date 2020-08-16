@@ -25,36 +25,18 @@ class SumoForm extends Component {
 
   getFeed = () => {
     this.setState({ loading: true }, () => {
-      fetch(`${CORS_PROXY}http://sumo.or.jp/EnHonbashoMain/torikumi_ajax/1/15/`)
-        .then((res) => res.json())
-        .then((feed) => {
-          this.setState({
-            torikumi: feed.TorikumiData,
-            loading: false,
-          });
-          // eslint-disable-next-line
-          console.log(feed.TorikumiData);
-          // eslint-disable-next-line
-          console.log(feed.TorikumiData.length);
-        }).catch((err) => {
-          // eslint-disable-next-line
-          console.log(err);
-          this.setState({
-            loading: false,
-          });
-        });
       fetch(`${CORS_PROXY}http://sumo.or.jp/EnHonbashoMain/hoshitori_ajax/1/1/`)
         .then((res) => res.json())
         .then((feed) => {
           const {
             hoshitori,
+            torikumi,
           } = this.state;
           this.setState({
             hoshitori: hoshitori.concat(feed.BanzukeTable),
+            torikumi: torikumi.concat(feed.TorikumiData),
             loading: false,
           });
-          // eslint-disable-next-line
-          console.log(feed.BanzukeTable.length);
         }).catch((err) => {
           // eslint-disable-next-line
           console.log(err);
@@ -67,13 +49,13 @@ class SumoForm extends Component {
         .then((feed) => {
           const {
             hoshitori,
+            torikumi,
           } = this.state;
           this.setState({
             hoshitori: hoshitori.concat(feed.BanzukeTable),
+            torikumi: torikumi.concat(feed.TorikumiData),
             loading: false,
           });
-          // eslint-disable-next-line
-          console.log(feed.BanzukeTable.length);
         }).catch((err) => {
           // eslint-disable-next-line
           console.log(err);
@@ -126,21 +108,57 @@ class SumoForm extends Component {
                     />
                   </div>
                 ) : (
-                  <div className="row">
-                    {hoshitori
-                      .map((s) => (
-                        <div key={s.rikishi_id} className="col-2">
-                          <div className="p-card">
-                            <p>{s.shikona_eng}</p>
-                            <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                              <img
-                                src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                alt={s.kakuzuke_id}
-                              />
-                            </a>
-                          </div>
-                        </div>
-                      ))}
+                  <div>
+                    {hoshitori.length ? (
+                      <div className="row">
+                        {hoshitori
+                          .map((s) => (
+                            <div key={s.rikishi_id} className="col-2">
+                              <div className="p-card">
+                                <p>
+                                  {s.shikona_eng}
+                                  <br />
+                                  {s.banzuke_name_eng}
+                                </p>
+                                <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                  <img
+                                    src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                    alt={s.kakuzuke_id}
+                                  />
+                                </a>
+                                <br />
+                                {
+                                torikumi[0][s.rikishi_id] !== undefined ? (
+                                  <p>
+                                    Wins:&nbsp;
+                                    {torikumi[0][s.rikishi_id].won_number}
+                                    <br />
+                                    Losses:&nbsp;
+                                    {torikumi[0][s.rikishi_id].lost_number}
+                                    <br />
+                                    Rest days:&nbsp;
+                                    {torikumi[0][s.rikishi_id].rest_number}
+                                  </p>
+                                ) : (
+                                  <p>
+                                    Wins:&nbsp;
+                                    {torikumi[1][s.rikishi_id].won_number}
+                                    <br />
+                                    Losses:&nbsp;
+                                    {torikumi[1][s.rikishi_id].lost_number}
+                                    <br />
+                                    Rest days:&nbsp;
+                                    {torikumi[1][s.rikishi_id].rest_number}
+                                  </p>
+                                )
+                              }
+                              </div>
+                            </div>
+                          ))}
+                      </div>
+                    ) : (
+                      <h2>Could not load wrestlers!</h2>
+                    )}
                   </div>
                 )}
                 <form onSubmit={this.handleSubmit}>
@@ -247,82 +265,6 @@ class SumoForm extends Component {
                   </tr>
                 </tbody>
               </table>
-            </div>
-          </div>
-          <div className="p-strip is-deep">
-            <div className="row">
-              <div>
-                {loading ? (
-                  <div className="center">
-                    <ReactLoading
-                      type="spin"
-                      color="#000"
-                      height="20%"
-                      width="20%"
-                    />
-                  </div>
-                ) : (
-                  <div>
-                    {torikumi.length
-                    && hoshitori.length ? (
-                      <div className="row">
-                        {/* Check to see if any items are found */}
-                        {torikumi.map((s) => (
-                          <div key={s.technic_name_eng} className="col-4">
-                            <div className="p-card">
-                              <h3>
-                                <a href={s.link}>{s.title}</a>
-                              </h3>
-                              {hoshitori
-                                .filter((i) => i.shikona_eng.trim() === s.east.shikona_eng.trim())
-                                .map((img) => (
-                                  <a key={img.rikishi_id} href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${img.rikishi_id.trim()}`}>
-                                    <img
-                                      src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${img.photo.trim()}`}
-                                      alt={img.kakuzuke_id}
-                                    />
-                                  </a>
-                                ))}
-                              <p>
-                                {s.east.shikona_eng}
-                                <br />
-                                Wins:
-                                {s.east.won_number}
-                                <br />
-                                Losses:
-                                {s.east.lost_number}
-                              </p>
-                              <hr />
-                              {hoshitori
-                                .filter((i) => i.shikona_eng.trim() === s.west.shikona_eng.trim())
-                                .map((img) => (
-                                  <a key={img.rikishi_id} href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${img.rikishi_id.trim()}`}>
-                                    <img
-                                      src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${img.photo.trim()}`}
-                                      alt={img.kakuzuke_id}
-                                    />
-                                  </a>
-                                ))}
-                              <p>
-                                {s.west.shikona_eng}
-                                <br />
-                                Wins:
-                                {s.west.won_number}
-                                <br />
-                                Losses:
-                                {s.west.lost_number}
-                              </p>
-                              <br />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      ) : (
-                        <div>No data found!</div>
-                      )}
-                  </div>
-                )}
-              </div>
             </div>
           </div>
         </div>
