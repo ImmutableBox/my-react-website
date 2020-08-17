@@ -92,6 +92,11 @@ class SumoForm extends Component {
                 </p>
                 <hr />
                 <form onSubmit={this.handleSubmit}>
+                  <label htmlFor="formName">
+                    Name
+                    <input type="text" id="formName" placeholder="Enter name here" />
+                  </label>
+                  <hr />
                   <ui>
                     <h2>Yokozuna/Ozeki:</h2>
                     {loading ? (
@@ -111,7 +116,7 @@ class SumoForm extends Component {
                               .filter((i) => i.banzuke_name_eng === 'Yokozuna'
                               || i.banzuke_name_eng === 'Ozeki')
                               .map((s) => (
-                                <label htmlFor="sumoform" key={s.rikishi_id} className="col-3">
+                                <label htmlFor="sumoform" key={s.rikishi_id} className="p-card col-3">
                                   <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
                                     <img
                                       src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
@@ -156,7 +161,7 @@ class SumoForm extends Component {
                               .filter((i) => i.banzuke_name_eng === 'Sekiwake'
                               || i.banzuke_name_eng === 'Komusubi')
                               .map((s) => (
-                                <label htmlFor="sumoform" key={s.rikishi_id} className="col-3">
+                                <label htmlFor="sumoform" key={s.rikishi_id} className="p-card col-3">
                                   <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
                                     <img
                                       src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
@@ -202,7 +207,7 @@ class SumoForm extends Component {
                               && i.banzuke_name_eng.replace(/\D/g, '') <= 5)
                               .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
                               .map((s) => (
-                                <label htmlFor="sumoform" key={s.rikishi_id} className="col-3">
+                                <label htmlFor="sumoform" key={s.rikishi_id} className="p-card col-3">
                                   <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
                                     <img
                                       src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
@@ -248,7 +253,7 @@ class SumoForm extends Component {
                                 && i.banzuke_name_eng.replace(/\D/g, '') <= 10)
                               .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
                               .map((s) => (
-                                <label htmlFor="sumoform" key={s.rikishi_id} className="col-3">
+                                <label htmlFor="sumoform" key={s.rikishi_id} className="p-card col-3">
                                   <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
                                     <img
                                       src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
@@ -293,7 +298,7 @@ class SumoForm extends Component {
                               .filter((i) => i.banzuke_name_eng.replace(/\D/g, '') >= 11)
                               .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
                               .map((s) => (
-                                <label htmlFor="sumoform" key={s.rikishi_id} className="col-3">
+                                <label htmlFor="sumoform" key={s.rikishi_id} className="p-card col-3">
                                   <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
                                     <img
                                       src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}

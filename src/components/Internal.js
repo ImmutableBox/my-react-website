@@ -45,27 +45,25 @@ class Internal extends Component {
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
-          <div className="p-suru">
-            <div className="p-strip is-deep">
-              <div className="row">
-                <h2>
-                  <a
-                    href="https://github.com/Immutablevoid/my-react-website"
-                    style={{ color: '#FFF' }}
-                  >
-                    <FaCubes />
-                  </a>
-                  &nbsp;
-                  Website source code/projects
-                </h2>
-                <p className="p-heading--4">
-                  Here you can find the source code for this website. My testing ground
-                  for React/Javascript code.
-                </p>
-                <p>
-                  Click on the icon for the source code!
-                </p>
-              </div>
+          <div className="p-strip is-deep" style={{ background: '#3c7cff' }}>
+            <div className="row">
+              <h2>
+                <a
+                  href="https://github.com/Immutablevoid/my-react-website"
+                  style={{ color: '#FFF' }}
+                >
+                  <FaCubes />
+                </a>
+                &nbsp;
+                Website source code/projects
+              </h2>
+              <p className="p-heading--4">
+                Here you can find the source code for this website. My testing ground
+                for React/Javascript code.
+              </p>
+              <p>
+                Click on the icon for the source code!
+              </p>
             </div>
           </div>
           <div className="p-strip is-deep is-bordered" style={{ backgroundColor: `#${fullColourHex(...sliders)}` }}>

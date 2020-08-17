@@ -17,18 +17,16 @@ class About extends Component {
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
-          <div className="p-suru">
-            <div className="p-strip is-deep">
-              <div className="row">
-                <h2>
-                  <FaPersonBooth />
+          <div className="p-strip is-deep" style={{ background: '#68599a' }}>
+            <div className="row">
+              <h2>
+                <FaPersonBooth />
                   &nbsp;Contact information:
-                </h2>
-                <p className="p-heading--4">
-                  Below are links if where you can find me! I tend to be active with
-                  the social medias below.
-                </p>
-              </div>
+              </h2>
+              <p className="p-heading--4">
+                Below are links if where you can find me! I tend to be active with
+                the social medias below.
+              </p>
             </div>
           </div>
           <div className="p-strip is-deep" style={{ background: '#f7f7f7', color: '#000000' }}>

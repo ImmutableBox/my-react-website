@@ -49,7 +49,9 @@ class Home extends React.PureComponent {
             <h3>About projects I am currently working on!</h3>
             <div className="p-card">
               <h4>
-                Aug 15 2020 - Sumo form
+                <b>Sumo Form</b>
+                <br />
+                Aug 15 2020 - Present
               </h4>
               <p>
                 Pulling sumo tournament information from&nbsp;
@@ -65,6 +67,9 @@ class Home extends React.PureComponent {
                 <br />
                 Project link:&nbsp;
                 <Link to="/sumoform">Sumo Form</Link>
+                <br />
+                Project link:&nbsp;
+                <Link to="/sumoresults">Sumo Results</Link>
               </p>
             </div>
           </div>
