@@ -97,7 +97,7 @@ class SumoForm extends Component {
                     <input type="text" id="formName" placeholder="Enter name here" />
                   </label>
                   <hr />
-                  <ui>
+                  <div>
                     <h2>Yokozuna/Ozeki:</h2>
                     {loading ? (
                       <div className="center">
@@ -140,9 +140,9 @@ class SumoForm extends Component {
                         )}
                       </div>
                     )}
-                  </ui>
+                  </div>
                   <hr />
-                  <ui>
+                  <div>
                     <h2>Sekiwake/Komusubi:</h2>
                     {loading ? (
                       <div className="center">
@@ -185,9 +185,9 @@ class SumoForm extends Component {
                         )}
                       </div>
                     )}
-                  </ui>
+                  </div>
                   <hr />
-                  <ui>
+                  <div>
                     <h2>Upper Maegashria (1-5):</h2>
                     {loading ? (
                       <div className="center">
@@ -231,9 +231,9 @@ class SumoForm extends Component {
                         )}
                       </div>
                     )}
-                  </ui>
+                  </div>
                   <hr />
-                  <ui>
+                  <div>
                     <h2>Middle Maegashria (6-10):</h2>
                     {loading ? (
                       <div className="center">
@@ -277,9 +277,9 @@ class SumoForm extends Component {
                         )}
                       </div>
                     )}
-                  </ui>
+                  </div>
                   <hr />
-                  <ui>
+                  <div>
                     <h2>Lower Maegashria (11-17):</h2>
                     {loading ? (
                       <div className="center">
@@ -322,7 +322,7 @@ class SumoForm extends Component {
                         )}
                       </div>
                     )}
-                  </ui>
+                  </div>
                   <hr />
                   <input className="p-button--positive" type="submit" value="Submit" />
                 </form>
