@@ -17,7 +17,7 @@ class External extends Component {
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
-          <div className="p-strip is-deep" style={{ background: '#00b0ab' }}>
+          <div className="p-strip is-deep" style={{ background: '#00b0ab', color: '#FFF' }}>
             <div className="row">
               <h2>
                 <FaGamepad />

@@ -17,7 +17,7 @@ class About extends Component {
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
-          <div className="p-strip is-deep" style={{ background: '#68599a' }}>
+          <div className="p-strip is-deep" style={{ background: '#68599a', color: '#FFF' }}>
             <div className="row">
               <h2>
                 <FaPersonBooth />
