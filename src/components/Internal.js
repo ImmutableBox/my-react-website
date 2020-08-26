@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FaCubes } from 'react-icons/fa';
+import { FaCubes, FaPaintBrush } from 'react-icons/fa';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import { fullColourHex, rgbToHex } from '../utils/colour';
 import 'codemirror/lib/codemirror.css';
@@ -68,7 +68,11 @@ class Internal extends Component {
           </div>
           <div className="p-strip is-deep is-bordered" style={{ backgroundColor: `#${fullColourHex(...sliders)}` }}>
             <div className="row">
-              <h2>Color Picker</h2>
+              <h2>
+                <FaPaintBrush />
+                &nbsp;
+                Color Picker
+              </h2>
               <hr />
               {sliders.map((slider, index) => (
                 // eslint-disable-next-line
