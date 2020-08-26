@@ -25,7 +25,9 @@ class News extends React.PureComponent {
               &nbsp;News!
             </h2>
             <h3>About projects I am currently working on!</h3>
-            <div className="p-card">
+            <div
+              className="p-card--highlighted"
+            >
               <h4>
                 <b>Sumo Form</b>
                 <br />
@@ -44,10 +46,10 @@ class News extends React.PureComponent {
                 <br />
                 <br />
                 Project link:&nbsp;
-                <Link to="/sumoform">Sumo Form</Link>
+                <Link className="p-button--brand" to="/sumoform">Sumo Form</Link>
                 <br />
                 Project link:&nbsp;
-                <Link to="/sumoresults">Sumo Results</Link>
+                <Link className="p-button--brand" to="/sumoresults">Sumo Results</Link>
               </p>
             </div>
           </div>

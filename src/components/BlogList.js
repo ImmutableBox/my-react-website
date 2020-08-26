@@ -69,7 +69,7 @@ class BlogList extends Component {
                 {/* Check to see if any items are found */}
                 {feeds.map((item) => (
                   <div key={item.title} className="col-4">
-                    <div className="p-card">
+                    <div className="p-card--highlighted">
                       <h3>
                         <a href={item.link}>{item.title}</a>
                       </h3>

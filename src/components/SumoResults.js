@@ -83,20 +83,18 @@ class SumoResults extends Component {
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
-          <div className="p-suru">
-            <div className="p-strip is-deep">
-              <div className="row">
-                <h2>
-                  Sumo results
-                </h2>
-                <p className="p-heading--4">
-                  Information is pulled from&nbsp;
-                  <a href="http://sumo.or.jp">
-                    http://sumo.or.jp
-                  </a>
-                </p>
-                <hr />
-              </div>
+          <div className="p-strip is-deep" style={{ background: '#ff4c70', color: '#FFF' }}>
+            <div className="row">
+              <h2>
+                Sumo results
+              </h2>
+              <p className="p-heading--4">
+                Information is pulled from&nbsp;
+                <a href="http://sumo.or.jp">
+                  http://sumo.or.jp
+                </a>
+              </p>
+              <hr />
             </div>
           </div>
           <div className="p-strip is-deep">
@@ -149,7 +147,7 @@ class SumoResults extends Component {
               </table>
             </div>
           </div>
-          <div className="p-strip is-deep">
+          <div className="p-strip is-deep" style={{ background: '#ff4c70', color: '#FFF' }}>
             <div className="row">
               {loading ? (
                 <div className="center">
@@ -166,8 +164,8 @@ class SumoResults extends Component {
                     <div className="row">
                       {hoshitori
                         .map((s) => (
-                          <div key={s.rikishi_id} className="col-2">
-                            <div className="p-card">
+                          <div key={s.rikishi_id} className="col-3">
+                            <div className="p-card--highlighted">
                               <p>
                                 {s.shikona_eng}
                                 <br />

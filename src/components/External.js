@@ -37,7 +37,7 @@ class External extends Component {
                 &nbsp;Games developed in Unity:
               </h2>
               <div className="col-3">
-                <div className="p-card">
+                <div className="p-card--highlighted">
                   <Link to="/friendlyencounters">
                     <img src="/images/FE.png" alt="" />
                     <h4 className="text-center">Friendly Encounters</h4>
@@ -53,7 +53,7 @@ class External extends Component {
                 &nbsp;Games developed in Flash/ActionScript:
               </h2>
               <div className="col-3">
-                <div className="p-card">
+                <div className="p-card--highlighted">
                   <Link to="/hardescape">
                     <img src="/images/hardescape.png" alt="" />
                     <h4 className="text-center">Hard Escape</h4>
@@ -70,7 +70,7 @@ class External extends Component {
                 &nbsp;Games developed in Java:
               </h2>
               <div className="col-3">
-                <div className="p-card">
+                <div className="p-card--highlighted">
                   <a href="https://play.google.com/store/apps/details?id=com.immutablevoid.dontmoveback">
                     <img src="/images/feature_graphic_dontmoveback.png" alt="" />
                     <h4 className="text-center">Don&apos;t Move Back!</h4>

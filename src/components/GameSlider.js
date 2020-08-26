@@ -22,19 +22,19 @@ class GameSlider extends Component {
         slidesToScroll={3}
         autoplay
       >
-        <div className="p-card">
+        <div className="p-card--highlighted">
           <a href="https://play.google.com/store/apps/details?id=com.immutablevoid.dontmoveback">
             <img src="/images/feature_graphic_dontmoveback.png" alt="" />
           </a>
           <h4 className="text-center">Don&apos;t Move Back!</h4>
         </div>
-        <div className="p-card">
+        <div className="p-card--highlighted">
           <Link to="/hardescape">
             <img src="/images/hardescape.png" alt="" />
           </Link>
           <h4 className="text-center">Hard Escape</h4>
         </div>
-        <div className="p-card">
+        <div className="p-card--highlighted">
           <Link to="/friendlyencounters">
             <img src="/images/FE.png" alt="" />
           </Link>
