@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.com/Immutablevoid/my-react-website.svg?branch=master)](https://travis-ci.com/Immutablevoid/my-react-website)
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/064854c2-c832-426d-b0a8-fd4fefd01189/deploy-status)](https://app.netlify.com/sites/paul-pluu3/deploys)
+[![Build Status](https://travis-ci.com/Immutablevoid/my-react-website.svg?branch=master)](https://travis-ci.com/Immutablevoid/my-react-website) [![Netlify Status](https://api.netlify.com/api/v1/badges/064854c2-c832-426d-b0a8-fd4fefd01189/deploy-status)](https://app.netlify.com/sites/paul-pluu3/deploys)
 
 Hosted on Netlify: https://paul-pluu3.netlify.app/  
 
