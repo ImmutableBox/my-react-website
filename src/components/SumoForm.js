@@ -329,7 +329,9 @@ class SumoForm extends Component {
                   )}
                 </div>
                 <hr />
-                <input className="p-button--positive" type="submit" value="Submit" />
+                <div className="row">
+                  <input className="p-button--positive" type="submit" value="Submit" />
+                </div>
               </form>
             </div>
           </div>

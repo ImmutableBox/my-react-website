@@ -111,10 +111,44 @@ class SumoResults extends Component {
               <h2>
                 Sumo results:
               </h2>
-              <input type="button" className="p-button--brand" value={cardFormat} onClick={this.handleFormatChange} />
               <label htmlFor="form">
                 <h3>Search for a wrestler</h3>
-                <input type="search" id="formName" placeholder="Enter name here" onChange={this.handleSearchChange} />
+                <tr>
+                  <td>
+                    <h4>Name</h4>
+                    <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
+                  </td>
+                  <td>
+                    <h4>Rank</h4>
+                    <select name="exampleSelect" id="exampleSelect">
+                      <option value="" disabled="disabled" selected="">Select an option</option>
+                      <option value="1">Cosmic Cuttlefish</option>
+                      <option value="2">Bionic Beaver</option>
+                      <option value="3">Xenial Xerus</option>
+                    </select>
+                  </td>
+                  <td>
+                    <h4>Wins</h4>
+                    <input
+                      className="p-slider"
+                      type="range"
+                      min="0"
+                      max="255"
+                      step="1"
+                    />
+                  </td>
+                  <td>
+                    <h4>Losses</h4>
+                    <input
+                      className="p-slider"
+                      type="range"
+                      min="0"
+                      max="255"
+                      step="1"
+                    />
+                  </td>
+                </tr>
+                <input type="button" className="p-button--brand" value={cardFormat} onClick={this.handleFormatChange} />
               </label>
               {cardFormat === 'Card Format' ? (
                 <div>
