@@ -12,9 +12,9 @@ class SumoSearch extends Component {
       torikumi: [],
       hoshitori: [],
       loading: false,
+      wrestler: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // Fetch the list of first mount
@@ -65,20 +65,14 @@ class SumoSearch extends Component {
     });
   }
 
-  handleChange(event) { this.setState({ value: event.target.value }); }
-
-  handleSubmit(event) {
-    const { value } = this.state;
-    // alert(`Your favorite flavor is: ${value}`);
-    if (value === 'lime');
-    event.preventDefault();
-  }
+  handleChange(event) { this.setState({ wrestler: event.target.value }); }
 
   render() {
     const {
       torikumi,
       loading,
       hoshitori,
+      wrestler,
     } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
@@ -106,7 +100,7 @@ class SumoSearch extends Component {
             <div className="row">
               <label htmlFor="formName">
                 <h2>Wrestler Name</h2>
-                <input type="text" id="formName" placeholder="Enter name here" />
+                <input type="text" id="formName" placeholder="Enter name here" onChange={this.handleChange} />
               </label>
               {loading ? (
                 <div className="center">
@@ -122,6 +116,7 @@ class SumoSearch extends Component {
                   {hoshitori.length ? (
                     <div className="row">
                       {hoshitori
+                        .filter((i) => i.shikona_eng.toLowerCase().includes(wrestler))
                         .map((s) => (
                           <div key={s.rikishi_id} className="col-3">
                             <div className="p-card--highlighted">

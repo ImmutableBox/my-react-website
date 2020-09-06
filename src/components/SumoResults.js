@@ -13,8 +13,6 @@ class SumoResults extends Component {
       hoshitori: [],
       loading: false,
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // Fetch the list of first mount
@@ -63,15 +61,6 @@ class SumoResults extends Component {
           });
         });
     });
-  }
-
-  handleChange(event) { this.setState({ value: event.target.value }); }
-
-  handleSubmit(event) {
-    const { value } = this.state;
-    // alert(`Your favorite flavor is: ${value}`);
-    if (value === 'lime');
-    event.preventDefault();
   }
 
   render() {

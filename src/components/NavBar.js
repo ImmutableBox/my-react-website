@@ -41,6 +41,12 @@ class NavBar extends Component {
                 <Link to="/sumoform">Sumo Form</Link>
               </li>
               <li className="p-navigation__link" role="menuitem">
+                <Link to="/sumoresults">Sumo Results</Link>
+              </li>
+              <li className="p-navigation__link" role="menuitem">
+                <Link to="/sumosearch">Wrestler Search</Link>
+              </li>
+              <li className="p-navigation__link" role="menuitem">
                 <Link to="/about">Contact Information</Link>
               </li>
             </ul>
