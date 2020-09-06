@@ -122,8 +122,8 @@ class SumoResults extends Component {
                     <h4>Rank</h4>
                     <select name="exampleSelect" id="exampleSelect">
                       <option value="" disabled="disabled" selected="">Select an option</option>
-                      <option value="1">Cosmic Cuttlefish</option>
-                      <option value="2">Bionic Beaver</option>
+                      <option value="1">Yokozuna</option>
+                      <option value="2">Ozeki</option>
                       <option value="3">Xenial Xerus</option>
                     </select>
                   </td>

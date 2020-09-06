@@ -84,10 +84,16 @@ class SumoForm extends Component {
                 Paul&apos;s fantasy sumo/Sumo Form
               </h2>
               <p className="p-heading--4">
-                Information is pulled from&nbsp;
+                Pulling sumo tournament information from&nbsp;
                 <a href="http://sumo.or.jp">
                   http://sumo.or.jp
                 </a>
+                &nbsp;basically keeping track of scores/adding scores.
+                If you know Paul, you know he&apos;s cray cray for Sumo :)
+                This project is pretty much fantasy football.
+                This project is mostly for me and my friends,
+                I will count the points and send a message at the
+                end of the sumo tournament.
               </p>
             </div>
           </div>
