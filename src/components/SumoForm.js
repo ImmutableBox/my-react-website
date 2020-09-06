@@ -78,7 +78,7 @@ class SumoForm extends Component {
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
-          <div className="p-strip is-deep" style={{ background: '#ff4c70', color: '#FFF' }}>
+          <div className="p-strip is-deep" style={{ background: '#51ab6e', color: '#FFF' }}>
             <div className="row">
               <h2>
                 Paul&apos;s fantasy sumo/Sumo Form
@@ -333,7 +333,7 @@ class SumoForm extends Component {
               </form>
             </div>
           </div>
-          <div className="p-strip is-deep" style={{ background: '#ff4c70', color: '#FFF' }}>
+          <div className="p-strip is-deep" style={{ background: '#51ab6e', color: '#FFF' }}>
             <div className="row">
               <h2>See sumo results</h2>
               <Link className="p-button--brand" to="/sumoresults">Sumo results</Link>

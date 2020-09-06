@@ -83,7 +83,7 @@ class SumoResults extends Component {
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
-          <div className="p-strip is-deep" style={{ background: '#ff4c70', color: '#FFF' }}>
+          <div className="p-strip is-deep" style={{ background: '#51ab6e', color: '#FFF' }}>
             <div className="row">
               <h2>
                 Sumo results
@@ -107,7 +107,7 @@ class SumoResults extends Component {
                   <tr>
                     <th>Name</th>
                     <th>Image</th>
-                    <th>Role</th>
+                    <th>Rank</th>
                     <th>Wins</th>
                     <th>Losses</th>
                   </tr>
@@ -175,73 +175,6 @@ class SumoResults extends Component {
                   </>
                 )}
               </table>
-            </div>
-          </div>
-          <div className="p-strip is-deep" style={{ background: '#ff4c70', color: '#FFF' }}>
-            <div className="row">
-              {loading ? (
-                <div className="center">
-                  <ReactLoading
-                    type="spin"
-                    color="#000"
-                    height="20%"
-                    width="20%"
-                  />
-                </div>
-              ) : (
-                <div>
-                  {hoshitori.length ? (
-                    <div className="row">
-                      {hoshitori
-                        .map((s) => (
-                          <div key={s.rikishi_id} className="col-3">
-                            <div className="p-card--highlighted">
-                              <p>
-                                {s.shikona_eng}
-                                <br />
-                                {s.banzuke_name_eng}
-                              </p>
-                              <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                <img
-                                  src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                  alt={s.kakuzuke_id}
-                                />
-                              </a>
-                              <br />
-                              {
-                                torikumi[0][s.rikishi_id] !== undefined ? (
-                                  <p>
-                                    Wins:&nbsp;
-                                    {torikumi[0][s.rikishi_id].won_number}
-                                    <br />
-                                    Losses:&nbsp;
-                                    {torikumi[0][s.rikishi_id].lost_number}
-                                    <br />
-                                    Rest days:&nbsp;
-                                    {torikumi[0][s.rikishi_id].rest_number}
-                                  </p>
-                                ) : (
-                                  <p>
-                                    Wins:&nbsp;
-                                    {torikumi[1][s.rikishi_id].won_number}
-                                    <br />
-                                    Losses:&nbsp;
-                                    {torikumi[1][s.rikishi_id].lost_number}
-                                    <br />
-                                    Rest days:&nbsp;
-                                    {torikumi[1][s.rikishi_id].rest_number}
-                                  </p>
-                                )
-                              }
-                            </div>
-                          </div>
-                        ))}
-                    </div>
-                  ) : (
-                    <h2>Could not load wrestlers!</h2>
-                  )}
-                </div>
-              )}
             </div>
           </div>
         </div>

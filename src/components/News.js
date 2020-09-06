@@ -50,6 +50,9 @@ class News extends React.PureComponent {
                 <br />
                 Project link:&nbsp;
                 <Link className="p-button--brand" to="/sumoresults">Sumo Results</Link>
+                <br />
+                Project link:&nbsp;
+                <Link className="p-button--brand" to="/sumosearch">Sumo Search</Link>
               </p>
             </div>
           </div>
