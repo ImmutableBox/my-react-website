@@ -105,45 +105,75 @@ class SumoResults extends Component {
               <table className="p-table--sortable" role="grid">
                 <thead>
                   <tr>
-                    <th id="t-yo" aria-sort="none" role="columnheader" className="u-align--right">Yokozuna/Ozeki</th>
-                    <th id="t-sk" aria-sort="none" role="columnheader" className="u-align--right">Sekiwake/Komusubi</th>
-                    <th id="t-um" aria-sort="none" role="columnheader" className="u-align--right">Upper Maegashria (1-5)</th>
-                    <th id="t-mm" aria-sort="none" role="columnheader" className="u-align--right">Middle Maegashria (6-10)</th>
-                    <th id="t-lm" aria-sort="none" role="columnheader" className="u-align--right">Lower Maegashria (11-17)</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Role</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr role="row">
-                    <td role="gridcell" className="u-align--right">1</td>
-                    <td role="gridcell" className="u-align--right">1 GiB</td>
-                    <td role="gridcell" className="u-align--right">2</td>
-                  </tr>
-                  <tr role="row">
-                    <td role="gridcell" className="u-align--right">1</td>
-                    <td role="gridcell" className="u-align--right">1 GiB</td>
-                    <td role="gridcell" className="u-align--right">2</td>
-                  </tr>
-                  <tr role="row">
-                    <td role="gridcell" className="u-align--right">8</td>
-                    <td role="gridcell" className="u-align--right">31.9 GiB</td>
-                    <td role="gridcell" className="u-align--right">3</td>
-                  </tr>
-                  <tr role="row">
-                    <td role="gridcell" className="u-align--right">8</td>
-                    <td role="gridcell" className="u-align--right">3.9 GiB</td>
-                    <td role="gridcell" className="u-align--right">3</td>
-                  </tr>
-                  <tr role="row">
-                    <td role="gridcell" className="u-align--right">4</td>
-                    <td role="gridcell" className="u-align--right">4 GiB</td>
-                    <td role="gridcell" className="u-align--right">2</td>
-                  </tr>
-                  <tr role="row">
-                    <td role="gridcell" className="u-align--right">8</td>
-                    <td role="gridcell" className="u-align--right">2 GiB</td>
-                    <td role="gridcell" className="u-align--right">31</td>
-                  </tr>
-                </tbody>
+                {loading ? (
+                  <div className="center">
+                    <ReactLoading
+                      type="spin"
+                      color="#000"
+                      height="20%"
+                      width="20%"
+                    />
+                  </div>
+                ) : (
+                  <>
+                    {hoshitori.length ? (
+                      <tbody>
+                        {hoshitori
+                          .map((s) => (
+                            <tr key={s.rikishi_id}>
+                              <td>
+                                {s.shikona_eng}
+                              </td>
+                              <td>
+                                <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                  <img
+                                    src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                    alt={s.kakuzuke_id}
+                                  />
+                                </a>
+                              </td>
+                              {
+                                  torikumi[0][s.rikishi_id] !== undefined ? (
+                                    <>
+                                      <td>
+                                        {s.banzuke_name_eng}
+                                      </td>
+                                      <td>
+                                        {torikumi[0][s.rikishi_id].won_number}
+                                      </td>
+                                      <td>
+                                        {torikumi[0][s.rikishi_id].lost_number}
+                                      </td>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <td>
+                                        {s.banzuke_name_eng}
+                                      </td>
+                                      <td>
+                                        {torikumi[1][s.rikishi_id].won_number}
+                                      </td>
+                                      <td>
+                                        {torikumi[1][s.rikishi_id].lost_number}
+                                      </td>
+                                    </>
+                                  )
+                                }
+                            </tr>
+                          ))}
+                      </tbody>
+                    ) : (
+                      <h2>Could not load wrestlers!</h2>
+                    )}
+                  </>
+                )}
               </table>
             </div>
           </div>
