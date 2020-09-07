@@ -111,45 +111,66 @@ class SumoResults extends Component {
               <h2>
                 Sumo results:
               </h2>
-              <label htmlFor="form">
-                <h3>Search for a wrestler</h3>
-                <tr>
-                  <td>
-                    <h4>Name</h4>
-                    <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
-                  </td>
-                  <td>
-                    <h4>Rank</h4>
-                    <select name="exampleSelect" id="exampleSelect">
-                      <option value="" disabled="disabled" selected="">Select an option</option>
-                      <option value="1">Yokozuna</option>
-                      <option value="2">Ozeki</option>
-                      <option value="3">Xenial Xerus</option>
-                    </select>
-                  </td>
-                  <td>
-                    <h4>Wins</h4>
-                    <input
-                      className="p-slider"
-                      type="range"
-                      min="0"
-                      max="255"
-                      step="1"
-                    />
-                  </td>
-                  <td>
-                    <h4>Losses</h4>
-                    <input
-                      className="p-slider"
-                      type="range"
-                      min="0"
-                      max="255"
-                      step="1"
-                    />
-                  </td>
-                </tr>
-                <input type="button" className="p-button--brand" value={cardFormat} onClick={this.handleFormatChange} />
-              </label>
+              <h3>Search for a wrestler</h3>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <h4>Name</h4>
+                      <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
+                    </td>
+                    <td>
+                      <h4>Rank</h4>
+                      <select name="exampleSelect" id="exampleSelect">
+                        <option value="" disabled="disabled" defaultValue="">Select an option</option>
+                        <option value="None">None</option>
+                        <option value="Yokozuna">Yokozuna</option>
+                        <option value="Ozeki">Ozeki</option>
+                        <option value="Sekiwake">Sekiwake</option>
+                        <option value="Komusubi">Komusubi</option>
+                        <option value="Maegashira1">Maegashira #1</option>
+                        <option value="Maegashira2">Maegashira #2</option>
+                        <option value="Maegashira3">Maegashira #3</option>
+                        <option value="Maegashira4">Maegashira #4</option>
+                        <option value="Maegashira5">Maegashira #5</option>
+                        <option value="Maegashira6">Maegashira #6</option>
+                        <option value="Maegashira7">Maegashira #7</option>
+                        <option value="Maegashira8">Maegashira #8</option>
+                        <option value="Maegashira9">Maegashira #9</option>
+                        <option value="Maegashira10">Maegashira #10</option>
+                        <option value="Maegashira11">Maegashira #11</option>
+                        <option value="Maegashira12">Maegashira #12</option>
+                        <option value="Maegashira13">Maegashira #13</option>
+                        <option value="Maegashira14">Maegashira #14</option>
+                        <option value="Maegashira15">Maegashira #15</option>
+                        <option value="Maegashira16">Maegashira #16</option>
+                        <option value="Maegashira17">Maegashira #17</option>
+                      </select>
+                    </td>
+                    <td>
+                      <h4>Wins</h4>
+                      <input
+                        className="p-slider"
+                        type="range"
+                        min="0"
+                        max="15"
+                        step="1"
+                      />
+                    </td>
+                    <td>
+                      <h4>Losses</h4>
+                      <input
+                        className="p-slider"
+                        type="range"
+                        min="0"
+                        max="15"
+                        step="1"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <input type="button" className="p-button--brand" value={cardFormat} onClick={this.handleFormatChange} />
               {cardFormat === 'Card Format' ? (
                 <div>
                   {loading ? (

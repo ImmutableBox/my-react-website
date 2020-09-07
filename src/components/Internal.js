@@ -66,6 +66,7 @@ class Internal extends Component {
               </p>
             </div>
           </div>
+          <News />
           <div className="p-strip is-deep is-bordered" style={{ backgroundColor: `#${fullColourHex(...sliders)}` }}>
             <div className="row">
               <h2>
@@ -122,7 +123,6 @@ class Internal extends Component {
               </div>
             </div>
           </div>
-          <News />
         </div>
       </div>
     );

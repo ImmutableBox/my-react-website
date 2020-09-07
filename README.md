@@ -7,8 +7,11 @@ Hosted on Netlify: https://paul-pluu3.netlify.app/
 
 1. `npm install`  
 1. `npm start`
----
 
+### Need to manually create a config.js and place it in the public folder
+`config.js` - Contains google sheet API keys
+
+---
 
 
 ### Run test instructions:
@@ -19,3 +22,5 @@ Hosted on Netlify: https://paul-pluu3.netlify.app/
 | `npm run eslint` | Runs Eslint |
 | `npm run eslint-fix` | Runs Eslint with --fix |
 | `npm start` | Builds project and open web server |
+
+---
