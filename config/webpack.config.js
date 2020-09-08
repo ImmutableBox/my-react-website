@@ -533,7 +533,9 @@ module.exports = function (webpackEnv) {
             : undefined),
         }),
       ),
-      new Dotenv(),
+      new Dotenv({
+        path: path.resolve(__dirname, './.env')
+      }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358
