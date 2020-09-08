@@ -25,6 +25,7 @@ const postcssNormalize = require('postcss-normalize');
 const getClientEnvironment = require('./env');
 const modules = require('./modules');
 const paths = require('./paths');
+const Dotenv = require('dotenv-webpack');
 
 const appPackageJson = require(paths.appPackageJson);
 
@@ -532,6 +533,7 @@ module.exports = function (webpackEnv) {
             : undefined),
         }),
       ),
+      new Dotenv(),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358

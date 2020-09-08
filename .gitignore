@@ -5,8 +5,8 @@
 /.pnp
 .pnp.js
 
-# keys
-config.js
+# environment variables
+.env
 
 # testing
 /coverage

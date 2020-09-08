@@ -19,7 +19,7 @@ class ContactForm extends React.Component {
   onFormSubmit = (submissionValues) => {
     const params = {
       // The ID of the spreadsheet to update.
-      spreadsheetId: window.config.SPREADSHEET_ID,
+      spreadsheetId: process.env.SPREADSHEET_ID,
       range: 'Sheet1',
       // How the input data should be interpreted.
       valueInputOption: 'RAW',
@@ -77,8 +77,8 @@ class ContactForm extends React.Component {
 
   initClient =() => {
     window.gapi.client.init({
-      apiKey: window.config.API_KEY,
-      clientId: window.config.CLIENT_ID,
+      apiKey: process.env.API_KEY,
+      clientId: process.env.CLIENT_ID,
       scope: SCOPE,
       discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
     }).then(() => {
