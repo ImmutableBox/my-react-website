@@ -4,16 +4,6 @@ import './styles/index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-const dotenv = require('dotenv');
-
-const result = dotenv.config();
-
-if (result.error) {
-  throw result.error;
-}
-
-console.log(result.parsed);
-
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
