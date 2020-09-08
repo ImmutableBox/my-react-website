@@ -172,6 +172,6 @@
     "lint-staged": "^10.3.0",
     "vanilla-framework": "^2.17.0"
   },
-  "proxy": "http://localhost:3000",
+  "proxy": "",
   "homepage": "https://paul-pluu3.netlify.app"
 }
