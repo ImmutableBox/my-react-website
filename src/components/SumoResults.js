@@ -26,7 +26,7 @@ class SumoResults extends Component {
 
   getFeed = () => {
     this.setState({ loading: true }, () => {
-      fetch(`${CORS_PROXY}http://sumo.or.jp/EnHonbashoMain/hoshitori_ajax/1/1/`)
+      fetch(`${CORS_PROXY}http://sumo.or.jp/ResultData/hoshitori_ajax/1/1/`)
         .then((res) => res.json())
         .then((feed) => {
           const {
@@ -45,7 +45,7 @@ class SumoResults extends Component {
             loading: false,
           });
         });
-      fetch(`${CORS_PROXY}http://sumo.or.jp/EnHonbashoMain/hoshitori_ajax/1/2/`)
+      fetch(`${CORS_PROXY}http://sumo.or.jp/ResultData/hoshitori_ajax/1/2/`)
         .then((res) => res.json())
         .then((feed) => {
           const {
