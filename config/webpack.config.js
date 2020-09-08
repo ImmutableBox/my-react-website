@@ -25,12 +25,13 @@ const postcssNormalize = require('postcss-normalize');
 const getClientEnvironment = require('./env');
 const modules = require('./modules');
 const paths = require('./paths');
-
+const Dotenv;
 if (process.env.NODE_ENV !== 'production') { 
-  const Dotenv = require('dotenv-webpack');
+  Dotenv = require('dotenv-webpack');
 }
 else{
-  require('dotenv').config();
+  Dotenv = require('dotenv');
+  Dotenv.config();
 }
 
 const appPackageJson = require(paths.appPackageJson);
@@ -539,6 +540,7 @@ module.exports = function (webpackEnv) {
             : undefined),
         }),
       ),
+      new Dotenv(),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358
