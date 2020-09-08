@@ -4,7 +4,15 @@ import './styles/index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-require('dotenv').config();
+const dotenv = require('dotenv');
+
+const result = dotenv.config();
+
+if (result.error) {
+  throw result.error;
+}
+
+console.log(result.parsed);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
