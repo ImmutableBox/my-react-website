@@ -1,7 +1,6 @@
 import { Form, Text } from 'informed';
 import React from 'react';
 
-const { SPREADSHEET_ID, CLIENT_ID, API_KEY } = window.config;
 const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
 class ContactForm extends React.Component {
@@ -20,7 +19,7 @@ class ContactForm extends React.Component {
   onFormSubmit = (submissionValues) => {
     const params = {
       // The ID of the spreadsheet to update.
-      spreadsheetId: SPREADSHEET_ID,
+      spreadsheetId: window.config.SPREADSHEET_ID,
       range: 'Sheet1',
       // How the input data should be interpreted.
       valueInputOption: 'RAW',
@@ -36,13 +35,13 @@ class ContactForm extends React.Component {
       ],
       majorDimension: 'ROWS', // log each entry as a new row (vs column)
     };
-    console.log(valueRangeBody);
 
     const request = window.gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
     request.then((response) => {
-      // TODO: Insert desired response behaviour on submission
+      // eslint-disable-next-line
       console.log(response.result);
     }, (reason) => {
+      // eslint-disable-next-line
       console.error(`error: ${reason.result.error.message}`);
     });
   }
@@ -78,8 +77,8 @@ class ContactForm extends React.Component {
 
   initClient =() => {
     window.gapi.client.init({
-      apiKey: API_KEY,
-      clientId: CLIENT_ID,
+      apiKey: window.config.API_KEY,
+      clientId: window.config.CLIENT_ID,
       scope: SCOPE,
       discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
     }).then(() => {
