@@ -268,7 +268,8 @@ class SumoResults extends Component {
                         {hoshitori.length ? (
                           <tbody>
                             {hoshitori
-                              .filter((i) => i.shikona_eng.toLowerCase().includes(wrestler))
+                              .filter((i) => i.shikona_eng.toLowerCase()
+                                .includes(wrestler.toLowerCase()))
                               .map((s) => (
                                 <tr key={s.rikishi_id}>
                                   <td>
