@@ -6,8 +6,8 @@ import ReactLoading from 'react-loading';
 const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
 
 class SumoResults extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       torikumi: [],
       hoshitori: [],
@@ -35,7 +35,7 @@ class SumoResults extends Component {
           } = this.state;
           this.setState({
             hoshitori: hoshitori.concat(feed.BanzukeTable),
-            torikumi: torikumi.concat(feed.TorikumiData),
+            torikumi: Object.assign(feed.TorikumiData, torikumi),
             loading: false,
           });
         }).catch((err) => {
@@ -54,7 +54,7 @@ class SumoResults extends Component {
           } = this.state;
           this.setState({
             hoshitori: hoshitori.concat(feed.BanzukeTable),
-            torikumi: torikumi.concat(feed.TorikumiData),
+            torikumi: Object.assign(feed.TorikumiData, torikumi),
             loading: false,
           });
         }).catch((err) => {
@@ -189,46 +189,33 @@ class SumoResults extends Component {
                           {hoshitori
                             .filter((i) => i.shikona_eng.toLowerCase().includes(wrestler))
                             .map((s) => (
-                              <div key={s.rikishi_id} className="col-3">
-                                <div className="p-card--highlighted">
-                                  <p>
-                                    {s.shikona_eng}
-                                    <br />
-                                    {s.banzuke_name_eng}
-                                  </p>
-                                  <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                    <img
-                                      src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                      alt={s.kakuzuke_id}
-                                    />
-                                  </a>
+                              <div
+                                key={s.rikishi_id}
+                                className="p-card--highlighted col-3"
+                                style={torikumi[s.rikishi_id].rest_number > 0 ? { backgroundColor: '#c7162b', color: '#FFF' } : {}}
+                              >
+                                <p>
+                                  {s.shikona_eng}
                                   <br />
-                                  {
-                                torikumi[0][s.rikishi_id] !== undefined ? (
-                                  <p>
-                                    Wins:&nbsp;
-                                    {torikumi[0][s.rikishi_id].won_number}
-                                    <br />
-                                    Losses:&nbsp;
-                                    {torikumi[0][s.rikishi_id].lost_number}
-                                    <br />
-                                    Rest days:&nbsp;
-                                    {torikumi[0][s.rikishi_id].rest_number}
-                                  </p>
-                                ) : (
-                                  <p>
-                                    Wins:&nbsp;
-                                    {torikumi[1][s.rikishi_id].won_number}
-                                    <br />
-                                    Losses:&nbsp;
-                                    {torikumi[1][s.rikishi_id].lost_number}
-                                    <br />
-                                    Rest days:&nbsp;
-                                    {torikumi[1][s.rikishi_id].rest_number}
-                                  </p>
-                                )
-                              }
-                                </div>
+                                  {s.banzuke_name_eng}
+                                </p>
+                                <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                  <img
+                                    src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                    alt={s.kakuzuke_id}
+                                  />
+                                </a>
+                                <br />
+                                <p>
+                                  Wins:&nbsp;
+                                  {torikumi[s.rikishi_id].won_number}
+                                  <br />
+                                  Losses:&nbsp;
+                                  {torikumi[s.rikishi_id].lost_number}
+                                  <br />
+                                  Rest days:&nbsp;
+                                  {torikumi[s.rikishi_id].rest_number}
+                                </p>
                               </div>
                             ))}
                         </div>
@@ -271,7 +258,7 @@ class SumoResults extends Component {
                               .filter((i) => i.shikona_eng.toLowerCase()
                                 .includes(wrestler.toLowerCase()))
                               .map((s) => (
-                                <tr key={s.rikishi_id}>
+                                <tr key={s.rikishi_id} style={torikumi[s.rikishi_id].rest_number > 0 ? { backgroundColor: '#c7162b', color: '#FFF' } : {}}>
                                   <td>
                                     {s.shikona_eng}
                                   </td>
@@ -283,33 +270,15 @@ class SumoResults extends Component {
                                       />
                                     </a>
                                   </td>
-                                  {
-                                  torikumi[0][s.rikishi_id] !== undefined ? (
-                                    <>
-                                      <td>
-                                        {s.banzuke_name_eng}
-                                      </td>
-                                      <td>
-                                        {torikumi[0][s.rikishi_id].won_number}
-                                      </td>
-                                      <td>
-                                        {torikumi[0][s.rikishi_id].lost_number}
-                                      </td>
-                                    </>
-                                  ) : (
-                                    <>
-                                      <td>
-                                        {s.banzuke_name_eng}
-                                      </td>
-                                      <td>
-                                        {torikumi[1][s.rikishi_id].won_number}
-                                      </td>
-                                      <td>
-                                        {torikumi[1][s.rikishi_id].lost_number}
-                                      </td>
-                                    </>
-                                  )
-                                }
+                                  <td>
+                                    {s.banzuke_name_eng}
+                                  </td>
+                                  <td>
+                                    {torikumi[s.rikishi_id].won_number}
+                                  </td>
+                                  <td>
+                                    {torikumi[s.rikishi_id].lost_number}
+                                  </td>
                                 </tr>
                               ))}
                           </tbody>

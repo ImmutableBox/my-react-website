@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
 
 class SumoForm extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       hoshitori: [],
       loading: false,
@@ -29,9 +29,11 @@ class SumoForm extends Component {
         .then((feed) => {
           const {
             hoshitori,
+            torikumi,
           } = this.state;
           this.setState({
             hoshitori: hoshitori.concat(feed.BanzukeTable),
+            torikumi: Object.assign(feed.TorikumiData, torikumi),
             loading: false,
           });
         }).catch((err) => {
@@ -46,9 +48,11 @@ class SumoForm extends Component {
         .then((feed) => {
           const {
             hoshitori,
+            torikumi,
           } = this.state;
           this.setState({
             hoshitori: hoshitori.concat(feed.BanzukeTable),
+            torikumi: Object.assign(feed.TorikumiData, torikumi),
             loading: false,
           });
         }).catch((err) => {
@@ -74,6 +78,7 @@ class SumoForm extends Component {
     const {
       loading,
       hoshitori,
+      torikumi,
     } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
@@ -99,15 +104,7 @@ class SumoForm extends Component {
           </div>
           <div className="p-strip is-deep" style={{ background: '#FFF' }}>
             <div className="row">
-              <h2>
-                Sumo Form
-              </h2>
               <form onSubmit={this.handleSubmit}>
-                <label htmlFor="formName">
-                  Name
-                  <input type="text" id="formName" placeholder="Enter name here" />
-                </label>
-                <hr />
                 <div>
                   <h2>Yokozuna/Ozeki:</h2>
                   {loading ? (
@@ -126,8 +123,13 @@ class SumoForm extends Component {
                           {hoshitori
                             .filter((i) => i.banzuke_name_eng === 'Yokozuna'
                               || i.banzuke_name_eng === 'Ozeki')
+                            .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
                             .map((s) => (
-                              <label htmlFor="sumoform" key={s.rikishi_id} className="p-card--highlighted col-3">
+                              <label
+                                htmlFor="sumoform"
+                                key={s.rikishi_id}
+                                className="p-card col-3"
+                              >
                                 <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
                                   <img
                                     src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
@@ -218,7 +220,11 @@ class SumoForm extends Component {
                               && i.banzuke_name_eng.replace(/\D/g, '') <= 5)
                             .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
                             .map((s) => (
-                              <label htmlFor="sumoform" key={s.rikishi_id} className="p-card col-3">
+                              <label
+                                htmlFor="sumoform"
+                                key={s.rikishi_id}
+                                className={torikumi[s.rikishi_id].rest_day > 0 ? 'p-card--highlighted col-3' : 'p-card col-3'}
+                              >
                                 <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
                                   <img
                                     src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}

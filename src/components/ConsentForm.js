@@ -3,9 +3,9 @@ import React from 'react';
 
 const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
-class ContactForm extends React.Component {
-  constructor(props) {
-    super(props);
+class ConsentForm extends React.Component {
+  constructor() {
+    super();
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.handleAuthClick = this.handleAuthClick.bind(this);
     this.handleSignoutClick = this.handleSignoutClick.bind(this);
@@ -104,4 +104,4 @@ class ContactForm extends React.Component {
   }
 }
 
-export default ContactForm;
+export default ConsentForm;

@@ -13,8 +13,8 @@ const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
  */
 class BlogList extends Component {
   // Initialize the state
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       feeds: [],
       loading: false,

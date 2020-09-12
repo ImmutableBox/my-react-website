@@ -14,8 +14,8 @@ require('codemirror/mode/javascript/javascript');
  * This component contains projects I have worked on internally on the website.
  */
 class Internal extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       texts: ['R- Red', 'B - Blue', 'G - Green'],
       sliders: [255, 255, 255],
