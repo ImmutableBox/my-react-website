@@ -13,10 +13,16 @@ class SumoResults extends Component {
       hoshitori: [],
       loading: false,
       wrestler: '',
+      ranking: 'None',
+      wins: 'Not set',
+      losses: 'Not set',
+      showSittingOut: 'Yes',
       cardFormat: 'Table Format',
     };
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleFormatChange = this.handleFormatChange.bind(this);
+    this.handleRankingChange = this.handleRankingChange.bind(this);
+    this.handleShowSittingOutChange = this.handleShowSittingOutChange.bind(this);
   }
 
   // Fetch the list of first mount
@@ -69,6 +75,16 @@ class SumoResults extends Component {
 
   handleSearchChange(event) { this.setState({ wrestler: event.target.value }); }
 
+  handleRankingChange(event) { this.setState({ ranking: event.target.value }); }
+
+  handleShowSittingOutChange(event) {
+    if (event.target.value === 'Yes') {
+      this.setState({ showSittingOut: 'No' });
+    } else {
+      this.setState({ showSittingOut: 'Yes' });
+    }
+  }
+
   handleFormatChange(event) {
     if (event.target.value === 'Card Format') {
       this.setState({ cardFormat: 'Table Format' });
@@ -84,6 +100,10 @@ class SumoResults extends Component {
       hoshitori,
       wrestler,
       cardFormat,
+      wins,
+      losses,
+      ranking,
+      showSittingOut,
     } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
@@ -108,10 +128,7 @@ class SumoResults extends Component {
           </div>
           <div className="p-strip is-deep">
             <div className="row">
-              <h2>
-                Sumo results:
-              </h2>
-              <h3>Search for a wrestler</h3>
+              <h2>Search for a wrestler</h2>
               <table>
                 <tbody>
                   <tr>
@@ -121,56 +138,77 @@ class SumoResults extends Component {
                     </td>
                     <td>
                       <h4>Rank</h4>
-                      <select name="exampleSelect" id="exampleSelect">
+                      <select value={ranking} onChange={this.handleRankingChange}>
                         <option value="" disabled="disabled" defaultValue="">Select an option</option>
                         <option value="None">None</option>
                         <option value="Yokozuna">Yokozuna</option>
                         <option value="Ozeki">Ozeki</option>
                         <option value="Sekiwake">Sekiwake</option>
                         <option value="Komusubi">Komusubi</option>
-                        <option value="Maegashira1">Maegashira #1</option>
-                        <option value="Maegashira2">Maegashira #2</option>
-                        <option value="Maegashira3">Maegashira #3</option>
-                        <option value="Maegashira4">Maegashira #4</option>
-                        <option value="Maegashira5">Maegashira #5</option>
-                        <option value="Maegashira6">Maegashira #6</option>
-                        <option value="Maegashira7">Maegashira #7</option>
-                        <option value="Maegashira8">Maegashira #8</option>
-                        <option value="Maegashira9">Maegashira #9</option>
-                        <option value="Maegashira10">Maegashira #10</option>
-                        <option value="Maegashira11">Maegashira #11</option>
-                        <option value="Maegashira12">Maegashira #12</option>
-                        <option value="Maegashira13">Maegashira #13</option>
-                        <option value="Maegashira14">Maegashira #14</option>
-                        <option value="Maegashira15">Maegashira #15</option>
-                        <option value="Maegashira16">Maegashira #16</option>
-                        <option value="Maegashira17">Maegashira #17</option>
+                        <option value="Maegashira #1">Maegashira #1</option>
+                        <option value="Maegashira #2">Maegashira #2</option>
+                        <option value="Maegashira #3">Maegashira #3</option>
+                        <option value="Maegashira #4">Maegashira #4</option>
+                        <option value="Maegashira #5">Maegashira #5</option>
+                        <option value="Maegashira #6">Maegashira #6</option>
+                        <option value="Maegashira #7">Maegashira #7</option>
+                        <option value="Maegashira #8">Maegashira #8</option>
+                        <option value="Maegashira #9">Maegashira #9</option>
+                        <option value="Maegashira #10">Maegashira #10</option>
+                        <option value="Maegashira #11">Maegashira #11</option>
+                        <option value="Maegashira #12">Maegashira #12</option>
+                        <option value="Maegashira #13">Maegashira #13</option>
+                        <option value="Maegashira #14">Maegashira #14</option>
+                        <option value="Maegashira #15">Maegashira #15</option>
+                        <option value="Maegashira #16">Maegashira #16</option>
+                        <option value="Maegashira #17">Maegashira #17</option>
                       </select>
                     </td>
                     <td>
-                      <h4>Wins</h4>
+                      <h4>
+                        Wins:&nbsp;
+                        {wins}
+                      </h4>
                       <input
                         className="p-slider"
                         type="range"
                         min="0"
                         max="15"
                         step="1"
+                        onChange={(event) => this.setState({ wins: event.target.value })}
+                        value={wins}
                       />
                     </td>
                     <td>
-                      <h4>Losses</h4>
+                      <h4>
+                        Losses:&nbsp;
+                        {losses}
+                      </h4>
                       <input
                         className="p-slider"
                         type="range"
                         min="0"
                         max="15"
                         step="1"
+                        onChange={(event) => this.setState({ losses: event.target.value })}
+                        value={losses}
                       />
+                    </td>
+                    <td>
+                      <label htmlFor="form">
+                        <h4>Show sitting out?</h4>
+                        <input type="button" className="p-button--positive" value={showSittingOut} onClick={this.handleShowSittingOutChange} />
+                      </label>
+                    </td>
+                    <td>
+                      <label htmlFor="form">
+                        <h4>Format</h4>
+                        <input type="button" className="p-button--positive" value={cardFormat} onClick={this.handleFormatChange} />
+                      </label>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <input type="button" className="p-button--brand" value={cardFormat} onClick={this.handleFormatChange} />
               {cardFormat === 'Card Format' ? (
                 <div>
                   {loading ? (
@@ -187,7 +225,8 @@ class SumoResults extends Component {
                       {hoshitori.length ? (
                         <div className="row">
                           {hoshitori
-                            .filter((i) => i.shikona_eng.toLowerCase().includes(wrestler))
+                            .filter((i) => i.shikona_eng.toLowerCase()
+                              .includes(wrestler.toLowerCase()))
                             .map((s) => (
                               <div
                                 key={s.rikishi_id}
@@ -257,6 +296,30 @@ class SumoResults extends Component {
                             {hoshitori
                               .filter((i) => i.shikona_eng.toLowerCase()
                                 .includes(wrestler.toLowerCase()))
+                              .filter((i) => {
+                                if (ranking === 'None') {
+                                  return i;
+                                }
+                                return i.banzuke_name_eng === ranking;
+                              })
+                              .filter((i) => {
+                                if (showSittingOut === 'Yes') {
+                                  return i;
+                                }
+                                return torikumi[i.rikishi_id].rest_number === 0;
+                              })
+                              .filter((i) => {
+                                if (wins === 'Not set') {
+                                  return i;
+                                }
+                                return +torikumi[i.rikishi_id].won_number === +wins;
+                              })
+                              .filter((i) => {
+                                if (losses === 'Not set') {
+                                  return i;
+                                }
+                                return +torikumi[i.rikishi_id].lost_number === +losses;
+                              })
                               .map((s) => (
                                 <tr key={s.rikishi_id} style={torikumi[s.rikishi_id].rest_number > 0 ? { backgroundColor: '#c7162b', color: '#FFF' } : {}}>
                                   <td>

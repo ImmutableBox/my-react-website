@@ -44,7 +44,7 @@ class NavBar extends Component {
                 <Link to="/sumoresults">Sumo Results</Link>
               </li>
               <li className="p-navigation__link" role="menuitem">
-                <Link to="/contactform">Contact Form</Link>
+                <Link to="/consentform">Consent Form</Link>
               </li>
               <li className="p-navigation__link" role="menuitem">
                 <Link to="/about">Contact Information</Link>

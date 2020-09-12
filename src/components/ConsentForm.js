@@ -89,16 +89,35 @@ class ConsentForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <Form onSubmit={this.onFormSubmit}>
-          First name:
-          <Text field="name" />
-          <button type="submit">
-            Submit
-          </button>
-        </Form>
-        <button type="button" id="authorize_button" onClick={this.handleAuthClick}>Authorize</button>
-        <button type="button" id="signout_button" onClick={this.handleSignoutClick}>Sign Out</button>
+      <div className="wrapper u-no-margin--top" style={{ background: '#dcdcdc' }}>
+        <div className="main-content inner-wrapper">
+          <div className="p-strip is-deep">
+            <div className="row">
+              <h2>
+                Consent Form
+              </h2>
+              <hr />
+              <p className="p-heading--4">
+                My sumo forms uses Google API Spreadsheet to keep track of the scores
+                You will need to login to your google account in order to fill in the form
+              </p>
+              <p>
+                Click on the icon for the source!
+              </p>
+              <div>
+                <Form onSubmit={this.onFormSubmit}>
+                  Login:
+                  <Text field="name" />
+                  <button type="submit">
+                    Submit
+                  </button>
+                </Form>
+                <button type="button" id="authorize_button" onClick={this.handleAuthClick}>Authorize</button>
+                <button type="button" id="signout_button" onClick={this.handleSignoutClick}>Sign Out</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

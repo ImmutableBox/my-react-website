@@ -173,6 +173,7 @@ class SumoForm extends Component {
                           {hoshitori
                             .filter((i) => i.banzuke_name_eng === 'Sekiwake'
                               || i.banzuke_name_eng === 'Komusubi')
+                            .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
                             .map((s) => (
                               <label htmlFor="sumoform" key={s.rikishi_id} className="p-card col-3">
                                 <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
@@ -218,6 +219,7 @@ class SumoForm extends Component {
                           {hoshitori
                             .filter((i) => i.banzuke_name_eng.replace(/\D/g, '') >= 1
                               && i.banzuke_name_eng.replace(/\D/g, '') <= 5)
+                            .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
                             .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
                             .map((s) => (
                               <label
@@ -268,6 +270,7 @@ class SumoForm extends Component {
                           {hoshitori
                             .filter((i) => i.banzuke_name_eng.replace(/\D/g, '') >= 6
                                 && i.banzuke_name_eng.replace(/\D/g, '') <= 10)
+                            .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
                             .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
                             .map((s) => (
                               <label htmlFor="sumoform" key={s.rikishi_id} className="p-card col-3">
@@ -313,6 +316,7 @@ class SumoForm extends Component {
                         <div className="row">
                           {hoshitori
                             .filter((i) => i.banzuke_name_eng.replace(/\D/g, '') >= 11)
+                            .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
                             .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
                             .map((s) => (
                               <label htmlFor="sumoform" key={s.rikishi_id} className="p-card col-3">
