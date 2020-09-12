@@ -227,6 +227,32 @@ class SumoResults extends Component {
                           {hoshitori
                             .filter((i) => i.shikona_eng.toLowerCase()
                               .includes(wrestler.toLowerCase()))
+                            .filter((i) => i.shikona_eng.toLowerCase()
+                              .includes(wrestler.toLowerCase()))
+                            .filter((i) => {
+                              if (ranking === 'None') {
+                                return i;
+                              }
+                              return i.banzuke_name_eng === ranking;
+                            })
+                            .filter((i) => {
+                              if (showSittingOut === 'Yes') {
+                                return i;
+                              }
+                              return torikumi[i.rikishi_id].rest_number === 0;
+                            })
+                            .filter((i) => {
+                              if (wins === 'Not set') {
+                                return i;
+                              }
+                              return +torikumi[i.rikishi_id].won_number === +wins;
+                            })
+                            .filter((i) => {
+                              if (losses === 'Not set') {
+                                return i;
+                              }
+                              return +torikumi[i.rikishi_id].lost_number === +losses;
+                            })
                             .map((s) => (
                               <div
                                 key={s.rikishi_id}
