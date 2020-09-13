@@ -8,8 +8,8 @@ Hosted on Netlify: https://paul-pluu3.netlify.app/
 1. `npm install`  
 1. `npm start`
 
-### Need to manually create a config.js and place it in the public folder
-`config.js` - Contains google sheet API keys
+### Need to manually create a .env
+- Google sheet API keys
 
 ---
 
