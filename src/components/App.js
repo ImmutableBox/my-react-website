@@ -11,7 +11,6 @@ import Blogs from './blog/Blogs';
 import NotFound from './NotFound';
 import Showcase from './Showcase';
 import ScrollToTop from './ScrollToTop';
-import SumoForm from './sumo/SumoForm';
 import SumoResults from './sumo/SumoResults';
 import ConsentForm from './sumo/ConsentForm';
 
@@ -79,9 +78,8 @@ class App extends Component {
           />
           <Route path="/showcase" component={Showcase} />
           <Route path="/home" component={Home} />
-          <Route path="/sumoform" component={SumoForm} />
           <Route path="/sumoresults" component={SumoResults} />
-          <Route path="/consentform" component={ConsentForm} />
+          <Route path="/sumoform" component={ConsentForm} />
           <Route exact path="/" component={Home} />
           <Route component={NotFound} />
         </Switch>

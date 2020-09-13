@@ -1,127 +1,79 @@
+/* global gapi */
 import React from 'react';
+import ReactLoading from 'react-loading';
+import LoginManager from './LoginManager';
 
-const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+const config = {
+  apiKey: process.env.API_KEY,
+  clientId: process.env.CLIENT_ID,
+  scope: 'https://www.googleapis.com/auth/spreadsheets',
+  discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+};
 
 class ConsentForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: '',
+      gapiLoaded: false,
     };
-    this.onFormSubmit = this.onFormSubmit.bind(this);
-    this.handleAuthClick = this.handleAuthClick.bind(this);
-    this.handleSignoutClick = this.handleSignoutClick.bind(this);
   }
 
-  componentDidMount() { // called automatically by React
-    this.handleClientLoad();
-  }
+  componentDidMount() {
+    const script = document.createElement('script');
+    script.src = 'https://apis.google.com/js/client.js';
 
-  // eslint-disable-next-line
-  onFormSubmit = (event) => {
-    event.preventDefault();
-    const { name } = this.state;
-    const params = {
-      // The ID of the spreadsheet to update.
-      spreadsheetId: process.env.SPREADSHEET_ID,
-      range: 'Contestants',
-      // How the input data should be interpreted.
-      valueInputOption: 'RAW',
-      // How the input data should be inserted.
-      insertDataOption: 'INSERT_ROWS', // Choose OVERWRITE OR INSERT_ROWS
-    };
+    script.onload = () => {
+      const initClient = () => {
+        gapi.client.init(config).then(() => {
+          const auth2 = gapi.auth2.getAuthInstance();
+          auth2.isSignedIn.listen(this.handleSigninStatusChange);
 
-    const valueRangeBody = {
-      values: [
-        [
-          name,
-          name,
-        ],
-      ],
-      majorDimension: 'ROWS', // log each entry as a new row (vs column)
+          const currentUser = auth2.currentUser.get();
+          const authResponse = currentUser.getAuthResponse(true);
+          if (authResponse && currentUser) {
+            // save access token
+          }
+          this.setState({
+            gapiLoaded: true,
+          });
+        });
+      };
+      gapi.load('client:auth2', initClient);
     };
 
-    const request = window.gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
-    request.then((response) => {
-      // eslint-disable-next-line
-      console.log(response.result);
-    }, (reason) => {
-      // eslint-disable-next-line
-      console.error(`error: ${reason.result.error.message}`);
-    });
+    document.body.appendChild(script);
   }
 
-  handleClientLoad =() => { // initialize the Google API
-    window.gapi.load('client:auth2', this.initClient);
-  }
-
-  // eslint-disable-next-line
-  updateSigninStatus(isSignedIn) {
+  handleSigninStatusChange = (isSignedIn) => {
+    const auth2 = gapi.auth2.getAuthInstance();
     if (isSignedIn) {
-      const authorizeButton = document.getElementById('authorize_button');
-      const signoutButton = document.getElementById('signout_button');
-      authorizeButton.style.display = 'none';
-      signoutButton.style.display = 'block';
-    } else {
-      const authorizeButton = document.getElementById('authorize_button');
-      const signoutButton = document.getElementById('signout_button');
-      authorizeButton.style.display = 'block';
-      signoutButton.style.display = 'none';
+      const currentUser = auth2.currentUser.get();
+      const authResponse = currentUser.getAuthResponse(true);
+      if (authResponse) {
+        // save access token
+      }
     }
-  }
-
-  // eslint-disable-next-line
-  handleAuthClick = (event) => {
-    window.gapi.auth2.getAuthInstance().signIn();
-  }
-
-  // eslint-disable-next-line
-  handleSignoutClick = (event) => {
-    window.gapi.auth2.getAuthInstance().signOut();
-  }
-
-  initClient =() => {
-    window.gapi.client.init({
-      apiKey: process.env.API_KEY,
-      clientId: process.env.CLIENT_ID,
-      scope: SCOPE,
-      discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-    }).then(() => {
-      window.gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSignInStatus);
-      // this.updateSignInStatus(window.gapi.auth2.getAuthInstance().isSignedIn.get());
-    });
-  }
+  };
 
   render() {
-    const { name } = this.state;
-    return (
+    const {
+      gapiLoaded,
+    } = this.state;
+
+    return gapiLoaded ? (
+      <LoginManager />
+    ) : (
       <div className="wrapper u-no-margin--top" style={{ background: '#dcdcdc' }}>
         <div className="main-content inner-wrapper">
           <div className="p-strip is-deep">
             <div className="row">
-              <h2>
-                Consent Form
-              </h2>
-              <hr />
-              <p className="p-heading--4">
-                My sumo form uses Google API Spreadsheet to keep track of the scores.
-                You will need to login to your google account in order to fill in the form.
-              </p>
-              <div>
-                <form onSubmit={this.onFormSubmit}>
-                  First name:
-                  <input
-                    type="text"
-                    field="name"
-                    value={name}
-                    onChange={(e) => { this.setState({ name: e.target.value }); }}
-                  />
-                  <button type="submit">
-                    Submit
-                  </button>
-                </form>
-                <button type="button" className="p-button--positive" id="authorize_button" onClick={this.handleAuthClick}>Login to Google</button>
-                <button type="button" className="p-button--negative" id="signout_button" onClick={this.handleSignoutClick}>Sign Out</button>
+              <div className="center">
+                <ReactLoading
+                  type="spin"
+                  color="#000"
+                  height="20%"
+                  width="20%"
+                />
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+/* global gapi */
 import React, { Component } from 'react';
 import ReactLoading from 'react-loading';
 import { Link } from 'react-router-dom';
@@ -12,9 +13,19 @@ class SumoForm extends Component {
     this.state = {
       hoshitori: [],
       loading: false,
+      yokozunaOzeki: '',
+      yokozunaOzekiWins: 0,
+      sekiwakeKomusubi: '',
+      sekiwakeKomusubiWins: 0,
+      highMaegashria: '',
+      highMaegashriaWins: 0,
+      midMaegashria: '',
+      midMaegashriaWins: 0,
+      lowMaegashria: '',
+      lowMaegashriaWins: 0,
     };
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
 
   // Fetch the list of first mount
@@ -65,13 +76,76 @@ class SumoForm extends Component {
     });
   }
 
-  handleChange(event) { this.setState({ value: event.target.value }); }
+  handleLogoutClick = () => {
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(() => {
+      // eslint-disable-next-line
+      console.log('User signed out.');
+    });
+  };
 
   handleSubmit(event) {
-    const { value } = this.state;
-    // alert(`Your favorite flavor is: ${value}`);
-    if (value === 'lime');
     event.preventDefault();
+    const {
+      yokozunaOzeki,
+      yokozunaOzekiWins,
+      sekiwakeKomusubi,
+      sekiwakeKomusubiWins,
+      highMaegashria,
+      highMaegashriaWins,
+      midMaegashria,
+      midMaegashriaWins,
+      lowMaegashria,
+      lowMaegashriaWins,
+    } = this.state;
+
+    const {
+      profile,
+    } = this.props;
+
+    const params = {
+      // The ID of the spreadsheet to update.
+      spreadsheetId: process.env.SPREADSHEET_ID,
+      range: 'Contestants',
+      // How the input data should be interpreted.
+      valueInputOption: 'RAW',
+      // How the input data should be inserted.
+      insertDataOption: 'INSERT_ROWS', // Choose OVERWRITE OR INSERT_ROWS
+    };
+
+    const valueRangeBody = {
+      values: [[
+        profile.getName(),
+        yokozunaOzeki,
+        sekiwakeKomusubi,
+        highMaegashria,
+        midMaegashria,
+        lowMaegashria,
+        yokozunaOzekiWins,
+        sekiwakeKomusubiWins,
+        highMaegashriaWins,
+        midMaegashriaWins,
+        lowMaegashriaWins,
+      ]],
+      majorDimension: 'ROWS', // log each entry as a new row (vs column)
+    };
+
+    const request = gapi.client.sheets.spreadsheets.values.append(
+      params,
+      valueRangeBody,
+    );
+    request.then(
+      (response) => {
+        // eslint-disable-next-line
+        console.log(response.result);
+        // Show success modal here
+      },
+      (reason) => {
+        // eslint-disable-next-line
+        console.error(`error: ${reason.result.error.message}`);
+        // Show fail modal here
+      },
+    );
   }
 
   render() {
@@ -80,6 +154,11 @@ class SumoForm extends Component {
       hoshitori,
       torikumi,
     } = this.state;
+
+    const {
+      profile,
+    } = this.props;
+
     return (
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
@@ -100,6 +179,14 @@ class SumoForm extends Component {
                 I will count the points and send a message at the
                 end of the sumo tournament.
               </p>
+              <h3>
+                Hello&nbsp;
+                {profile.getName()}
+                .&nbsp;You are logged in with your google account!
+              </h3>
+              <button type="button" className="p-button--negative" onClick={this.handleLogoutClick}>
+                Sign Out
+              </button>
             </div>
           </div>
           <div className="p-strip is-deep" style={{ background: '#FFF' }}>
@@ -142,8 +229,27 @@ class SumoForm extends Component {
                                   <br />
                                   Rank:&nbsp;
                                   {s.banzuke_name_eng}
+                                  <br />
+                                  Wins:&nbsp;
+                                  {torikumi[s.rikishi_id].won_number}
+                                  <br />
+                                  Losses:&nbsp;
+                                  {torikumi[s.rikishi_id].lost_number}
                                 </p>
-                                <input type="radio" name="RadioOptions1" id="Radio1" value="option1" />
+                                <input
+                                  id={s.rikishi_id}
+                                  name="firstWrestler"
+                                  type="radio"
+                                  value={s.shikona_eng}
+                                  onChange={(e) => {
+                                    this.setState(
+                                      {
+                                        yokozunaOzeki: e.target.value,
+                                        yokozunaOzekiWins: torikumi[s.rikishi_id].won_number,
+                                      },
+                                    );
+                                  }}
+                                />
                                 <br />
                               </label>
                             ))}
@@ -188,8 +294,27 @@ class SumoForm extends Component {
                                   <br />
                                   Rank:&nbsp;
                                   {s.banzuke_name_eng}
+                                  <br />
+                                  Wins:&nbsp;
+                                  {torikumi[s.rikishi_id].won_number}
+                                  <br />
+                                  Losses:&nbsp;
+                                  {torikumi[s.rikishi_id].lost_number}
                                 </p>
-                                <input type="radio" name="RadioOptions2" id="Radio2" value="option2" />
+                                <input
+                                  id={s.rikishi_id}
+                                  name="secondWrestler"
+                                  type="radio"
+                                  value={s.shikona_eng}
+                                  onChange={(e) => {
+                                    this.setState(
+                                      {
+                                        sekiwakeKomusubi: e.target.value,
+                                        sekiwakeKomusubiWins: torikumi[s.rikishi_id].won_number,
+                                      },
+                                    );
+                                  }}
+                                />
                                 <br />
                               </label>
                             ))}
@@ -239,8 +364,28 @@ class SumoForm extends Component {
                                   <br />
                                   Rank:&nbsp;
                                   {s.banzuke_name_eng}
+                                  <br />
+                                  Wins:&nbsp;
+                                  {torikumi[s.rikishi_id].won_number}
+                                  <br />
+                                  Losses:&nbsp;
+                                  {torikumi[s.rikishi_id].lost_number}
                                 </p>
-                                <input type="radio" name="RadioOptions3" id="Radio3" value="option3" />
+                                <input
+
+                                  id={s.rikishi_id}
+                                  name="thirdWrestler"
+                                  type="radio"
+                                  value={s.shikona_eng}
+                                  onChange={(e) => {
+                                    this.setState(
+                                      {
+                                        highMaegashria: e.target.value,
+                                        highMaegashriaWins: torikumi[s.rikishi_id].won_number,
+                                      },
+                                    );
+                                  }}
+                                />
                                 <br />
                               </label>
                             ))}
@@ -286,8 +431,28 @@ class SumoForm extends Component {
                                   <br />
                                   Rank:&nbsp;
                                   {s.banzuke_name_eng}
+                                  <br />
+                                  Wins:&nbsp;
+                                  {torikumi[s.rikishi_id].won_number}
+                                  <br />
+                                  Losses:&nbsp;
+                                  {torikumi[s.rikishi_id].lost_number}
                                 </p>
-                                <input type="radio" name="RadioOptions4" id="Radio4" value="option4" />
+                                <input
+
+                                  id={s.rikishi_id}
+                                  name="fourthWrestler"
+                                  type="radio"
+                                  value={s.shikona_eng}
+                                  onChange={(e) => {
+                                    this.setState(
+                                      {
+                                        midMaegashria: e.target.value,
+                                        midMaegashriaWins: torikumi[s.rikishi_id].won_number,
+                                      },
+                                    );
+                                  }}
+                                />
                                 <br />
                               </label>
                             ))}
@@ -332,8 +497,28 @@ class SumoForm extends Component {
                                   <br />
                                   Rank:&nbsp;
                                   {s.banzuke_name_eng}
+                                  <br />
+                                  Wins:&nbsp;
+                                  {torikumi[s.rikishi_id].won_number}
+                                  <br />
+                                  Losses:&nbsp;
+                                  {torikumi[s.rikishi_id].lost_number}
                                 </p>
-                                <input type="radio" name="RadioOptions5" id="Radio5" value="option5" />
+                                <input
+
+                                  id={s.rikishi_id}
+                                  name="fifthWrestler"
+                                  type="radio"
+                                  value={s.shikona_eng}
+                                  onChange={(e) => {
+                                    this.setState(
+                                      {
+                                        lowMaegashria: e.target.value,
+                                        lowMaegashriaWins: torikumi[s.rikishi_id].won_number,
+                                      },
+                                    );
+                                  }}
+                                />
                                 <br />
                               </label>
                             ))}
@@ -353,7 +538,7 @@ class SumoForm extends Component {
           </div>
           <div className="p-strip is-deep" style={{ background: '#51ab6e', color: '#FFF' }}>
             <div className="row">
-              <h2>See sumo results</h2>
+              <h2>Sumo results</h2>
               <Link className="p-button--brand" to="/sumoresults">Sumo results</Link>
             </div>
           </div>
