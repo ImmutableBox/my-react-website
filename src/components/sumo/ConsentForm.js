@@ -20,9 +20,12 @@ class ConsentForm extends React.Component {
     doc.useApiKey(process.env.API_KEY);
 
     await doc.loadInfo(); // loads document properties and worksheets
+    // eslint-disable-next-line
     console.log(doc.title);
     const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id]
+    // eslint-disable-next-line
     console.log(sheet.title);
+    // eslint-disable-next-line
     console.log(sheet.rowCount);
   };
 
