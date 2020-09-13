@@ -8,7 +8,7 @@ import '../styles/style.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import GameSlider from './GameSlider';
-import BlogList from './BlogList';
+import BlogList from './blog/BlogList';
 import News from './News';
 
 /**

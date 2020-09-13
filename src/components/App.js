@@ -7,13 +7,13 @@ import Home from './Home';
 import Footer from './Footer';
 import Internal from './Internal';
 import External from './External';
-import Blogs from './Blogs';
+import Blogs from './blog/Blogs';
 import NotFound from './NotFound';
 import Showcase from './Showcase';
 import ScrollToTop from './ScrollToTop';
-import SumoForm from './SumoForm';
-import SumoResults from './SumoResults';
-import ConsentForm from './ConsentForm';
+import SumoForm from './sumo/SumoForm';
+import SumoResults from './sumo/SumoResults';
+import ConsentForm from './sumo/ConsentForm';
 
 /**
  * Main starting app component
