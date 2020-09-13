@@ -23,9 +23,13 @@ class SumoForm extends Component {
       midMaegashriaWins: 0,
       lowMaegashria: '',
       lowMaegashriaWins: 0,
+      modalTitle: 'Success!',
+      modalText: 'Form has been submitted! Thank you so much!',
+      modalVisible: 'none',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   // Fetch the list of first mount
@@ -84,6 +88,15 @@ class SumoForm extends Component {
     });
   };
 
+  toggleModal() {
+    const { modalVisible } = this.state;
+    if (modalVisible === 'none') {
+      this.setState({ modalVisible: 'flex' });
+    } else {
+      this.setState({ modalVisible: 'none' });
+    }
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const {
@@ -104,13 +117,10 @@ class SumoForm extends Component {
     } = this.props;
 
     const params = {
-      // The ID of the spreadsheet to update.
       spreadsheetId: process.env.SPREADSHEET_ID,
       range: 'Contestants',
-      // How the input data should be interpreted.
       valueInputOption: 'RAW',
-      // How the input data should be inserted.
-      insertDataOption: 'INSERT_ROWS', // Choose OVERWRITE OR INSERT_ROWS
+      insertDataOption: 'INSERT_ROWS',
     };
 
     const valueRangeBody = {
@@ -127,25 +137,66 @@ class SumoForm extends Component {
         midMaegashriaWins,
         lowMaegashriaWins,
       ]],
-      majorDimension: 'ROWS', // log each entry as a new row (vs column)
+      majorDimension: 'ROWS',
     };
 
-    const request = gapi.client.sheets.spreadsheets.values.append(
-      params,
-      valueRangeBody,
-    );
-    request.then(
-      (response) => {
+    if (yokozunaOzeki === '') {
+      this.setState({
+        modalTitle: 'Required field!',
+        modalText: 'You must pick a Yokozuna or Ozeki!',
+      });
+      this.toggleModal();
+    } else if (sekiwakeKomusubi === '') {
+      this.setState({
+        modalTitle: 'Required field!',
+        modalText: 'You must pick a Sekiwake or Komusubi!',
+      });
+      this.toggleModal();
+    } else if (highMaegashria === '') {
+      this.setState({
+        modalTitle: 'Required field!',
+        modalText: 'You must pick a Upper Maegashria!',
+      });
+      this.toggleModal();
+    } else if (midMaegashria === '') {
+      this.setState({
+        modalTitle: 'Required field!',
+        modalText: 'You must pick a Middle Maegashria!',
+      });
+      this.toggleModal();
+    } else if (lowMaegashria === '') {
+      this.setState({
+        modalTitle: 'Required field!',
+        modalText: 'You must pick a Lower Maegashria!',
+      });
+      this.toggleModal();
+    } else {
+      const request = gapi.client.sheets.spreadsheets.values.append(
+        params,
+        valueRangeBody,
+      );
+      request.then(
         // eslint-disable-next-line
-        console.log(response.result);
-        // Show success modal here
-      },
-      (reason) => {
-        // eslint-disable-next-line
-        console.error(`error: ${reason.result.error.message}`);
-        // Show fail modal here
-      },
-    );
+        (response) => {
+          // eslint-disable-next-line
+          // console.log(response.result);
+          this.setState({
+            modalTitle: 'Success!',
+            modalText: 'Form has been submitted! Thank you so much!',
+          });
+          this.toggleModal();
+        },
+        (reason) => {
+          // eslint-disable-next-line
+          console.error(`error: ${reason.result.error.message}`);
+          this.setState({
+            modalTitle: 'Error!',
+            modalText: 'Oh no! A error has occurred. Please report to Paul :(',
+          });
+          this.toggleModal();
+        },
+      );
+    }
   }
 
   render() {
@@ -153,6 +204,9 @@ class SumoForm extends Component {
       loading,
       hoshitori,
       torikumi,
+      modalVisible,
+      modalTitle,
+      modalText,
     } = this.state;
 
     const {
@@ -163,6 +217,17 @@ class SumoForm extends Component {
       <div className="wrapper u-no-margin--top">
         <div className="main-content inner-wrapper">
           <div className="p-strip is-deep" style={{ background: '#51ab6e', color: '#FFF' }}>
+            <div className="p-modal" id="modal" style={{ display: modalVisible }}>
+              <div className="p-modal__dialog" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description">
+                <header className="p-modal__header">
+                  <h2 className="p-modal__title" id="modal-title">{modalTitle}</h2>
+                  <button type="button" className="p-modal__close" onClick={this.toggleModal}>Close</button>
+                </header>
+                <p id="modal-description">
+                  {modalText}
+                </p>
+              </div>
+            </div>
             <div className="row">
               <h2>
                 Paul&apos;s fantasy sumo/Sumo Form
@@ -179,8 +244,9 @@ class SumoForm extends Component {
                 I will count the points and send a message at the
                 end of the sumo tournament.
               </p>
+              <hr />
               <h3>
-                Hello&nbsp;
+                Hi&nbsp;
                 {profile.getName()}
                 .&nbsp;You are logged in with your google account!
               </h3>
@@ -538,7 +604,7 @@ class SumoForm extends Component {
           </div>
           <div className="p-strip is-deep" style={{ background: '#51ab6e', color: '#FFF' }}>
             <div className="row">
-              <h2>Sumo results</h2>
+              <h2>Click button to see Sumo results!</h2>
               <Link className="p-button--brand" to="/sumoresults">Sumo results</Link>
             </div>
           </div>
