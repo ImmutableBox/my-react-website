@@ -1,79 +1,42 @@
-/* global gapi */
 import React from 'react';
-import ReactLoading from 'react-loading';
-import LoginManager from './LoginManager';
 
-const config = {
-  apiKey: process.env.API_KEY,
-  clientId: process.env.CLIENT_ID,
-  scope: 'https://www.googleapis.com/auth/spreadsheets',
-  discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-};
+const { GoogleSpreadsheet } = require('google-spreadsheet');
+
+const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID);
 
 class ConsentForm extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      gapiLoaded: false,
-    };
-  }
-
+  // Fetch the list of first mount
   componentDidMount() {
-    const script = document.createElement('script');
-    script.src = 'https://apis.google.com/js/client.js';
-
-    script.onload = () => {
-      const initClient = () => {
-        gapi.client.init(config).then(() => {
-          const auth2 = gapi.auth2.getAuthInstance();
-          auth2.isSignedIn.listen(this.handleSigninStatusChange);
-
-          const currentUser = auth2.currentUser.get();
-          const authResponse = currentUser.getAuthResponse(true);
-          if (authResponse && currentUser) {
-            // save access token
-          }
-          this.setState({
-            gapiLoaded: true,
-          });
-        });
-      };
-      gapi.load('client:auth2', initClient);
-    };
-
-    document.body.appendChild(script);
+    this.getSpreadSheet();
   }
 
-  handleSigninStatusChange = (isSignedIn) => {
-    const auth2 = gapi.auth2.getAuthInstance();
-    if (isSignedIn) {
-      const currentUser = auth2.currentUser.get();
-      const authResponse = currentUser.getAuthResponse(true);
-      if (authResponse) {
-        // save access token
-      }
-    }
+  getSpreadSheet = async () => {
+    // use service account creds
+    await doc.useServiceAccountAuth({
+      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    });
+
+    doc.useApiKey(process.env.API_KEY);
+
+    await doc.loadInfo(); // loads document properties and worksheets
+    console.log(doc.title);
+    const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id]
+    console.log(sheet.title);
+    console.log(sheet.rowCount);
   };
 
   render() {
-    const {
-      gapiLoaded,
-    } = this.state;
-
-    return gapiLoaded ? (
-      <LoginManager />
-    ) : (
-      <div className="wrapper u-no-margin--top" style={{ background: '#dcdcdc' }}>
+    return (
+      <div
+        className="wrapper u-no-margin--top"
+        style={{ background: '#dcdcdc' }}
+      >
         <div className="main-content inner-wrapper">
           <div className="p-strip is-deep">
             <div className="row">
               <div className="center">
-                <ReactLoading
-                  type="spin"
-                  color="#000"
-                  height="20%"
-                  width="20%"
-                />
+                <p>Testing</p>
               </div>
             </div>
           </div>

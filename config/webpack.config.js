@@ -539,6 +539,8 @@ module.exports = function (webpackEnv) {
           'API_KEY': JSON.stringify(process.env.API_KEY),
           'CLIENT_ID': JSON.stringify(process.env.CLIENT_ID),
           'SPREADSHEET_ID': JSON.stringify(process.env.SPREADSHEET_ID),
+          'GOOGLE_SERVICE_ACCOUNT_EMAIL': JSON.stringify(process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL),
+          'GOOGLE_PRIVATE_KEY': JSON.stringify(process.env.GOOGLE_PRIVATE_KEY),
         }
       }),
       // Inlines the webpack runtime script. This script is too small to warrant
