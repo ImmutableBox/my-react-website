@@ -1,4 +1,3 @@
-/* global gapi */
 import React, { Component } from 'react';
 import ReactLoading from 'react-loading';
 import { Link } from 'react-router-dom';
@@ -6,6 +5,9 @@ import { Link } from 'react-router-dom';
 // Note: some RSS feeds can't be loaded in the browser due to CORS security.
 // To get around this, you can use a proxy.
 const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
+const { GoogleSpreadsheet } = require('google-spreadsheet');
+
+const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID);
 
 class SumoForm extends Component {
   constructor() {
@@ -13,28 +15,24 @@ class SumoForm extends Component {
     this.state = {
       hoshitori: [],
       loading: false,
+      name: '',
       yokozunaOzeki: '',
-      yokozunaOzekiWins: 0,
       sekiwakeKomusubi: '',
-      sekiwakeKomusubiWins: 0,
       highMaegashria: '',
-      highMaegashriaWins: 0,
       midMaegashria: '',
-      midMaegashriaWins: 0,
       lowMaegashria: '',
-      lowMaegashriaWins: 0,
       modalTitle: 'Success!',
       modalText: 'Form has been submitted! Thank you so much!',
       modalVisible: 'none',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleLogoutClick = this.handleLogoutClick.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
   }
 
   // Fetch the list of first mount
   componentDidMount() {
     this.getFeed();
+    this.getSpreadSheet();
   }
 
   getFeed = () => {
@@ -80,67 +78,42 @@ class SumoForm extends Component {
     });
   }
 
-  handleLogoutClick = () => {
-    const auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(() => {
-      // eslint-disable-next-line
-      console.log('User signed out.');
+  getSpreadSheet = async () => {
+    // use service account creds
+    await doc.useServiceAccountAuth({
+      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
     });
+
+    await doc.loadInfo()
+      .then(() => {
+        this.setState({
+          loading: false,
+        });
+      }, () => {
+        this.setState({
+          loading: false,
+        });
+      });
   };
 
-  toggleModal() {
-    const { modalVisible } = this.state;
-    if (modalVisible === 'none') {
-      this.setState({ modalVisible: 'flex' });
-    } else {
-      this.setState({ modalVisible: 'none' });
-    }
-  }
-
-  handleSubmit(event) {
+  handleSubmit = async (event) => {
     event.preventDefault();
     const {
+      name,
       yokozunaOzeki,
-      yokozunaOzekiWins,
       sekiwakeKomusubi,
-      sekiwakeKomusubiWins,
       highMaegashria,
-      highMaegashriaWins,
       midMaegashria,
-      midMaegashriaWins,
       lowMaegashria,
-      lowMaegashriaWins,
     } = this.state;
-
-    const {
-      profile,
-    } = this.props;
-
-    const params = {
-      spreadsheetId: process.env.SPREADSHEET_ID,
-      range: 'Contestants',
-      valueInputOption: 'RAW',
-      insertDataOption: 'INSERT_ROWS',
-    };
-
-    const valueRangeBody = {
-      values: [[
-        profile.getName(),
-        yokozunaOzeki,
-        sekiwakeKomusubi,
-        highMaegashria,
-        midMaegashria,
-        lowMaegashria,
-        yokozunaOzekiWins,
-        sekiwakeKomusubiWins,
-        highMaegashriaWins,
-        midMaegashriaWins,
-        lowMaegashriaWins,
-      ]],
-      majorDimension: 'ROWS',
-    };
-
-    if (yokozunaOzeki === '') {
+    if (name === '') {
+      this.setState({
+        modalTitle: 'Required field!',
+        modalText: 'You must enter your name!',
+      });
+      this.toggleModal();
+    } else if (yokozunaOzeki === '') {
       this.setState({
         modalTitle: 'Required field!',
         modalText: 'You must pick a Yokozuna or Ozeki!',
@@ -171,31 +144,44 @@ class SumoForm extends Component {
       });
       this.toggleModal();
     } else {
-      const request = gapi.client.sheets.spreadsheets.values.append(
-        params,
-        valueRangeBody,
-      );
-      request.then(
-        // eslint-disable-next-line
-        (response) => {
-          // eslint-disable-next-line
-          // console.log(response.result);
+      const sheet = doc.sheetsByIndex[0];
+
+      await sheet.loadHeaderRow();
+      await sheet.addRow(
+        {
+          Name: name,
+          YokozunaOzeki: yokozunaOzeki,
+          SekiwakeKomusubi: sekiwakeKomusubi,
+          UpperMaegashria: highMaegashria,
+          MiddleMaegashria: midMaegashria,
+          LowerMaegashria: lowMaegashria,
+        },
+      )
+      // eslint-disable-next-line
+      .then((response) => {
           this.setState({
             modalTitle: 'Success!',
             modalText: 'Form has been submitted! Thank you so much!',
           });
           this.toggleModal();
-        },
-        (reason) => {
+        }, (reason) => {
           // eslint-disable-next-line
-          console.error(`error: ${reason.result.error.message}`);
+        console.log(reason);
           this.setState({
             modalTitle: 'Error!',
             modalText: 'Oh no! A error has occurred. Please report to Paul :(',
           });
           this.toggleModal();
-        },
-      );
+        });
+    }
+  }
+
+  toggleModal() {
+    const { modalVisible } = this.state;
+    if (modalVisible === 'none') {
+      this.setState({ modalVisible: 'flex' });
+    } else {
+      this.setState({ modalVisible: 'none' });
     }
   }
 
@@ -208,10 +194,6 @@ class SumoForm extends Component {
       modalTitle,
       modalText,
     } = this.state;
-
-    const {
-      profile,
-    } = this.props;
 
     return (
       <div className="wrapper u-no-margin--top">
@@ -245,19 +227,13 @@ class SumoForm extends Component {
                 end of the sumo tournament.
               </p>
               <hr />
-              <h3>
-                Hi&nbsp;
-                {profile.getName()}
-                .&nbsp;You are logged in with your google account!
-              </h3>
-              <button type="button" className="p-button--negative" onClick={this.handleLogoutClick}>
-                Sign Out
-              </button>
             </div>
           </div>
           <div className="p-strip is-deep" style={{ background: '#FFF' }}>
             <div className="row">
               <form onSubmit={this.handleSubmit}>
+                <h2>Name:</h2>
+                <input type="text" onChange={(e) => this.setState({ name: e.target.value })} />
                 <div>
                   <h2>Yokozuna/Ozeki:</h2>
                   {loading ? (
@@ -311,7 +287,6 @@ class SumoForm extends Component {
                                     this.setState(
                                       {
                                         yokozunaOzeki: e.target.value,
-                                        yokozunaOzekiWins: torikumi[s.rikishi_id].won_number,
                                       },
                                     );
                                   }}
@@ -376,7 +351,6 @@ class SumoForm extends Component {
                                     this.setState(
                                       {
                                         sekiwakeKomusubi: e.target.value,
-                                        sekiwakeKomusubiWins: torikumi[s.rikishi_id].won_number,
                                       },
                                     );
                                   }}
@@ -447,7 +421,6 @@ class SumoForm extends Component {
                                     this.setState(
                                       {
                                         highMaegashria: e.target.value,
-                                        highMaegashriaWins: torikumi[s.rikishi_id].won_number,
                                       },
                                     );
                                   }}
@@ -514,7 +487,6 @@ class SumoForm extends Component {
                                     this.setState(
                                       {
                                         midMaegashria: e.target.value,
-                                        midMaegashriaWins: torikumi[s.rikishi_id].won_number,
                                       },
                                     );
                                   }}
@@ -580,7 +552,6 @@ class SumoForm extends Component {
                                     this.setState(
                                       {
                                         lowMaegashria: e.target.value,
-                                        lowMaegashriaWins: torikumi[s.rikishi_id].won_number,
                                       },
                                     );
                                   }}
