@@ -236,7 +236,7 @@ class SumoForm extends Component {
             <div className="row">
               <form onSubmit={this.handleSubmit}>
                 <hr />
-                <h3>Name:</h3>
+                <h2>Name:</h2>
                 <input type="text" onChange={(e) => this.setState({ name: e.target.value })} />
                 <hr />
                 <div>
