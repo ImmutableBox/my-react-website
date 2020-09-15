@@ -14,7 +14,8 @@ class SumoForm extends Component {
     super();
     this.state = {
       hoshitori: [],
-      loading: false,
+      sumoLoading: false,
+      gapiLoading: false,
       name: '',
       yokozunaOzeki: '',
       sekiwakeKomusubi: '',
@@ -36,7 +37,7 @@ class SumoForm extends Component {
   }
 
   getFeed = () => {
-    this.setState({ loading: true }, () => {
+    this.setState({ sumoLoading: true }, () => {
       fetch(`${CORS_PROXY}http://sumo.or.jp/ResultData/hoshitori_ajax/1/1/`)
         .then((res) => res.json())
         .then((feed) => {
@@ -47,13 +48,13 @@ class SumoForm extends Component {
           this.setState({
             hoshitori: hoshitori.concat(feed.BanzukeTable),
             torikumi: Object.assign(feed.TorikumiData, torikumi),
-            loading: false,
+            sumoLoading: false,
           });
         }).catch((err) => {
           // eslint-disable-next-line
           console.log(err);
           this.setState({
-            loading: false,
+            sumoLoading: false,
           });
         });
       fetch(`${CORS_PROXY}http://sumo.or.jp/ResultData/hoshitori_ajax/1/2/`)
@@ -66,19 +67,22 @@ class SumoForm extends Component {
           this.setState({
             hoshitori: hoshitori.concat(feed.BanzukeTable),
             torikumi: Object.assign(feed.TorikumiData, torikumi),
-            loading: false,
+            sumoLoading: false,
           });
         }).catch((err) => {
           // eslint-disable-next-line
           console.log(err);
           this.setState({
-            loading: false,
+            sumoLoading: false,
           });
         });
     });
   }
 
   getSpreadSheet = async () => {
+    // Setting loading to true
+    this.setState({ gapiLoading: true });
+
     // use service account creds
     await doc.useServiceAccountAuth({
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -88,11 +92,11 @@ class SumoForm extends Component {
     await doc.loadInfo()
       .then(() => {
         this.setState({
-          loading: false,
+          gapiLoading: false,
         });
       }, () => {
         this.setState({
-          loading: false,
+          gapiLoading: false,
         });
       });
   };
@@ -187,7 +191,8 @@ class SumoForm extends Component {
 
   render() {
     const {
-      loading,
+      sumoLoading,
+      gapiLoading,
       hoshitori,
       torikumi,
       modalVisible,
@@ -241,7 +246,7 @@ class SumoForm extends Component {
                 <hr />
                 <div>
                   <h2>Yokozuna/Ozeki:</h2>
-                  {loading ? (
+                  {sumoLoading || gapiLoading ? (
                     <div className="center">
                       <ReactLoading
                         type="spin"
@@ -259,8 +264,7 @@ class SumoForm extends Component {
                               || i.banzuke_name_eng === 'Ozeki')
                             .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
                             .map((s) => (
-                              <label
-                                htmlFor="sumoform"
+                              <div
                                 key={s.rikishi_id}
                                 className="p-card col-3"
                               >
@@ -283,21 +287,24 @@ class SumoForm extends Component {
                                   Losses:&nbsp;
                                   {torikumi[s.rikishi_id].lost_number}
                                 </p>
-                                <input
-                                  id={s.rikishi_id}
-                                  name="firstWrestler"
-                                  type="radio"
-                                  value={s.shikona_eng}
-                                  onChange={(e) => {
-                                    this.setState(
-                                      {
-                                        yokozunaOzeki: e.target.value,
-                                      },
-                                    );
-                                  }}
-                                />
-                                <br />
-                              </label>
+                                <label
+                                  htmlFor="sumoform"
+                                >
+                                  <input
+                                    id={s.rikishi_id}
+                                    name="firstWrestler"
+                                    type="radio"
+                                    value={s.shikona_eng}
+                                    onChange={(e) => {
+                                      this.setState(
+                                        {
+                                          yokozunaOzeki: e.target.value,
+                                        },
+                                      );
+                                    }}
+                                  />
+                                </label>
+                              </div>
                             ))}
                         </div>
                       ) : (
@@ -309,7 +316,7 @@ class SumoForm extends Component {
                 <hr />
                 <div>
                   <h2>Sekiwake/Komusubi:</h2>
-                  {loading ? (
+                  {sumoLoading || gapiLoading ? (
                     <div className="center">
                       <ReactLoading
                         type="spin"
@@ -327,7 +334,7 @@ class SumoForm extends Component {
                               || i.banzuke_name_eng === 'Komusubi')
                             .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
                             .map((s) => (
-                              <label htmlFor="sumoform" key={s.rikishi_id} className="p-card col-3">
+                              <div key={s.rikishi_id} className="p-card col-3">
                                 <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
                                   <img
                                     src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
@@ -347,21 +354,24 @@ class SumoForm extends Component {
                                   Losses:&nbsp;
                                   {torikumi[s.rikishi_id].lost_number}
                                 </p>
-                                <input
-                                  id={s.rikishi_id}
-                                  name="secondWrestler"
-                                  type="radio"
-                                  value={s.shikona_eng}
-                                  onChange={(e) => {
-                                    this.setState(
-                                      {
-                                        sekiwakeKomusubi: e.target.value,
-                                      },
-                                    );
-                                  }}
-                                />
-                                <br />
-                              </label>
+                                <label
+                                  htmlFor="sumoform"
+                                >
+                                  <input
+                                    id={s.rikishi_id}
+                                    name="secondWrestler"
+                                    type="radio"
+                                    value={s.shikona_eng}
+                                    onChange={(e) => {
+                                      this.setState(
+                                        {
+                                          sekiwakeKomusubi: e.target.value,
+                                        },
+                                      );
+                                    }}
+                                  />
+                                </label>
+                              </div>
                             ))}
                         </div>
                       ) : (
@@ -373,7 +383,7 @@ class SumoForm extends Component {
                 <hr />
                 <div>
                   <h2>Upper Maegashria (1-5):</h2>
-                  {loading ? (
+                  {sumoLoading || gapiLoading ? (
                     <div className="center">
                       <ReactLoading
                         type="spin"
@@ -392,8 +402,7 @@ class SumoForm extends Component {
                             .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
                             .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
                             .map((s) => (
-                              <label
-                                htmlFor="sumoform"
+                              <div
                                 key={s.rikishi_id}
                                 className={torikumi[s.rikishi_id].rest_day > 0 ? 'p-card--highlighted col-3' : 'p-card col-3'}
                               >
@@ -416,22 +425,24 @@ class SumoForm extends Component {
                                   Losses:&nbsp;
                                   {torikumi[s.rikishi_id].lost_number}
                                 </p>
-                                <input
-
-                                  id={s.rikishi_id}
-                                  name="thirdWrestler"
-                                  type="radio"
-                                  value={s.shikona_eng}
-                                  onChange={(e) => {
-                                    this.setState(
-                                      {
-                                        highMaegashria: e.target.value,
-                                      },
-                                    );
-                                  }}
-                                />
-                                <br />
-                              </label>
+                                <label
+                                  htmlFor="sumoform"
+                                >
+                                  <input
+                                    id={s.rikishi_id}
+                                    name="thirdWrestler"
+                                    type="radio"
+                                    value={s.shikona_eng}
+                                    onChange={(e) => {
+                                      this.setState(
+                                        {
+                                          highMaegashria: e.target.value,
+                                        },
+                                      );
+                                    }}
+                                  />
+                                </label>
+                              </div>
                             ))}
                         </div>
                       ) : (
@@ -443,7 +454,7 @@ class SumoForm extends Component {
                 <hr />
                 <div>
                   <h2>Middle Maegashria (6-10):</h2>
-                  {loading ? (
+                  {sumoLoading || gapiLoading ? (
                     <div className="center">
                       <ReactLoading
                         type="spin"
@@ -462,7 +473,7 @@ class SumoForm extends Component {
                             .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
                             .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
                             .map((s) => (
-                              <label htmlFor="sumoform" key={s.rikishi_id} className="p-card col-3">
+                              <div key={s.rikishi_id} className="p-card col-3">
                                 <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
                                   <img
                                     src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
@@ -482,22 +493,24 @@ class SumoForm extends Component {
                                   Losses:&nbsp;
                                   {torikumi[s.rikishi_id].lost_number}
                                 </p>
-                                <input
-
-                                  id={s.rikishi_id}
-                                  name="fourthWrestler"
-                                  type="radio"
-                                  value={s.shikona_eng}
-                                  onChange={(e) => {
-                                    this.setState(
-                                      {
-                                        midMaegashria: e.target.value,
-                                      },
-                                    );
-                                  }}
-                                />
-                                <br />
-                              </label>
+                                <label
+                                  htmlFor="sumoform"
+                                >
+                                  <input
+                                    id={s.rikishi_id}
+                                    name="fourthWrestler"
+                                    type="radio"
+                                    value={s.shikona_eng}
+                                    onChange={(e) => {
+                                      this.setState(
+                                        {
+                                          midMaegashria: e.target.value,
+                                        },
+                                      );
+                                    }}
+                                  />
+                                </label>
+                              </div>
                             ))}
                         </div>
                       ) : (
@@ -509,7 +522,7 @@ class SumoForm extends Component {
                 <hr />
                 <div>
                   <h2>Lower Maegashria (11-17):</h2>
-                  {loading ? (
+                  {sumoLoading || gapiLoading ? (
                     <div className="center">
                       <ReactLoading
                         type="spin"
@@ -527,7 +540,7 @@ class SumoForm extends Component {
                             .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
                             .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
                             .map((s) => (
-                              <label htmlFor="sumoform" key={s.rikishi_id} className="p-card col-3">
+                              <div key={s.rikishi_id} className="p-card col-3">
                                 <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
                                   <img
                                     src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
@@ -547,22 +560,24 @@ class SumoForm extends Component {
                                   Losses:&nbsp;
                                   {torikumi[s.rikishi_id].lost_number}
                                 </p>
-                                <input
-
-                                  id={s.rikishi_id}
-                                  name="fifthWrestler"
-                                  type="radio"
-                                  value={s.shikona_eng}
-                                  onChange={(e) => {
-                                    this.setState(
-                                      {
-                                        lowMaegashria: e.target.value,
-                                      },
-                                    );
-                                  }}
-                                />
-                                <br />
-                              </label>
+                                <label
+                                  htmlFor="sumoform"
+                                >
+                                  <input
+                                    id={s.rikishi_id}
+                                    name="fifthWrestler"
+                                    type="radio"
+                                    value={s.shikona_eng}
+                                    onChange={(e) => {
+                                      this.setState(
+                                        {
+                                          lowMaegashria: e.target.value,
+                                        },
+                                      );
+                                    }}
+                                  />
+                                </label>
+                              </div>
                             ))}
                         </div>
                       ) : (
