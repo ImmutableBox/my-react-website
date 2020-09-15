@@ -227,13 +227,18 @@ class SumoForm extends Component {
                 end of the sumo tournament.
               </p>
               <hr />
+              <p className="p-heading--3">
+                Please fill in your name and pick 5 wrestlers in the form below
+              </p>
             </div>
           </div>
           <div className="p-strip is-deep" style={{ background: '#FFF' }}>
             <div className="row">
               <form onSubmit={this.handleSubmit}>
-                <h2>Name:</h2>
+                <hr />
+                <h3>Name:</h3>
                 <input type="text" onChange={(e) => this.setState({ name: e.target.value })} />
+                <hr />
                 <div>
                   <h2>Yokozuna/Ozeki:</h2>
                   {loading ? (
