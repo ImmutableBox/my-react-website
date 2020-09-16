@@ -4,34 +4,33 @@ import ReactLoading from 'react-loading';
 // Note: some RSS feeds can't be loaded in the browser due to CORS security.
 // To get around this, you can use a proxy.
 const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
+const { GoogleSpreadsheet } = require('google-spreadsheet');
+
+const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID);
 
 class SumoResults extends Component {
   constructor() {
     super();
     this.state = {
-      torikumi: [],
       hoshitori: [],
-      loading: false,
-      wrestler: '',
-      ranking: 'None',
-      wins: 'Not set',
-      losses: 'Not set',
-      showSittingOut: 'Yes',
-      cardFormat: 'Table Format',
+      sumoLoading: false,
+      gapiLoading: false,
+      sortValue: 'Highest',
+      name: '',
+      spreadSheet: null,
     };
     this.handleSearchChange = this.handleSearchChange.bind(this);
-    this.handleFormatChange = this.handleFormatChange.bind(this);
-    this.handleRankingChange = this.handleRankingChange.bind(this);
-    this.handleShowSittingOutChange = this.handleShowSittingOutChange.bind(this);
+    this.handleSortChange = this.handleSortChange.bind(this);
   }
 
   // Fetch the list of first mount
   componentDidMount() {
     this.getFeed();
+    this.getSpreadSheet();
   }
 
   getFeed = () => {
-    this.setState({ loading: true }, () => {
+    this.setState({ sumoLoading: true }, () => {
       fetch(`${CORS_PROXY}http://sumo.or.jp/ResultData/hoshitori_ajax/1/1/`)
         .then((res) => res.json())
         .then((feed) => {
@@ -42,13 +41,13 @@ class SumoResults extends Component {
           this.setState({
             hoshitori: hoshitori.concat(feed.BanzukeTable),
             torikumi: Object.assign(feed.TorikumiData, torikumi),
-            loading: false,
+            sumoLoading: false,
           });
         }).catch((err) => {
           // eslint-disable-next-line
           console.log(err);
           this.setState({
-            loading: false,
+            sumoLoading: false,
           });
         });
       fetch(`${CORS_PROXY}http://sumo.or.jp/ResultData/hoshitori_ajax/1/2/`)
@@ -61,49 +60,54 @@ class SumoResults extends Component {
           this.setState({
             hoshitori: hoshitori.concat(feed.BanzukeTable),
             torikumi: Object.assign(feed.TorikumiData, torikumi),
-            loading: false,
+            sumoLoading: false,
           });
         }).catch((err) => {
           // eslint-disable-next-line
           console.log(err);
           this.setState({
-            loading: false,
+            sumoLoading: false,
           });
         });
     });
   }
 
-  handleSearchChange(event) { this.setState({ wrestler: event.target.value }); }
+  getSpreadSheet = async () => {
+    // Setting loading to true
+    this.setState({ gapiLoading: true });
 
-  handleRankingChange(event) { this.setState({ ranking: event.target.value }); }
+    // use service account creds
+    await doc.useServiceAccountAuth({
+      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    });
 
-  handleShowSittingOutChange(event) {
-    if (event.target.value === 'Yes') {
-      this.setState({ showSittingOut: 'No' });
+    await doc.loadInfo();
+
+    const rows = await doc.sheetsByIndex[1].getRows();
+
+    this.setState({ spreadSheet: rows, gapiLoading: false });
+  };
+
+  handleSearchChange(event) { this.setState({ name: event.target.value }); }
+
+  handleSortChange(event) {
+    if (event.target.value === 'Highest') {
+      this.setState({ sortValue: 'Lowest' });
     } else {
-      this.setState({ showSittingOut: 'Yes' });
-    }
-  }
-
-  handleFormatChange(event) {
-    if (event.target.value === 'Card Format') {
-      this.setState({ cardFormat: 'Table Format' });
-    } else {
-      this.setState({ cardFormat: 'Card Format' });
+      this.setState({ sortValue: 'Highest' });
     }
   }
 
   render() {
     const {
-      torikumi,
-      loading,
       hoshitori,
-      wrestler,
-      cardFormat,
-      wins,
-      losses,
-      ranking,
-      showSittingOut,
+      torikumi,
+      sumoLoading,
+      gapiLoading,
+      spreadSheet,
+      name,
+      sortValue,
     } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
@@ -114,275 +118,206 @@ class SumoResults extends Component {
                 Sumo results
               </h2>
               <p className="p-heading--4">
-                Enter any sumo wrestler in the Makuuchi rank to see their score/profile.
-                Press on their profile picture for more details on the wrestler
-              </p>
-              <p className="p-heading--4">
-                Information is pulled from&nbsp;
-                <a href="http://sumo.or.jp">
-                  http://sumo.or.jp
-                </a>
+                Here are the point scores from the form spreadsheet!
               </p>
               <hr />
             </div>
           </div>
           <div className="p-strip is-deep">
             <div className="row">
-              <h2>Search for a wrestler</h2>
+              <h2>Search your name!</h2>
+              <hr />
               <table>
                 <tbody>
                   <tr>
                     <td>
-                      <h4>Name</h4>
-                      <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
-                    </td>
-                    <td>
-                      <h4>Rank</h4>
-                      <select value={ranking} onChange={this.handleRankingChange}>
-                        <option value="" disabled="disabled" defaultValue="">Select an option</option>
-                        <option value="None">None</option>
-                        <option value="Yokozuna">Yokozuna</option>
-                        <option value="Ozeki">Ozeki</option>
-                        <option value="Sekiwake">Sekiwake</option>
-                        <option value="Komusubi">Komusubi</option>
-                        <option value="Maegashira #1">Maegashira #1</option>
-                        <option value="Maegashira #2">Maegashira #2</option>
-                        <option value="Maegashira #3">Maegashira #3</option>
-                        <option value="Maegashira #4">Maegashira #4</option>
-                        <option value="Maegashira #5">Maegashira #5</option>
-                        <option value="Maegashira #6">Maegashira #6</option>
-                        <option value="Maegashira #7">Maegashira #7</option>
-                        <option value="Maegashira #8">Maegashira #8</option>
-                        <option value="Maegashira #9">Maegashira #9</option>
-                        <option value="Maegashira #10">Maegashira #10</option>
-                        <option value="Maegashira #11">Maegashira #11</option>
-                        <option value="Maegashira #12">Maegashira #12</option>
-                        <option value="Maegashira #13">Maegashira #13</option>
-                        <option value="Maegashira #14">Maegashira #14</option>
-                        <option value="Maegashira #15">Maegashira #15</option>
-                        <option value="Maegashira #16">Maegashira #16</option>
-                        <option value="Maegashira #17">Maegashira #17</option>
-                      </select>
-                    </td>
-                    <td>
-                      <h4>
-                        Wins:&nbsp;
-                        {wins}
-                      </h4>
-                      <input
-                        className="p-slider"
-                        type="range"
-                        min="0"
-                        max="15"
-                        step="1"
-                        onChange={(event) => this.setState({ wins: event.target.value })}
-                        value={wins}
-                      />
-                    </td>
-                    <td>
-                      <h4>
-                        Losses:&nbsp;
-                        {losses}
-                      </h4>
-                      <input
-                        className="p-slider"
-                        type="range"
-                        min="0"
-                        max="15"
-                        step="1"
-                        onChange={(event) => this.setState({ losses: event.target.value })}
-                        value={losses}
-                      />
-                    </td>
-                    <td>
                       <label htmlFor="form">
-                        <h4>Show sitting out?</h4>
-                        <input type="button" className="p-button--positive" value={showSittingOut} onClick={this.handleShowSittingOutChange} />
+                        <h4>Name</h4>
+                        <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
                       </label>
                     </td>
                     <td>
                       <label htmlFor="form">
-                        <h4>Format</h4>
-                        <input type="button" className="p-button--positive" value={cardFormat} onClick={this.handleFormatChange} />
+                        <h4>Sort by total points</h4>
+                        <input type="button" className="p-button--positive" value={sortValue} onClick={this.handleSortChange} />
                       </label>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              {cardFormat === 'Card Format' ? (
-                <div>
-                  {loading ? (
-                    <div className="center">
-                      <ReactLoading
-                        type="spin"
-                        color="#000"
-                        height="20%"
-                        width="20%"
-                      />
-                    </div>
-                  ) : (
-                    <div>
-                      {hoshitori.length ? (
-                        <div className="row">
-                          {hoshitori
-                            .filter((i) => i.shikona_eng.toLowerCase()
-                              .includes(wrestler.toLowerCase()))
-                            .filter((i) => i.shikona_eng.toLowerCase()
-                              .includes(wrestler.toLowerCase()))
-                            .filter((i) => {
-                              if (ranking === 'None') {
-                                return i;
-                              }
-                              return i.banzuke_name_eng === ranking;
-                            })
-                            .filter((i) => {
-                              if (showSittingOut === 'Yes') {
-                                return i;
-                              }
-                              return torikumi[i.rikishi_id].rest_number === 0;
-                            })
-                            .filter((i) => {
-                              if (wins === 'Not set') {
-                                return i;
-                              }
-                              return +torikumi[i.rikishi_id].won_number === +wins;
-                            })
-                            .filter((i) => {
-                              if (losses === 'Not set') {
-                                return i;
-                              }
-                              return +torikumi[i.rikishi_id].lost_number === +losses;
-                            })
-                            .map((s) => (
-                              <div
-                                key={s.rikishi_id}
-                                className="p-card--highlighted col-3"
-                                style={torikumi[s.rikishi_id].rest_number > 0 ? { backgroundColor: '#c7162b', color: '#FFF' } : {}}
-                              >
-                                <p>
-                                  {s.shikona_eng}
-                                  <br />
-                                  {s.banzuke_name_eng}
-                                </p>
-                                <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                  <img
-                                    src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                    alt={s.kakuzuke_id}
-                                  />
-                                </a>
-                                <br />
-                                <p>
-                                  Wins:&nbsp;
-                                  {torikumi[s.rikishi_id].won_number}
-                                  <br />
-                                  Losses:&nbsp;
-                                  {torikumi[s.rikishi_id].lost_number}
-                                  <br />
-                                  Rest days:&nbsp;
-                                  {torikumi[s.rikishi_id].rest_number}
-                                </p>
-                              </div>
-                            ))}
-                        </div>
-                      ) : (
-                        <h2>Could not load wrestlers!</h2>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div>
-                  <table className="p-table--sortable" role="grid">
+              <hr />
+              <div>
+                <table className="p-table--sortable" role="grid">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Total Points</th>
+                      <th>Yokozuna/Ozeki</th>
+                      <th>Sekiwake/Komusubi</th>
+                      <th>Upper Maegashria (1-5)</th>
+                      <th>Middle Maegashria (6-10)</th>
+                      <th>Lower Maegashria (11-17)</th>
+                    </tr>
+                  </thead>
+                  {sumoLoading || gapiLoading ? (
                     <thead>
                       <tr>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Rank</th>
-                        <th>Wins</th>
-                        <th>Losses</th>
+                        <th className="center">
+                          <ReactLoading
+                            type="spin"
+                            color="#000"
+                            height="20%"
+                            width="20%"
+                          />
+                        </th>
                       </tr>
                     </thead>
-                    {loading ? (
-                      <thead>
-                        <tr>
-                          <th className="center">
-                            <ReactLoading
-                              type="spin"
-                              color="#000"
-                              height="20%"
-                              width="20%"
-                            />
-                          </th>
-                        </tr>
-                      </thead>
-                    ) : (
-                      <>
-                        {hoshitori.length ? (
-                          <tbody>
-                            {hoshitori
-                              .filter((i) => i.shikona_eng.toLowerCase()
-                                .includes(wrestler.toLowerCase()))
-                              .filter((i) => {
-                                if (ranking === 'None') {
-                                  return i;
-                                }
-                                return i.banzuke_name_eng === ranking;
-                              })
-                              .filter((i) => {
-                                if (showSittingOut === 'Yes') {
-                                  return i;
-                                }
-                                return torikumi[i.rikishi_id].rest_number === 0;
-                              })
-                              .filter((i) => {
-                                if (wins === 'Not set') {
-                                  return i;
-                                }
-                                return +torikumi[i.rikishi_id].won_number === +wins;
-                              })
-                              .filter((i) => {
-                                if (losses === 'Not set') {
-                                  return i;
-                                }
-                                return +torikumi[i.rikishi_id].lost_number === +losses;
-                              })
-                              .map((s) => (
-                                <tr key={s.rikishi_id} style={torikumi[s.rikishi_id].rest_number > 0 ? { backgroundColor: '#c7162b', color: '#FFF' } : {}}>
-                                  <td>
-                                    {s.shikona_eng}
-                                  </td>
-                                  <td>
-                                    <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                      <img
-                                        src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                        alt={s.kakuzuke_id}
-                                      />
-                                    </a>
-                                  </td>
-                                  <td>
-                                    {s.banzuke_name_eng}
-                                  </td>
-                                  <td>
-                                    {torikumi[s.rikishi_id].won_number}
-                                  </td>
-                                  <td>
-                                    {torikumi[s.rikishi_id].lost_number}
-                                  </td>
-                                </tr>
-                              ))}
-                          </tbody>
-                        ) : (
-                          <thead>
-                            <tr>
-                              <th>Could not load wrestlers!</th>
-                            </tr>
-                          </thead>
-                        )}
-                      </>
-                    )}
-                  </table>
-                </div>
-              )}
+                  ) : (
+                    <>
+                      {spreadSheet !== null ? (
+                        <tbody>
+                          {spreadSheet
+                            .filter((i) => i.Name.toLowerCase()
+                              .includes(name.toLowerCase()))
+                            .filter((i) => i.Points !== '#N/A')
+                            .sort((a, b) => {
+                              if (sortValue === 'Highest') {
+                                return b.Points - a.Points;
+                              }
+                              return a.Points - b.Points;
+                            })
+                            .map((w) => (
+                              <tr key={w.Name}>
+                                <td>
+                                  { w.Name }
+                                </td>
+                                <td>
+                                  { w.Points }
+                                </td>
+                                <td>
+                                  {hoshitori
+                                    .filter((i) => i.shikona_eng === w.YokozunaOzeki)
+                                    .map((s) => (
+                                      <div key={s.rikishi_id}>
+                                        <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                          <img
+                                            src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                            alt={s.kakuzuke_id}
+                                          />
+                                        </a>
+                                        <br />
+                                        {s.shikona_eng}
+                                        <br />
+                                        Wins:&nbsp;
+                                        {torikumi[s.rikishi_id].won_number}
+                                        <br />
+                                        Losses:&nbsp;
+                                        {torikumi[s.rikishi_id].lost_number}
+                                      </div>
+                                    ))}
+                                </td>
+                                <td>
+                                  {hoshitori
+                                    .filter((i) => i.shikona_eng === w.SekiwakeKomusubi)
+                                    .map((s) => (
+                                      <div key={s.rikishi_id}>
+                                        <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                          <img
+                                            src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                            alt={s.kakuzuke_id}
+                                          />
+                                        </a>
+                                        <br />
+                                        {s.shikona_eng}
+                                        <br />
+                                        Wins:&nbsp;
+                                        {torikumi[s.rikishi_id].won_number}
+                                        <br />
+                                        Losses:&nbsp;
+                                        {torikumi[s.rikishi_id].lost_number}
+                                      </div>
+                                    ))}
+                                </td>
+                                <td>
+                                  {hoshitori
+                                    .filter((i) => i.shikona_eng === w.UpperMaegashria)
+                                    .map((s) => (
+                                      <div key={s.rikishi_id}>
+                                        <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                          <img
+                                            src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                            alt={s.kakuzuke_id}
+                                          />
+                                        </a>
+                                        <br />
+                                        {s.shikona_eng}
+                                        <br />
+                                        Wins:&nbsp;
+                                        {torikumi[s.rikishi_id].won_number}
+                                        <br />
+                                        Losses:&nbsp;
+                                        {torikumi[s.rikishi_id].lost_number}
+                                      </div>
+                                    ))}
+                                </td>
+                                <td>
+                                  {hoshitori
+                                    .filter((i) => i.shikona_eng === w.MiddleMaegashria)
+                                    .map((s) => (
+                                      <div key={s.rikishi_id}>
+                                        <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                          <img
+                                            src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                            alt={s.kakuzuke_id}
+                                          />
+                                        </a>
+                                        <br />
+                                        {s.shikona_eng}
+                                        <br />
+                                        Wins:&nbsp;
+                                        {torikumi[s.rikishi_id].won_number}
+                                        <br />
+                                        Losses:&nbsp;
+                                        {torikumi[s.rikishi_id].lost_number}
+                                      </div>
+                                    ))}
+                                </td>
+                                <td>
+                                  {hoshitori
+                                    .filter((i) => i.shikona_eng === w.LowerMaegashria)
+                                    .map((s) => (
+                                      <div key={s.rikishi_id}>
+                                        <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                          <img
+                                            src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                            alt={s.kakuzuke_id}
+                                          />
+                                        </a>
+                                        <br />
+                                        {s.shikona_eng}
+                                        <br />
+                                        Wins:&nbsp;
+                                        {torikumi[s.rikishi_id].won_number}
+                                        <br />
+                                        Losses:&nbsp;
+                                        {torikumi[s.rikishi_id].lost_number}
+                                      </div>
+                                    ))}
+                                </td>
+                              </tr>
+                            ))}
+                        </tbody>
+                      ) : (
+                        <thead>
+                          <tr>
+                            <th>Could not load!</th>
+                          </tr>
+                        </thead>
+                      )}
+                    </>
+                  )}
+                </table>
+              </div>
             </div>
           </div>
         </div>
