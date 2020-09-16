@@ -64,7 +64,7 @@ class News extends React.PureComponent {
                   Project link:&nbsp;
                   <Link className="p-button--brand" to="/sumosearch">Sumo Search</Link>
                   <br />
-                  I finished the core stuff I wanted to accomplish at Sep 06 2020.
+                  I finished the core stuff I wanted to accomplish at Sep 15 2020.
                   There are some QOL/features I will probably add in the future
                   but I&apos;ve pretty much finished core development.
                 </p>

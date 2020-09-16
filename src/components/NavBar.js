@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 /**
  * Navigation bar component. Is displayed throughout all pages.
  */
-// eslint-disable-next-line react/prefer-stateless-function
-class NavBar extends Component {
+class NavBar extends React.PureComponent {
   /**
    * Rendering app component
    * @return { html } Rendering html
@@ -38,13 +37,7 @@ class NavBar extends Component {
                 <Link to="/blogs">Blog Feed</Link>
               </li>
               <li className="p-navigation__link" role="menuitem">
-                <Link to="/sumoform">Sumo Form</Link>
-              </li>
-              <li className="p-navigation__link" role="menuitem">
-                <Link to="/sumosearch">Sumo Search</Link>
-              </li>
-              <li className="p-navigation__link" role="menuitem">
-                <Link to="/sumoresults">Sumo Results</Link>
+                <Link to="/sumopage">Sumo stuff</Link>
               </li>
               <li className="p-navigation__link" role="menuitem">
                 <Link to="/about">Contact Information</Link>

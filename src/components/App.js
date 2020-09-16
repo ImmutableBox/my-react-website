@@ -14,6 +14,7 @@ import ScrollToTop from './ScrollToTop';
 import SumoResults from './sumo/SumoResults';
 import SumoForm from './sumo/SumoForm';
 import SumoSearch from './sumo/SumoSearch';
+import SumoPage from './sumo/SumoPage';
 
 /**
  * Main starting app component
@@ -82,6 +83,7 @@ class App extends Component {
           <Route path="/sumoresults" component={SumoResults} />
           <Route path="/sumosearch" component={SumoSearch} />
           <Route path="/sumoform" component={SumoForm} />
+          <Route path="/sumopage" component={SumoPage} />
           <Route exact path="/" component={Home} />
           <Route component={NotFound} />
         </Switch>
