@@ -41,7 +41,7 @@ class News extends React.PureComponent {
                 <h4>
                   <b>Sumo Form</b>
                   <br />
-                  Aug 15 2020 - Sep 06 2020
+                  Aug 15 2020 - Sep 15 2020
                 </h4>
                 <p>
                   Pulling sumo tournament information from&nbsp;
