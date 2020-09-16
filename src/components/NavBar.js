@@ -37,7 +37,7 @@ class NavBar extends React.PureComponent {
                 <Link to="/blogs">Blog Feed</Link>
               </li>
               <li className="p-navigation__link" role="menuitem">
-                <Link to="/sumopage">Sumo stuff</Link>
+                <Link to="/sumopage">Sumo Stuff</Link>
               </li>
               <li className="p-navigation__link" role="menuitem">
                 <Link to="/about">Contact Information</Link>
