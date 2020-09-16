@@ -16,7 +16,7 @@ class SumoForm extends Component {
       hoshitori: [],
       sumoLoading: false,
       gapiLoading: false,
-      closeForm: false,
+      closeForm: true,
       name: '',
       yokozunaOzeki: '',
       sekiwakeKomusubi: '',
