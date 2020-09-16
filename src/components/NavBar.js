@@ -17,7 +17,7 @@ class NavBar extends Component {
           <div className="p-navigation__banner">
             <div className="p-navigation__logo">
               <Link to="/">
-                <img align="middle" src="logo96.png" alt="" width="50" />
+                <img align="middle" src="favicon.ico" alt="" width="50" />
               </Link>
             </div>
             <a href="#navigation" className="p-navigation__toggle--open" title="menu">Menu</a>

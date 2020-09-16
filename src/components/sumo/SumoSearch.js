@@ -126,107 +126,200 @@ class SumoSearch extends Component {
               <hr />
             </div>
           </div>
-          <div className="p-strip is-deep">
-            <div className="row">
-              <h2>Search for a wrestler</h2>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>
-                      <h4>Name</h4>
-                      <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
-                    </td>
-                    <td>
-                      <h4>Rank</h4>
-                      <select value={ranking} onChange={this.handleRankingChange}>
-                        <option value="" disabled="disabled" defaultValue="">Select an option</option>
-                        <option value="None">None</option>
-                        <option value="Yokozuna">Yokozuna</option>
-                        <option value="Ozeki">Ozeki</option>
-                        <option value="Sekiwake">Sekiwake</option>
-                        <option value="Komusubi">Komusubi</option>
-                        <option value="Maegashira #1">Maegashira #1</option>
-                        <option value="Maegashira #2">Maegashira #2</option>
-                        <option value="Maegashira #3">Maegashira #3</option>
-                        <option value="Maegashira #4">Maegashira #4</option>
-                        <option value="Maegashira #5">Maegashira #5</option>
-                        <option value="Maegashira #6">Maegashira #6</option>
-                        <option value="Maegashira #7">Maegashira #7</option>
-                        <option value="Maegashira #8">Maegashira #8</option>
-                        <option value="Maegashira #9">Maegashira #9</option>
-                        <option value="Maegashira #10">Maegashira #10</option>
-                        <option value="Maegashira #11">Maegashira #11</option>
-                        <option value="Maegashira #12">Maegashira #12</option>
-                        <option value="Maegashira #13">Maegashira #13</option>
-                        <option value="Maegashira #14">Maegashira #14</option>
-                        <option value="Maegashira #15">Maegashira #15</option>
-                        <option value="Maegashira #16">Maegashira #16</option>
-                        <option value="Maegashira #17">Maegashira #17</option>
-                      </select>
-                    </td>
-                    <td>
-                      <h4>
-                        Wins:&nbsp;
-                        {wins}
-                      </h4>
-                      <input
-                        className="p-slider"
-                        type="range"
-                        min="0"
-                        max="15"
-                        step="1"
-                        onChange={(event) => this.setState({ wins: event.target.value })}
-                        value={wins}
-                      />
-                    </td>
-                    <td>
-                      <h4>
-                        Losses:&nbsp;
-                        {losses}
-                      </h4>
-                      <input
-                        className="p-slider"
-                        type="range"
-                        min="0"
-                        max="15"
-                        step="1"
-                        onChange={(event) => this.setState({ losses: event.target.value })}
-                        value={losses}
-                      />
-                    </td>
-                    <td>
-                      <label htmlFor="form">
-                        <h4>Show sitting out?</h4>
-                        <input type="button" className="p-button--positive" value={showSittingOut} onClick={this.handleShowSittingOutChange} />
-                      </label>
-                    </td>
-                    <td>
-                      <label htmlFor="form">
-                        <h4>Format</h4>
-                        <input type="button" className="p-button--positive" value={cardFormat} onClick={this.handleFormatChange} />
-                      </label>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              {cardFormat === 'Card Format' ? (
-                <div>
+          <hr />
+          <div className="row">
+            <h2>Search for a wrestler</h2>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <h4>Name</h4>
+                    <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
+                  </td>
+                  <td>
+                    <h4>Rank</h4>
+                    <select value={ranking} onChange={this.handleRankingChange}>
+                      <option value="" disabled="disabled" defaultValue="">Select an option</option>
+                      <option value="None">None</option>
+                      <option value="Yokozuna">Yokozuna</option>
+                      <option value="Ozeki">Ozeki</option>
+                      <option value="Sekiwake">Sekiwake</option>
+                      <option value="Komusubi">Komusubi</option>
+                      <option value="Maegashira #1">Maegashira #1</option>
+                      <option value="Maegashira #2">Maegashira #2</option>
+                      <option value="Maegashira #3">Maegashira #3</option>
+                      <option value="Maegashira #4">Maegashira #4</option>
+                      <option value="Maegashira #5">Maegashira #5</option>
+                      <option value="Maegashira #6">Maegashira #6</option>
+                      <option value="Maegashira #7">Maegashira #7</option>
+                      <option value="Maegashira #8">Maegashira #8</option>
+                      <option value="Maegashira #9">Maegashira #9</option>
+                      <option value="Maegashira #10">Maegashira #10</option>
+                      <option value="Maegashira #11">Maegashira #11</option>
+                      <option value="Maegashira #12">Maegashira #12</option>
+                      <option value="Maegashira #13">Maegashira #13</option>
+                      <option value="Maegashira #14">Maegashira #14</option>
+                      <option value="Maegashira #15">Maegashira #15</option>
+                      <option value="Maegashira #16">Maegashira #16</option>
+                      <option value="Maegashira #17">Maegashira #17</option>
+                    </select>
+                  </td>
+                  <td>
+                    <h4>
+                      Wins:&nbsp;
+                      {wins}
+                    </h4>
+                    <input
+                      className="p-slider"
+                      type="range"
+                      min="0"
+                      max="15"
+                      step="1"
+                      onChange={(event) => this.setState({ wins: event.target.value })}
+                      value={wins}
+                    />
+                  </td>
+                  <td>
+                    <h4>
+                      Losses:&nbsp;
+                      {losses}
+                    </h4>
+                    <input
+                      className="p-slider"
+                      type="range"
+                      min="0"
+                      max="15"
+                      step="1"
+                      onChange={(event) => this.setState({ losses: event.target.value })}
+                      value={losses}
+                    />
+                  </td>
+                  <td>
+                    <label htmlFor="form">
+                      <h4>Show sitting out?</h4>
+                      <input type="button" className="p-button--positive" value={showSittingOut} onClick={this.handleShowSittingOutChange} />
+                    </label>
+                  </td>
+                  <td>
+                    <label htmlFor="form">
+                      <h4>Format</h4>
+                      <input type="button" className="p-button--positive" value={cardFormat} onClick={this.handleFormatChange} />
+                    </label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            {cardFormat === 'Card Format' ? (
+              <div>
+                {loading ? (
+                  <div className="center">
+                    <ReactLoading
+                      type="spin"
+                      color="#000"
+                      height="20%"
+                      width="20%"
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    {hoshitori.length ? (
+                      <div className="row">
+                        {hoshitori
+                          .filter((i) => i.shikona_eng.toLowerCase()
+                            .includes(wrestler.toLowerCase()))
+                          .filter((i) => i.shikona_eng.toLowerCase()
+                            .includes(wrestler.toLowerCase()))
+                          .filter((i) => {
+                            if (ranking === 'None') {
+                              return i;
+                            }
+                            return i.banzuke_name_eng === ranking;
+                          })
+                          .filter((i) => {
+                            if (showSittingOut === 'Yes') {
+                              return i;
+                            }
+                            return torikumi[i.rikishi_id].rest_number === 0;
+                          })
+                          .filter((i) => {
+                            if (wins === 'Not set') {
+                              return i;
+                            }
+                            return +torikumi[i.rikishi_id].won_number === +wins;
+                          })
+                          .filter((i) => {
+                            if (losses === 'Not set') {
+                              return i;
+                            }
+                            return +torikumi[i.rikishi_id].lost_number === +losses;
+                          })
+                          .map((s) => (
+                            <div
+                              key={s.rikishi_id}
+                              className="p-card--highlighted col-3"
+                              style={torikumi[s.rikishi_id].rest_number > 0 ? { backgroundColor: '#c7162b', color: '#FFF' } : {}}
+                            >
+                              <p>
+                                {s.shikona_eng}
+                                <br />
+                                {s.banzuke_name_eng}
+                              </p>
+                              <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                <img
+                                  src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                  alt={s.kakuzuke_id}
+                                />
+                              </a>
+                              <br />
+                              <p>
+                                Wins:&nbsp;
+                                {torikumi[s.rikishi_id].won_number}
+                                <br />
+                                Losses:&nbsp;
+                                {torikumi[s.rikishi_id].lost_number}
+                                <br />
+                                Rest days:&nbsp;
+                                {torikumi[s.rikishi_id].rest_number}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
+                    ) : (
+                      <h2>Could not load wrestlers!</h2>
+                    )}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div>
+                <table className="p-table--sortable" role="grid">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Image</th>
+                      <th>Rank</th>
+                      <th>Wins</th>
+                      <th>Losses</th>
+                    </tr>
+                  </thead>
                   {loading ? (
-                    <div className="center">
-                      <ReactLoading
-                        type="spin"
-                        color="#000"
-                        height="20%"
-                        width="20%"
-                      />
-                    </div>
+                    <thead>
+                      <tr>
+                        <th className="center">
+                          <ReactLoading
+                            type="spin"
+                            color="#000"
+                            height="20%"
+                            width="20%"
+                          />
+                        </th>
+                      </tr>
+                    </thead>
                   ) : (
-                    <div>
+                    <>
                       {hoshitori.length ? (
-                        <div className="row">
+                        <tbody>
                           {hoshitori
-                            .filter((i) => i.shikona_eng.toLowerCase()
-                              .includes(wrestler.toLowerCase()))
                             .filter((i) => i.shikona_eng.toLowerCase()
                               .includes(wrestler.toLowerCase()))
                             .filter((i) => {
@@ -254,136 +347,42 @@ class SumoSearch extends Component {
                               return +torikumi[i.rikishi_id].lost_number === +losses;
                             })
                             .map((s) => (
-                              <div
-                                key={s.rikishi_id}
-                                className="p-card--highlighted col-3"
-                                style={torikumi[s.rikishi_id].rest_number > 0 ? { backgroundColor: '#c7162b', color: '#FFF' } : {}}
-                              >
-                                <p>
+                              <tr key={s.rikishi_id} style={torikumi[s.rikishi_id].rest_number > 0 ? { backgroundColor: '#c7162b', color: '#FFF' } : {}}>
+                                <td>
                                   {s.shikona_eng}
-                                  <br />
+                                </td>
+                                <td>
+                                  <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                    <img
+                                      src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                      alt={s.kakuzuke_id}
+                                    />
+                                  </a>
+                                </td>
+                                <td>
                                   {s.banzuke_name_eng}
-                                </p>
-                                <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                  <img
-                                    src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                    alt={s.kakuzuke_id}
-                                  />
-                                </a>
-                                <br />
-                                <p>
-                                  Wins:&nbsp;
+                                </td>
+                                <td>
                                   {torikumi[s.rikishi_id].won_number}
-                                  <br />
-                                  Losses:&nbsp;
+                                </td>
+                                <td>
                                   {torikumi[s.rikishi_id].lost_number}
-                                  <br />
-                                  Rest days:&nbsp;
-                                  {torikumi[s.rikishi_id].rest_number}
-                                </p>
-                              </div>
+                                </td>
+                              </tr>
                             ))}
-                        </div>
+                        </tbody>
                       ) : (
-                        <h2>Could not load wrestlers!</h2>
+                        <thead>
+                          <tr>
+                            <th>Could not load wrestlers!</th>
+                          </tr>
+                        </thead>
                       )}
-                    </div>
+                    </>
                   )}
-                </div>
-              ) : (
-                <div>
-                  <table className="p-table--sortable" role="grid">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Rank</th>
-                        <th>Wins</th>
-                        <th>Losses</th>
-                      </tr>
-                    </thead>
-                    {loading ? (
-                      <thead>
-                        <tr>
-                          <th className="center">
-                            <ReactLoading
-                              type="spin"
-                              color="#000"
-                              height="20%"
-                              width="20%"
-                            />
-                          </th>
-                        </tr>
-                      </thead>
-                    ) : (
-                      <>
-                        {hoshitori.length ? (
-                          <tbody>
-                            {hoshitori
-                              .filter((i) => i.shikona_eng.toLowerCase()
-                                .includes(wrestler.toLowerCase()))
-                              .filter((i) => {
-                                if (ranking === 'None') {
-                                  return i;
-                                }
-                                return i.banzuke_name_eng === ranking;
-                              })
-                              .filter((i) => {
-                                if (showSittingOut === 'Yes') {
-                                  return i;
-                                }
-                                return torikumi[i.rikishi_id].rest_number === 0;
-                              })
-                              .filter((i) => {
-                                if (wins === 'Not set') {
-                                  return i;
-                                }
-                                return +torikumi[i.rikishi_id].won_number === +wins;
-                              })
-                              .filter((i) => {
-                                if (losses === 'Not set') {
-                                  return i;
-                                }
-                                return +torikumi[i.rikishi_id].lost_number === +losses;
-                              })
-                              .map((s) => (
-                                <tr key={s.rikishi_id} style={torikumi[s.rikishi_id].rest_number > 0 ? { backgroundColor: '#c7162b', color: '#FFF' } : {}}>
-                                  <td>
-                                    {s.shikona_eng}
-                                  </td>
-                                  <td>
-                                    <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                      <img
-                                        src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                        alt={s.kakuzuke_id}
-                                      />
-                                    </a>
-                                  </td>
-                                  <td>
-                                    {s.banzuke_name_eng}
-                                  </td>
-                                  <td>
-                                    {torikumi[s.rikishi_id].won_number}
-                                  </td>
-                                  <td>
-                                    {torikumi[s.rikishi_id].lost_number}
-                                  </td>
-                                </tr>
-                              ))}
-                          </tbody>
-                        ) : (
-                          <thead>
-                            <tr>
-                              <th>Could not load wrestlers!</th>
-                            </tr>
-                          </thead>
-                        )}
-                      </>
-                    )}
-                  </table>
-                </div>
-              )}
-            </div>
+                </table>
+              </div>
+            )}
           </div>
         </div>
       </div>

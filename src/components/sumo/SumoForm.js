@@ -239,362 +239,360 @@ class SumoForm extends Component {
               </p>
             </div>
           </div>
+          <hr />
           {!closeForm ? (
-            <div className="p-strip is-deep" style={{ background: '#FFF' }}>
-              <div className="row">
-                <form onSubmit={this.handleSubmit}>
-                  <hr />
-                  <h2>Name:</h2>
-                  <input type="text" onChange={(e) => this.setState({ name: e.target.value })} />
-                  <hr />
-                  <div>
-                    <h2>Yokozuna/Ozeki:</h2>
-                    {sumoLoading || gapiLoading ? (
-                      <div className="center">
-                        <ReactLoading
-                          type="spin"
-                          color="#000"
-                          height="20%"
-                          width="20%"
-                        />
-                      </div>
-                    ) : (
-                      <div>
-                        {hoshitori.length ? (
-                          <div className="row">
-                            {hoshitori
-                              .filter((i) => i.banzuke_name_eng === 'Yokozuna'
+            <div className="row" style={{ background: '#FFF' }}>
+              <form onSubmit={this.handleSubmit}>
+                <h2>Name:</h2>
+                <input type="text" onChange={(e) => this.setState({ name: e.target.value })} />
+                <hr />
+                <div>
+                  <h2>Yokozuna/Ozeki:</h2>
+                  {sumoLoading || gapiLoading ? (
+                    <div className="center">
+                      <ReactLoading
+                        type="spin"
+                        color="#000"
+                        height="20%"
+                        width="20%"
+                      />
+                    </div>
+                  ) : (
+                    <div>
+                      {hoshitori.length ? (
+                        <div className="row">
+                          {hoshitori
+                            .filter((i) => i.banzuke_name_eng === 'Yokozuna'
                               || i.banzuke_name_eng === 'Ozeki')
-                              .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
-                              .map((s) => (
-                                <div
-                                  key={s.rikishi_id}
-                                  className="p-card col-3"
+                            .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
+                            .map((s) => (
+                              <div
+                                key={s.rikishi_id}
+                                className="p-card col-3"
+                              >
+                                <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                  <img
+                                    src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                    alt={s.kakuzuke_id}
+                                  />
+                                </a>
+                                <p>
+                                  Name:&nbsp;
+                                  {s.shikona_eng}
+                                  <br />
+                                  Rank:&nbsp;
+                                  {s.banzuke_name_eng}
+                                  <br />
+                                  Wins:&nbsp;
+                                  {torikumi[s.rikishi_id].won_number}
+                                  <br />
+                                  Losses:&nbsp;
+                                  {torikumi[s.rikishi_id].lost_number}
+                                </p>
+                                <label
+                                  htmlFor="sumoform"
                                 >
-                                  <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                    <img
-                                      src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                      alt={s.kakuzuke_id}
-                                    />
-                                  </a>
-                                  <p>
-                                    Name:&nbsp;
-                                    {s.shikona_eng}
-                                    <br />
-                                    Rank:&nbsp;
-                                    {s.banzuke_name_eng}
-                                    <br />
-                                    Wins:&nbsp;
-                                    {torikumi[s.rikishi_id].won_number}
-                                    <br />
-                                    Losses:&nbsp;
-                                    {torikumi[s.rikishi_id].lost_number}
-                                  </p>
-                                  <label
-                                    htmlFor="sumoform"
-                                  >
-                                    <input
-                                      id={s.rikishi_id}
-                                      name="firstWrestler"
-                                      type="radio"
-                                      value={s.shikona_eng}
-                                      onChange={(e) => {
-                                        this.setState(
-                                          {
-                                            yokozunaOzeki: e.target.value,
-                                          },
-                                        );
-                                      }}
-                                    />
-                                  </label>
-                                </div>
-                              ))}
-                          </div>
-                        ) : (
-                          <h2>Could not load wrestlers!</h2>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                  <hr />
-                  <div>
-                    <h2>Sekiwake/Komusubi:</h2>
-                    {sumoLoading || gapiLoading ? (
-                      <div className="center">
-                        <ReactLoading
-                          type="spin"
-                          color="#000"
-                          height="20%"
-                          width="20%"
-                        />
-                      </div>
-                    ) : (
-                      <div>
-                        {hoshitori.length ? (
-                          <div className="row">
-                            {hoshitori
-                              .filter((i) => i.banzuke_name_eng === 'Sekiwake'
+                                  <input
+                                    id={s.rikishi_id}
+                                    name="firstWrestler"
+                                    type="radio"
+                                    value={s.shikona_eng}
+                                    onChange={(e) => {
+                                      this.setState(
+                                        {
+                                          yokozunaOzeki: e.target.value,
+                                        },
+                                      );
+                                    }}
+                                  />
+                                </label>
+                              </div>
+                            ))}
+                        </div>
+                      ) : (
+                        <h2>Could not load wrestlers!</h2>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <hr />
+                <div>
+                  <h2>Sekiwake/Komusubi:</h2>
+                  {sumoLoading || gapiLoading ? (
+                    <div className="center">
+                      <ReactLoading
+                        type="spin"
+                        color="#000"
+                        height="20%"
+                        width="20%"
+                      />
+                    </div>
+                  ) : (
+                    <div>
+                      {hoshitori.length ? (
+                        <div className="row">
+                          {hoshitori
+                            .filter((i) => i.banzuke_name_eng === 'Sekiwake'
                               || i.banzuke_name_eng === 'Komusubi')
-                              .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
-                              .map((s) => (
-                                <div key={s.rikishi_id} className="p-card col-3">
-                                  <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                    <img
-                                      src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                      alt={s.kakuzuke_id}
-                                    />
-                                  </a>
-                                  <p>
-                                    Name:&nbsp;
-                                    {s.shikona_eng}
-                                    <br />
-                                    Rank:&nbsp;
-                                    {s.banzuke_name_eng}
-                                    <br />
-                                    Wins:&nbsp;
-                                    {torikumi[s.rikishi_id].won_number}
-                                    <br />
-                                    Losses:&nbsp;
-                                    {torikumi[s.rikishi_id].lost_number}
-                                  </p>
-                                  <label
-                                    htmlFor="sumoform"
-                                  >
-                                    <input
-                                      id={s.rikishi_id}
-                                      name="secondWrestler"
-                                      type="radio"
-                                      value={s.shikona_eng}
-                                      onChange={(e) => {
-                                        this.setState(
-                                          {
-                                            sekiwakeKomusubi: e.target.value,
-                                          },
-                                        );
-                                      }}
-                                    />
-                                  </label>
-                                </div>
-                              ))}
-                          </div>
-                        ) : (
-                          <h2>Could not load wrestlers!</h2>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                  <hr />
-                  <div>
-                    <h2>Upper Maegashria (1-5):</h2>
-                    {sumoLoading || gapiLoading ? (
-                      <div className="center">
-                        <ReactLoading
-                          type="spin"
-                          color="#000"
-                          height="20%"
-                          width="20%"
-                        />
-                      </div>
-                    ) : (
-                      <div>
-                        {hoshitori.length ? (
-                          <div className="row">
-                            {hoshitori
-                              .filter((i) => i.banzuke_name_eng.replace(/\D/g, '') >= 1
-                              && i.banzuke_name_eng.replace(/\D/g, '') <= 5)
-                              .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
-                              .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
-                              .map((s) => (
-                                <div
-                                  key={s.rikishi_id}
-                                  className={torikumi[s.rikishi_id].rest_day > 0 ? 'p-card--highlighted col-3' : 'p-card col-3'}
+                            .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
+                            .map((s) => (
+                              <div key={s.rikishi_id} className="p-card col-3">
+                                <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                  <img
+                                    src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                    alt={s.kakuzuke_id}
+                                  />
+                                </a>
+                                <p>
+                                  Name:&nbsp;
+                                  {s.shikona_eng}
+                                  <br />
+                                  Rank:&nbsp;
+                                  {s.banzuke_name_eng}
+                                  <br />
+                                  Wins:&nbsp;
+                                  {torikumi[s.rikishi_id].won_number}
+                                  <br />
+                                  Losses:&nbsp;
+                                  {torikumi[s.rikishi_id].lost_number}
+                                </p>
+                                <label
+                                  htmlFor="sumoform"
                                 >
-                                  <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                    <img
-                                      src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                      alt={s.kakuzuke_id}
-                                    />
-                                  </a>
-                                  <p>
-                                    Name:&nbsp;
-                                    {s.shikona_eng}
-                                    <br />
-                                    Rank:&nbsp;
-                                    {s.banzuke_name_eng}
-                                    <br />
-                                    Wins:&nbsp;
-                                    {torikumi[s.rikishi_id].won_number}
-                                    <br />
-                                    Losses:&nbsp;
-                                    {torikumi[s.rikishi_id].lost_number}
-                                  </p>
-                                  <label
-                                    htmlFor="sumoform"
-                                  >
-                                    <input
-                                      id={s.rikishi_id}
-                                      name="thirdWrestler"
-                                      type="radio"
-                                      value={s.shikona_eng}
-                                      onChange={(e) => {
-                                        this.setState(
-                                          {
-                                            highMaegashria: e.target.value,
-                                          },
-                                        );
-                                      }}
-                                    />
-                                  </label>
-                                </div>
-                              ))}
-                          </div>
-                        ) : (
-                          <h2>Could not load wrestlers!</h2>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                  <hr />
-                  <div>
-                    <h2>Middle Maegashria (6-10):</h2>
-                    {sumoLoading || gapiLoading ? (
-                      <div className="center">
-                        <ReactLoading
-                          type="spin"
-                          color="#000"
-                          height="20%"
-                          width="20%"
-                        />
-                      </div>
-                    ) : (
-                      <div>
-                        {hoshitori.length ? (
-                          <div className="row">
-                            {hoshitori
-                              .filter((i) => i.banzuke_name_eng.replace(/\D/g, '') >= 6
+                                  <input
+                                    id={s.rikishi_id}
+                                    name="secondWrestler"
+                                    type="radio"
+                                    value={s.shikona_eng}
+                                    onChange={(e) => {
+                                      this.setState(
+                                        {
+                                          sekiwakeKomusubi: e.target.value,
+                                        },
+                                      );
+                                    }}
+                                  />
+                                </label>
+                              </div>
+                            ))}
+                        </div>
+                      ) : (
+                        <h2>Could not load wrestlers!</h2>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <hr />
+                <div>
+                  <h2>Upper Maegashria (1-5):</h2>
+                  {sumoLoading || gapiLoading ? (
+                    <div className="center">
+                      <ReactLoading
+                        type="spin"
+                        color="#000"
+                        height="20%"
+                        width="20%"
+                      />
+                    </div>
+                  ) : (
+                    <div>
+                      {hoshitori.length ? (
+                        <div className="row">
+                          {hoshitori
+                            .filter((i) => i.banzuke_name_eng.replace(/\D/g, '') >= 1
+                              && i.banzuke_name_eng.replace(/\D/g, '') <= 5)
+                            .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
+                            .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
+                            .map((s) => (
+                              <div
+                                key={s.rikishi_id}
+                                className={torikumi[s.rikishi_id].rest_day > 0 ? 'p-card--highlighted col-3' : 'p-card col-3'}
+                              >
+                                <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                  <img
+                                    src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                    alt={s.kakuzuke_id}
+                                  />
+                                </a>
+                                <p>
+                                  Name:&nbsp;
+                                  {s.shikona_eng}
+                                  <br />
+                                  Rank:&nbsp;
+                                  {s.banzuke_name_eng}
+                                  <br />
+                                  Wins:&nbsp;
+                                  {torikumi[s.rikishi_id].won_number}
+                                  <br />
+                                  Losses:&nbsp;
+                                  {torikumi[s.rikishi_id].lost_number}
+                                </p>
+                                <label
+                                  htmlFor="sumoform"
+                                >
+                                  <input
+                                    id={s.rikishi_id}
+                                    name="thirdWrestler"
+                                    type="radio"
+                                    value={s.shikona_eng}
+                                    onChange={(e) => {
+                                      this.setState(
+                                        {
+                                          highMaegashria: e.target.value,
+                                        },
+                                      );
+                                    }}
+                                  />
+                                </label>
+                              </div>
+                            ))}
+                        </div>
+                      ) : (
+                        <h2>Could not load wrestlers!</h2>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <hr />
+                <div>
+                  <h2>Middle Maegashria (6-10):</h2>
+                  {sumoLoading || gapiLoading ? (
+                    <div className="center">
+                      <ReactLoading
+                        type="spin"
+                        color="#000"
+                        height="20%"
+                        width="20%"
+                      />
+                    </div>
+                  ) : (
+                    <div>
+                      {hoshitori.length ? (
+                        <div className="row">
+                          {hoshitori
+                            .filter((i) => i.banzuke_name_eng.replace(/\D/g, '') >= 6
                                 && i.banzuke_name_eng.replace(/\D/g, '') <= 10)
-                              .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
-                              .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
-                              .map((s) => (
-                                <div key={s.rikishi_id} className="p-card col-3">
-                                  <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                    <img
-                                      src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                      alt={s.kakuzuke_id}
-                                    />
-                                  </a>
-                                  <p>
-                                    Name:&nbsp;
-                                    {s.shikona_eng}
-                                    <br />
-                                    Rank:&nbsp;
-                                    {s.banzuke_name_eng}
-                                    <br />
-                                    Wins:&nbsp;
-                                    {torikumi[s.rikishi_id].won_number}
-                                    <br />
-                                    Losses:&nbsp;
-                                    {torikumi[s.rikishi_id].lost_number}
-                                  </p>
-                                  <label
-                                    htmlFor="sumoform"
-                                  >
-                                    <input
-                                      id={s.rikishi_id}
-                                      name="fourthWrestler"
-                                      type="radio"
-                                      value={s.shikona_eng}
-                                      onChange={(e) => {
-                                        this.setState(
-                                          {
-                                            midMaegashria: e.target.value,
-                                          },
-                                        );
-                                      }}
-                                    />
-                                  </label>
-                                </div>
-                              ))}
-                          </div>
-                        ) : (
-                          <h2>Could not load wrestlers!</h2>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                  <hr />
-                  <div>
-                    <h2>Lower Maegashria (11-17):</h2>
-                    {sumoLoading || gapiLoading ? (
-                      <div className="center">
-                        <ReactLoading
-                          type="spin"
-                          color="#000"
-                          height="20%"
-                          width="20%"
-                        />
-                      </div>
-                    ) : (
-                      <div>
-                        {hoshitori.length ? (
-                          <div className="row">
-                            {hoshitori
-                              .filter((i) => i.banzuke_name_eng.replace(/\D/g, '') >= 11)
-                              .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
-                              .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
-                              .map((s) => (
-                                <div key={s.rikishi_id} className="p-card col-3">
-                                  <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                    <img
-                                      src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                      alt={s.kakuzuke_id}
-                                    />
-                                  </a>
-                                  <p>
-                                    Name:&nbsp;
-                                    {s.shikona_eng}
-                                    <br />
-                                    Rank:&nbsp;
-                                    {s.banzuke_name_eng}
-                                    <br />
-                                    Wins:&nbsp;
-                                    {torikumi[s.rikishi_id].won_number}
-                                    <br />
-                                    Losses:&nbsp;
-                                    {torikumi[s.rikishi_id].lost_number}
-                                  </p>
-                                  <label
-                                    htmlFor="sumoform"
-                                  >
-                                    <input
-                                      id={s.rikishi_id}
-                                      name="fifthWrestler"
-                                      type="radio"
-                                      value={s.shikona_eng}
-                                      onChange={(e) => {
-                                        this.setState(
-                                          {
-                                            lowMaegashria: e.target.value,
-                                          },
-                                        );
-                                      }}
-                                    />
-                                  </label>
-                                </div>
-                              ))}
-                          </div>
-                        ) : (
-                          <h2>Could not load wrestlers!</h2>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                  <hr />
-                  <div className="row">
-                    <input className="p-button--positive" type="submit" value="Submit" />
-                  </div>
-                </form>
-              </div>
+                            .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
+                            .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
+                            .map((s) => (
+                              <div key={s.rikishi_id} className="p-card col-3">
+                                <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                  <img
+                                    src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                    alt={s.kakuzuke_id}
+                                  />
+                                </a>
+                                <p>
+                                  Name:&nbsp;
+                                  {s.shikona_eng}
+                                  <br />
+                                  Rank:&nbsp;
+                                  {s.banzuke_name_eng}
+                                  <br />
+                                  Wins:&nbsp;
+                                  {torikumi[s.rikishi_id].won_number}
+                                  <br />
+                                  Losses:&nbsp;
+                                  {torikumi[s.rikishi_id].lost_number}
+                                </p>
+                                <label
+                                  htmlFor="sumoform"
+                                >
+                                  <input
+                                    id={s.rikishi_id}
+                                    name="fourthWrestler"
+                                    type="radio"
+                                    value={s.shikona_eng}
+                                    onChange={(e) => {
+                                      this.setState(
+                                        {
+                                          midMaegashria: e.target.value,
+                                        },
+                                      );
+                                    }}
+                                  />
+                                </label>
+                              </div>
+                            ))}
+                        </div>
+                      ) : (
+                        <h2>Could not load wrestlers!</h2>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <hr />
+                <div>
+                  <h2>Lower Maegashria (11-17):</h2>
+                  {sumoLoading || gapiLoading ? (
+                    <div className="center">
+                      <ReactLoading
+                        type="spin"
+                        color="#000"
+                        height="20%"
+                        width="20%"
+                      />
+                    </div>
+                  ) : (
+                    <div>
+                      {hoshitori.length ? (
+                        <div className="row">
+                          {hoshitori
+                            .filter((i) => i.banzuke_name_eng.replace(/\D/g, '') >= 11)
+                            .filter((i) => torikumi[i.rikishi_id].rest_number === 0)
+                            .sort((a, b) => a.banzuke_name_eng.replace(/\D/g, '') - b.banzuke_name_eng.replace(/\D/g, ''))
+                            .map((s) => (
+                              <div key={s.rikishi_id} className="p-card col-3">
+                                <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                  <img
+                                    src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                    alt={s.kakuzuke_id}
+                                  />
+                                </a>
+                                <p>
+                                  Name:&nbsp;
+                                  {s.shikona_eng}
+                                  <br />
+                                  Rank:&nbsp;
+                                  {s.banzuke_name_eng}
+                                  <br />
+                                  Wins:&nbsp;
+                                  {torikumi[s.rikishi_id].won_number}
+                                  <br />
+                                  Losses:&nbsp;
+                                  {torikumi[s.rikishi_id].lost_number}
+                                </p>
+                                <label
+                                  htmlFor="sumoform"
+                                >
+                                  <input
+                                    id={s.rikishi_id}
+                                    name="fifthWrestler"
+                                    type="radio"
+                                    value={s.shikona_eng}
+                                    onChange={(e) => {
+                                      this.setState(
+                                        {
+                                          lowMaegashria: e.target.value,
+                                        },
+                                      );
+                                    }}
+                                  />
+                                </label>
+                              </div>
+                            ))}
+                        </div>
+                      ) : (
+                        <h2>Could not load wrestlers!</h2>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <hr />
+                <div className="row">
+                  <input className="p-button--positive" type="submit" value="Submit" />
+                </div>
+              </form>
             </div>
           ) : (
             <div className="p-strip is-deep" style={{ background: '#FFF' }}>

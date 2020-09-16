@@ -18,6 +18,7 @@ class SumoResults extends Component {
       sortValue: 'Highest',
       name: '',
       spreadSheet: null,
+      sumoDay: 0,
     };
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSortChange = this.handleSortChange.bind(this);
@@ -85,8 +86,9 @@ class SumoResults extends Component {
     await doc.loadInfo();
 
     const rows = await doc.sheetsByIndex[1].getRows();
+    const day = await doc.sheetsByIndex[2].getRows();
 
-    this.setState({ spreadSheet: rows, gapiLoading: false });
+    this.setState({ spreadSheet: rows, gapiLoading: false, sumoDay: day[22].Judge });
   };
 
   handleSearchChange(event) { this.setState({ name: event.target.value }); }
@@ -108,6 +110,7 @@ class SumoResults extends Component {
       spreadSheet,
       name,
       sortValue,
+      sumoDay,
     } = this.state;
     return (
       <div className="wrapper u-no-margin--top">
@@ -123,201 +126,205 @@ class SumoResults extends Component {
               <hr />
             </div>
           </div>
-          <div className="p-strip is-deep">
-            <div className="row">
-              <h2>Search your name!</h2>
-              <hr />
-              <table>
-                <tbody>
+          <hr />
+          <div className="row">
+            <h2>Search your name!</h2>
+            <p className="p-heading--4">
+              This is the point spread on day&nbsp;
+              { sumoDay }
+              &nbsp;of 15
+            </p>
+            <hr />
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <label htmlFor="form">
+                      <h4>Name</h4>
+                      <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
+                    </label>
+                  </td>
+                  <td>
+                    <label htmlFor="form">
+                      <h4>Sort by total points</h4>
+                      <input type="button" className="p-button--positive" value={sortValue} onClick={this.handleSortChange} />
+                    </label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <hr />
+            <div>
+              <table className="p-table--sortable" role="grid">
+                <thead>
                   <tr>
-                    <td>
-                      <label htmlFor="form">
-                        <h4>Name</h4>
-                        <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
-                      </label>
-                    </td>
-                    <td>
-                      <label htmlFor="form">
-                        <h4>Sort by total points</h4>
-                        <input type="button" className="p-button--positive" value={sortValue} onClick={this.handleSortChange} />
-                      </label>
-                    </td>
+                    <th>Name</th>
+                    <th>Total Points</th>
+                    <th>Yokozuna/Ozeki</th>
+                    <th>Sekiwake/Komusubi</th>
+                    <th>Upper Maegashria (1-5)</th>
+                    <th>Middle Maegashria (6-10)</th>
+                    <th>Lower Maegashria (11-17)</th>
                   </tr>
-                </tbody>
-              </table>
-              <hr />
-              <div>
-                <table className="p-table--sortable" role="grid">
+                </thead>
+                {sumoLoading || gapiLoading ? (
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Total Points</th>
-                      <th>Yokozuna/Ozeki</th>
-                      <th>Sekiwake/Komusubi</th>
-                      <th>Upper Maegashria (1-5)</th>
-                      <th>Middle Maegashria (6-10)</th>
-                      <th>Lower Maegashria (11-17)</th>
+                      <th className="center">
+                        <ReactLoading
+                          type="spin"
+                          color="#000"
+                          height="20%"
+                          width="20%"
+                        />
+                      </th>
                     </tr>
                   </thead>
-                  {sumoLoading || gapiLoading ? (
-                    <thead>
-                      <tr>
-                        <th className="center">
-                          <ReactLoading
-                            type="spin"
-                            color="#000"
-                            height="20%"
-                            width="20%"
-                          />
-                        </th>
-                      </tr>
-                    </thead>
-                  ) : (
-                    <>
-                      {spreadSheet !== null ? (
-                        <tbody>
-                          {spreadSheet
-                            .filter((i) => i.Name.toLowerCase()
-                              .includes(name.toLowerCase()))
-                            .filter((i) => i.Points !== '#N/A')
-                            .sort((a, b) => {
-                              if (sortValue === 'Highest') {
-                                return b.Points - a.Points;
-                              }
-                              return a.Points - b.Points;
-                            })
-                            .map((w) => (
-                              <tr key={w.Name}>
-                                <td>
-                                  { w.Name }
-                                </td>
-                                <td>
-                                  { w.Points }
-                                </td>
-                                <td>
-                                  {hoshitori
-                                    .filter((i) => i.shikona_eng === w.YokozunaOzeki)
-                                    .map((s) => (
-                                      <div key={s.rikishi_id}>
-                                        <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                          <img
-                                            src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                            alt={s.kakuzuke_id}
-                                          />
-                                        </a>
-                                        <br />
-                                        {s.shikona_eng}
-                                        <br />
-                                        Wins:&nbsp;
-                                        {torikumi[s.rikishi_id].won_number}
-                                        <br />
-                                        Losses:&nbsp;
-                                        {torikumi[s.rikishi_id].lost_number}
-                                      </div>
-                                    ))}
-                                </td>
-                                <td>
-                                  {hoshitori
-                                    .filter((i) => i.shikona_eng === w.SekiwakeKomusubi)
-                                    .map((s) => (
-                                      <div key={s.rikishi_id}>
-                                        <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                          <img
-                                            src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                            alt={s.kakuzuke_id}
-                                          />
-                                        </a>
-                                        <br />
-                                        {s.shikona_eng}
-                                        <br />
-                                        Wins:&nbsp;
-                                        {torikumi[s.rikishi_id].won_number}
-                                        <br />
-                                        Losses:&nbsp;
-                                        {torikumi[s.rikishi_id].lost_number}
-                                      </div>
-                                    ))}
-                                </td>
-                                <td>
-                                  {hoshitori
-                                    .filter((i) => i.shikona_eng === w.UpperMaegashria)
-                                    .map((s) => (
-                                      <div key={s.rikishi_id}>
-                                        <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                          <img
-                                            src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                            alt={s.kakuzuke_id}
-                                          />
-                                        </a>
-                                        <br />
-                                        {s.shikona_eng}
-                                        <br />
-                                        Wins:&nbsp;
-                                        {torikumi[s.rikishi_id].won_number}
-                                        <br />
-                                        Losses:&nbsp;
-                                        {torikumi[s.rikishi_id].lost_number}
-                                      </div>
-                                    ))}
-                                </td>
-                                <td>
-                                  {hoshitori
-                                    .filter((i) => i.shikona_eng === w.MiddleMaegashria)
-                                    .map((s) => (
-                                      <div key={s.rikishi_id}>
-                                        <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                          <img
-                                            src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                            alt={s.kakuzuke_id}
-                                          />
-                                        </a>
-                                        <br />
-                                        {s.shikona_eng}
-                                        <br />
-                                        Wins:&nbsp;
-                                        {torikumi[s.rikishi_id].won_number}
-                                        <br />
-                                        Losses:&nbsp;
-                                        {torikumi[s.rikishi_id].lost_number}
-                                      </div>
-                                    ))}
-                                </td>
-                                <td>
-                                  {hoshitori
-                                    .filter((i) => i.shikona_eng === w.LowerMaegashria)
-                                    .map((s) => (
-                                      <div key={s.rikishi_id}>
-                                        <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
-                                          <img
-                                            src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
-                                            alt={s.kakuzuke_id}
-                                          />
-                                        </a>
-                                        <br />
-                                        {s.shikona_eng}
-                                        <br />
-                                        Wins:&nbsp;
-                                        {torikumi[s.rikishi_id].won_number}
-                                        <br />
-                                        Losses:&nbsp;
-                                        {torikumi[s.rikishi_id].lost_number}
-                                      </div>
-                                    ))}
-                                </td>
-                              </tr>
-                            ))}
-                        </tbody>
-                      ) : (
-                        <thead>
-                          <tr>
-                            <th>Could not load!</th>
-                          </tr>
-                        </thead>
-                      )}
-                    </>
-                  )}
-                </table>
-              </div>
+                ) : (
+                  <>
+                    {spreadSheet !== null ? (
+                      <tbody>
+                        {spreadSheet
+                          .filter((i) => i.Name.toLowerCase()
+                            .includes(name.toLowerCase()))
+                          .filter((i) => i.Points !== '#N/A')
+                          .sort((a, b) => {
+                            if (sortValue === 'Highest') {
+                              return b.Points - a.Points;
+                            }
+                            return a.Points - b.Points;
+                          })
+                          .map((w) => (
+                            <tr key={w.Name}>
+                              <td>
+                                { w.Name }
+                              </td>
+                              <td>
+                                { w.Points }
+                              </td>
+                              <td>
+                                {hoshitori
+                                  .filter((i) => i.shikona_eng === w.YokozunaOzeki)
+                                  .map((s) => (
+                                    <div key={s.rikishi_id}>
+                                      <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                        <img
+                                          src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                          alt={s.kakuzuke_id}
+                                        />
+                                      </a>
+                                      <br />
+                                      {s.shikona_eng}
+                                      <br />
+                                      Wins:&nbsp;
+                                      {torikumi[s.rikishi_id].won_number}
+                                      <br />
+                                      Losses:&nbsp;
+                                      {torikumi[s.rikishi_id].lost_number}
+                                    </div>
+                                  ))}
+                              </td>
+                              <td>
+                                {hoshitori
+                                  .filter((i) => i.shikona_eng === w.SekiwakeKomusubi)
+                                  .map((s) => (
+                                    <div key={s.rikishi_id}>
+                                      <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                        <img
+                                          src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                          alt={s.kakuzuke_id}
+                                        />
+                                      </a>
+                                      <br />
+                                      {s.shikona_eng}
+                                      <br />
+                                      Wins:&nbsp;
+                                      {torikumi[s.rikishi_id].won_number}
+                                      <br />
+                                      Losses:&nbsp;
+                                      {torikumi[s.rikishi_id].lost_number}
+                                    </div>
+                                  ))}
+                              </td>
+                              <td>
+                                {hoshitori
+                                  .filter((i) => i.shikona_eng === w.UpperMaegashria)
+                                  .map((s) => (
+                                    <div key={s.rikishi_id}>
+                                      <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                        <img
+                                          src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                          alt={s.kakuzuke_id}
+                                        />
+                                      </a>
+                                      <br />
+                                      {s.shikona_eng}
+                                      <br />
+                                      Wins:&nbsp;
+                                      {torikumi[s.rikishi_id].won_number}
+                                      <br />
+                                      Losses:&nbsp;
+                                      {torikumi[s.rikishi_id].lost_number}
+                                    </div>
+                                  ))}
+                              </td>
+                              <td>
+                                {hoshitori
+                                  .filter((i) => i.shikona_eng === w.MiddleMaegashria)
+                                  .map((s) => (
+                                    <div key={s.rikishi_id}>
+                                      <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                        <img
+                                          src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                          alt={s.kakuzuke_id}
+                                        />
+                                      </a>
+                                      <br />
+                                      {s.shikona_eng}
+                                      <br />
+                                      Wins:&nbsp;
+                                      {torikumi[s.rikishi_id].won_number}
+                                      <br />
+                                      Losses:&nbsp;
+                                      {torikumi[s.rikishi_id].lost_number}
+                                    </div>
+                                  ))}
+                              </td>
+                              <td>
+                                {hoshitori
+                                  .filter((i) => i.shikona_eng === w.LowerMaegashria)
+                                  .map((s) => (
+                                    <div key={s.rikishi_id}>
+                                      <a href={`http://sumo.or.jp/EnSumoDataRikishi/profile/${s.rikishi_id.trim()}`}>
+                                        <img
+                                          src={`http://sumo.or.jp/img/sumo_data/rikishi/60x60/${s.photo.trim()}`}
+                                          alt={s.kakuzuke_id}
+                                        />
+                                      </a>
+                                      <br />
+                                      {s.shikona_eng}
+                                      <br />
+                                      Wins:&nbsp;
+                                      {torikumi[s.rikishi_id].won_number}
+                                      <br />
+                                      Losses:&nbsp;
+                                      {torikumi[s.rikishi_id].lost_number}
+                                    </div>
+                                  ))}
+                              </td>
+                            </tr>
+                          ))}
+                      </tbody>
+                    ) : (
+                      <thead>
+                        <tr>
+                          <th>Could not load!</th>
+                        </tr>
+                      </thead>
+                    )}
+                  </>
+                )}
+              </table>
             </div>
           </div>
         </div>
