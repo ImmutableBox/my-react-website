@@ -243,7 +243,10 @@ class SumoForm extends Component {
           {!closeForm ? (
             <div className="row" style={{ background: '#FFF' }}>
               <form onSubmit={this.handleSubmit}>
-                <h2>Name:</h2>
+                <h2>
+                  Name
+                  (or enter an alias if you aren&apos;t comfortable with your real name):
+                </h2>
                 <input type="text" onChange={(e) => this.setState({ name: e.target.value })} />
                 <hr />
                 <div>
