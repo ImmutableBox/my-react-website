@@ -9,6 +9,8 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID);
 
 class SumoResults extends Component {
+  mounted = false;
+
   constructor() {
     super();
     this.state = {
@@ -26,8 +28,15 @@ class SumoResults extends Component {
 
   // Fetch the list of first mount
   componentDidMount() {
-    this.getFeed();
-    this.getSpreadSheet();
+    this.mounted = true;
+    if (this.mounted) {
+      this.getFeed();
+      this.getSpreadSheet();
+    }
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   getFeed = () => {

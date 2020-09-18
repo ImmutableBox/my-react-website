@@ -12,6 +12,8 @@ const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
  * Blog component. Contains my blog feed.
  */
 class BlogList extends Component {
+  mounted = false;
+
   // Initialize the state
   constructor() {
     super();
@@ -23,7 +25,14 @@ class BlogList extends Component {
 
   // Fetch the list of first mount
   componentDidMount() {
-    this.getFeed();
+    this.mounted = true;
+    if (this.mounted) {
+      this.getFeed();
+    }
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   getFeed = () => {
