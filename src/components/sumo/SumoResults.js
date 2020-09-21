@@ -163,8 +163,8 @@ class SumoResults extends Component {
                   <tr>
                     <th>Name</th>
                     <th>Total Points</th>
-                    <th>Yokozuna/Ozeki</th>
-                    <th>Sekiwake/Komusubi</th>
+                    <th>Yokozuna or Ozeki</th>
+                    <th>Sekiwake or Komusubi</th>
                     <th>Upper Maegashria (1-5)</th>
                     <th>Middle Maegashria (6-10)</th>
                     <th>Lower Maegashria (11-17)</th>
