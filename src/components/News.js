@@ -34,6 +34,7 @@ class News extends React.PureComponent {
               slidesToScroll={1}
               adaptiveHeight
               autoplay
+              centerMode
             >
               <div
                 className="p-card"

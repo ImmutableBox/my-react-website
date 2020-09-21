@@ -72,7 +72,7 @@ class External extends Component {
               <div className="col-3">
                 <div className="p-card--highlighted">
                   <a href="https://play.google.com/store/apps/details?id=com.immutablevoid.dontmoveback">
-                    <img src="/images/feature_graphic_dontmoveback.png" alt="" />
+                    <img className="center" src="/images/dontmoveback.png" alt="" />
                     <h4 className="text-center">Don&apos;t Move Back!</h4>
                   </a>
                 </div>
