@@ -183,8 +183,8 @@ class SumoResults extends Component {
                         <ReactLoading
                           type="spin"
                           color="#000"
-                          height="20%"
-                          width="20%"
+                          height="100%"
+                          width="100%"
                         />
                       </th>
                     </tr>
