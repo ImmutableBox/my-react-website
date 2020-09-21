@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactLoading from 'react-loading';
+import { Link } from 'react-router-dom';
 
 // Note: some RSS feeds can't be loaded in the browser due to CORS security.
 // To get around this, you can use a proxy.
@@ -201,6 +202,11 @@ class SumoSearch extends Component {
               <b>Format</b>
               <br />
               <input type="button" className="p-button--positive" value={cardFormat} onClick={this.handleFormatChange} />
+              <hr />
+              <h4>Other sumo stuff!</h4>
+              <Link className="p-button--brand" to="/sumoform">Sumo Form</Link>
+              <Link className="p-button--brand" to="/sumoresults">Sumo Results</Link>
+              <hr />
             </div>
             <div className="col-9">
               {cardFormat === 'Card Format' ? (

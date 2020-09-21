@@ -616,8 +616,9 @@ class SumoForm extends Component {
           )}
           <div className="p-strip is-deep" style={{ background: '#51ab6e', color: '#FFF' }}>
             <div className="row">
-              <h2>Click button to see Sumo results!</h2>
-              <Link className="p-button--brand" to="/sumoresults">Sumo results</Link>
+              <h2>Other sumo stuff!</h2>
+              <Link className="p-button--brand" to="/sumoresults">Sumo Results</Link>
+              <Link className="p-button--brand" to="/sumosearch">Sumo Search</Link>
             </div>
           </div>
         </div>
