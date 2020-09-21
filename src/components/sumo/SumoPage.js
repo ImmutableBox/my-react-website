@@ -22,7 +22,7 @@ class SumoPage extends React.PureComponent {
             <h2>
               Sumo projects
             </h2>
-            <div className="p-card">
+            <div className="p-card--highlighted">
               <p>
                 Pulling sumo tournament information from&nbsp;
                 <a href="http://sumo.or.jp">
