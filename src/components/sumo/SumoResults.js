@@ -133,37 +133,26 @@ class SumoResults extends Component {
                 Here are the point scores from the form spreadsheet!
               </p>
               <hr />
+              <p className="p-heading--4">
+                This is the point spread on day&nbsp;
+                { sumoDay }
+              &nbsp;of 15
+              </p>
             </div>
           </div>
           <hr />
           <div className="row">
-            <h2>Search your name!</h2>
-            <p className="p-heading--4">
-              This is the point spread on day&nbsp;
-              { sumoDay }
-              &nbsp;of 15
-            </p>
-            <hr />
-            <table>
-              <tbody>
-                <tr>
-                  <td>
-                    <label htmlFor="form">
-                      <h4>Name</h4>
-                      <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
-                    </label>
-                  </td>
-                  <td>
-                    <label htmlFor="form">
-                      <h4>Sort by total points</h4>
-                      <input type="button" className="p-button--positive" value={sortValue} onClick={this.handleSortChange} />
-                    </label>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <hr />
-            <div>
+            <div className="p-card--highlighted p-side-navigation col-3">
+              <h4>Search your name!</h4>
+              <hr />
+              <b>Name</b>
+              <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
+              <b>Sort by total points</b>
+              <br />
+              <input type="button" className="p-button--positive" value={sortValue} onClick={this.handleSortChange} />
+              <hr />
+            </div>
+            <div className="col-9">
               <table className="p-table--sortable" role="grid">
                 <thead>
                   <tr>

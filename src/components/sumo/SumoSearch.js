@@ -137,6 +137,71 @@ class SumoSearch extends Component {
           </div>
           <hr />
           <div className="row">
+            <div className="p-card--highlighted p-side-navigation col-3">
+              <h4>Search for a wrestler</h4>
+              <hr />
+              <b>Name</b>
+              <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
+              <b>Rank</b>
+              <select value={ranking} onChange={this.handleRankingChange}>
+                <option value="" disabled="disabled" defaultValue="">Select an option</option>
+                <option value="None">No rank selected</option>
+                <option value="Yokozuna">Yokozuna</option>
+                <option value="Ozeki">Ozeki</option>
+                <option value="Sekiwake">Sekiwake</option>
+                <option value="Komusubi">Komusubi</option>
+                <option value="Maegashira #1">Maegashira #1</option>
+                <option value="Maegashira #2">Maegashira #2</option>
+                <option value="Maegashira #3">Maegashira #3</option>
+                <option value="Maegashira #4">Maegashira #4</option>
+                <option value="Maegashira #5">Maegashira #5</option>
+                <option value="Maegashira #6">Maegashira #6</option>
+                <option value="Maegashira #7">Maegashira #7</option>
+                <option value="Maegashira #8">Maegashira #8</option>
+                <option value="Maegashira #9">Maegashira #9</option>
+                <option value="Maegashira #10">Maegashira #10</option>
+                <option value="Maegashira #11">Maegashira #11</option>
+                <option value="Maegashira #12">Maegashira #12</option>
+                <option value="Maegashira #13">Maegashira #13</option>
+                <option value="Maegashira #14">Maegashira #14</option>
+                <option value="Maegashira #15">Maegashira #15</option>
+                <option value="Maegashira #16">Maegashira #16</option>
+                <option value="Maegashira #17">Maegashira #17</option>
+              </select>
+              <b>
+                Wins:&nbsp;
+                {wins}
+              </b>
+              <input
+                className="p-slider"
+                type="range"
+                min="0"
+                max="15"
+                step="1"
+                onChange={(event) => this.setState({ wins: event.target.value })}
+                value={wins}
+              />
+              <b>
+                Losses:&nbsp;
+                {losses}
+              </b>
+              <input
+                className="p-slider"
+                type="range"
+                min="0"
+                max="15"
+                step="1"
+                onChange={(event) => this.setState({ losses: event.target.value })}
+                value={losses}
+              />
+              <b>Show sitting out?</b>
+              <br />
+              <input type="button" className="p-button--positive" value={showSittingOut} onClick={this.handleShowSittingOutChange} />
+              <br />
+              <b>Format</b>
+              <br />
+              <input type="button" className="p-button--positive" value={cardFormat} onClick={this.handleFormatChange} />
+            </div>
             <div className="col-9">
               {cardFormat === 'Card Format' ? (
                 <div>
@@ -312,70 +377,6 @@ class SumoSearch extends Component {
                   </table>
                 </div>
               )}
-            </div>
-            <div className="p-card--highlighted p-side-navigation col-3">
-              <h4>Search for a wrestler</h4>
-              <b>Name</b>
-              <input type="search" placeholder="Enter name here" onChange={this.handleSearchChange} />
-              <b>Rank</b>
-              <select value={ranking} onChange={this.handleRankingChange}>
-                <option value="" disabled="disabled" defaultValue="">Select an option</option>
-                <option value="None">No rank selected</option>
-                <option value="Yokozuna">Yokozuna</option>
-                <option value="Ozeki">Ozeki</option>
-                <option value="Sekiwake">Sekiwake</option>
-                <option value="Komusubi">Komusubi</option>
-                <option value="Maegashira #1">Maegashira #1</option>
-                <option value="Maegashira #2">Maegashira #2</option>
-                <option value="Maegashira #3">Maegashira #3</option>
-                <option value="Maegashira #4">Maegashira #4</option>
-                <option value="Maegashira #5">Maegashira #5</option>
-                <option value="Maegashira #6">Maegashira #6</option>
-                <option value="Maegashira #7">Maegashira #7</option>
-                <option value="Maegashira #8">Maegashira #8</option>
-                <option value="Maegashira #9">Maegashira #9</option>
-                <option value="Maegashira #10">Maegashira #10</option>
-                <option value="Maegashira #11">Maegashira #11</option>
-                <option value="Maegashira #12">Maegashira #12</option>
-                <option value="Maegashira #13">Maegashira #13</option>
-                <option value="Maegashira #14">Maegashira #14</option>
-                <option value="Maegashira #15">Maegashira #15</option>
-                <option value="Maegashira #16">Maegashira #16</option>
-                <option value="Maegashira #17">Maegashira #17</option>
-              </select>
-              <b>
-                Wins:&nbsp;
-                {wins}
-              </b>
-              <input
-                className="p-slider"
-                type="range"
-                min="0"
-                max="15"
-                step="1"
-                onChange={(event) => this.setState({ wins: event.target.value })}
-                value={wins}
-              />
-              <b>
-                Losses:&nbsp;
-                {losses}
-              </b>
-              <input
-                className="p-slider"
-                type="range"
-                min="0"
-                max="15"
-                step="1"
-                onChange={(event) => this.setState({ losses: event.target.value })}
-                value={losses}
-              />
-              <b>Show sitting out?</b>
-              <br />
-              <input type="button" className="p-button--positive" value={showSittingOut} onClick={this.handleShowSittingOutChange} />
-              <br />
-              <b>Format</b>
-              <br />
-              <input type="button" className="p-button--positive" value={cardFormat} onClick={this.handleFormatChange} />
             </div>
           </div>
         </div>
