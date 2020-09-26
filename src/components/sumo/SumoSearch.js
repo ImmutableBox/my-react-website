@@ -89,6 +89,8 @@ class SumoSearch extends Component {
 
   handleShowSittingOutChange(event) {
     if (event.target.value === 'Yes') {
+      this.setState({ showSittingOut: 'Only Show Sitting Out' });
+    } else if (event.target.value === 'Only Show Sitting Out') {
       this.setState({ showSittingOut: 'No' });
     } else {
       this.setState({ showSittingOut: 'Yes' });
@@ -239,6 +241,9 @@ class SumoSearch extends Component {
                               if (showSittingOut === 'Yes') {
                                 return i;
                               }
+                              if (showSittingOut === 'Only Show Sitting Out') {
+                                return torikumi[i.rikishi_id].rest_number > 0;
+                              }
                               return torikumi[i.rikishi_id].rest_number === 0;
                             })
                             .filter((i) => {
@@ -331,6 +336,9 @@ class SumoSearch extends Component {
                               .filter((i) => {
                                 if (showSittingOut === 'Yes') {
                                   return i;
+                                }
+                                if (showSittingOut === 'Only Show Sitting Out') {
+                                  return torikumi[i.rikishi_id].rest_number > 0;
                                 }
                                 return torikumi[i.rikishi_id].rest_number === 0;
                               })
