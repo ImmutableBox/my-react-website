@@ -609,7 +609,8 @@ class SumoForm extends Component {
             <div className="p-strip is-deep" style={{ background: '#FFF' }}>
               <div className="row">
                 <p className="p-heading--3">
-                  Thank you very playing! The sumo form is now close. See you next month!
+                  Thank you very much for playing! The sumo form is now closed.
+                  &nbsp;See you next month!
                 </p>
               </div>
             </div>
