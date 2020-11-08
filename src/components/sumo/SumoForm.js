@@ -241,6 +241,11 @@ class SumoForm extends Component {
                 This project is mostly for me and my friends,
                 I will count the points and send a message at the
                 end of the sumo tournament.
+                <br />
+                <br />
+                (If the wrestler images aren&apos;t appearing
+                you may need to change the website setting to allow
+                Insecure Content as the images come from http not https)
               </p>
               <hr />
               <p className="p-heading--3">

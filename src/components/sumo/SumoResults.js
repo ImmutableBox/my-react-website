@@ -134,6 +134,11 @@ class SumoResults extends Component {
               </h2>
               <p className="p-heading--4">
                 Here are the point scores from the form spreadsheet!
+                <br />
+                <br />
+                (If the wrestler images aren&apos;t appearing
+                you may need to change the website setting to allow
+                Insecure Content as the images come from http not https)
               </p>
               <hr />
               {!closeResults ? (

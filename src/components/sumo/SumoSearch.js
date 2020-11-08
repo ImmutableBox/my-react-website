@@ -128,6 +128,11 @@ class SumoSearch extends Component {
               <p className="p-heading--4">
                 Enter any sumo wrestler in the Makuuchi rank to see their score/profile.
                 Press on their profile picture for more details on the wrestler
+                <br />
+                <br />
+                (If the wrestler images aren&apos;t appearing
+                you may need to change the website setting to allow
+                Insecure Content as the images come from http not https)
               </p>
               <p className="p-heading--4">
                 Information is pulled from&nbsp;
