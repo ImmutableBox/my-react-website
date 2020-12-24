@@ -39,6 +39,32 @@ class App extends Component {
           <Route path="/blogs" component={Blogs} />
           <Route path="/contact" component={About} />
           <Route
+            path="/tmt"
+            component={() => (
+              <Showcase
+                title="The Mysterious Farm"
+                gamePath="/projects/Farming.swf"
+                gameType="actionscript"
+                description="(This game is still WIP) Try to help the town solve it's mysteries! Created using ActionScript and FlashDevelop. This game requires flash to work. Assets were hand-drawn by me. This game was created using Flixel, a open source game making library."
+                controls="Up or W
+                          <br>
+                          Left or A
+                          <br>
+                          Down or S
+                          <br>
+                          Right or D
+                          <br>
+                          Spacebar - Interact with objects/Open doors
+                          <br>
+                          Escape or P- Pauses the game
+                          <br>
+                          R - Reset the level"
+                width="600"
+                height="450"
+              />
+            )}
+          />
+          <Route
             path="/hardescape"
             component={() => (
               <Showcase

@@ -39,7 +39,7 @@ class Home extends React.PureComponent {
         <News />
         <div
           className="p-strip is-bordered is-deep"
-          style={{ background: '#2476ba' }}
+          style={{ background: '#2476ba', color: '#FFF' }}
         >
           <div className="row">
             <h2>

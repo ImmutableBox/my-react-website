@@ -40,6 +40,26 @@ class News extends React.PureComponent {
                 className="p-card"
               >
                 <h4>
+                  <b>The Mysterious Town</b>
+                  <br />
+                  Dec 24 2020 - WIP
+                </h4>
+                <p>
+                  Working to create another flash game to end the year!
+                  <br />
+                  This is an old project that I&apos;m bring back to life!
+                  I wanted to finish the year off with a project.
+                  <br />
+                  <br />
+                  Project link:&nbsp;
+                  <Link className="p-button--brand" to="/tmt">The Mysterious Farm</Link>
+                  <br />
+                </p>
+              </div>
+              <div
+                className="p-card"
+              >
+                <h4>
                   <b>Sumo Form</b>
                   <br />
                   Aug 15 2020 - Sep 15 2020
