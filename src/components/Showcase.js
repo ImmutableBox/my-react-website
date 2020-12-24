@@ -36,7 +36,9 @@ class Showcase extends Component {
               <hr />
             </div>
             {gameType === 'actionscript' ? (
-              <object width={width} height={height} data={gamePath}>Game</object>
+              <object width={width} height={height} data={gamePath}>
+                Please enable Flash to play the game
+              </object>
             ) : (
               <iframe title={title} src={gamePath} name={title} width={width} height={height} />
             )}
@@ -49,14 +51,15 @@ class Showcase extends Component {
                   {description}
                   <br />
                   <br />
-                  <p>
+                  <div>
                     {controls !== undefined ? (
-                      <p>
-                        <h5>Controls:</h5>
+                      <div>
+                        <p className="p-heading--4">Controls:</p>
+                        <hr />
                         {controls.split('<br>').map((item, i) =>
                           // eslint-disable-next-line
                           <div key={i}>{item}<br/></div> )}
-                      </p>
+                      </div>
                     ) : null}
                     {sourceCode !== undefined ? (
                       <p>
@@ -64,7 +67,7 @@ class Showcase extends Component {
                         <a href={sourceCode}>{sourceCode}</a>
                       </p>
                     ) : null}
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
