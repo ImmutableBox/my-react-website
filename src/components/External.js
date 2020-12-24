@@ -50,7 +50,7 @@ class External extends Component {
             <div className="row">
               <h2>
                 <FaAdobe />
-                &nbsp;Games developed in Flash/ActionScript:
+                &nbsp;Games developed in ActionScript:
               </h2>
               <div className="col-3">
                 <div className="p-card--highlighted">
