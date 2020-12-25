@@ -54,11 +54,7 @@ class App extends Component {
                           <br>
                           Right or D
                           <br>
-                          Spacebar - Interact with objects/Open doors
-                          <br>
-                          Escape or P- Pauses the game
-                          <br>
-                          R - Reset the level"
+                          Spacebar - Interact with objects/Open doors"
                 width="600"
                 height="450"
               />
