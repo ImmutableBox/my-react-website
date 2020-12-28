@@ -32,12 +32,6 @@ class GameSlider extends Component {
           </Link>
           <h4 className="text-center">Friendly Encounters</h4>
         </div>
-        <div className="p-card--highlighted col-4">
-          <Link to="/tmt">
-            <img src="/images/tmt.png" alt="" />
-          </Link>
-          <h4 className="text-center">The Mysterious Farm</h4>
-        </div>
       </div>
     );
   }
