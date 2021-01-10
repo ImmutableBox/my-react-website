@@ -22,7 +22,7 @@ class SumoResults extends Component {
       name: '',
       spreadSheet: null,
       sumoDay: 0,
-      closeResults: true,
+      closeResults: false,
     };
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSortChange = this.handleSortChange.bind(this);
