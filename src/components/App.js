@@ -11,10 +11,6 @@ import Blogs from './blog/Blogs';
 import NotFound from './NotFound';
 import Showcase from './Showcase';
 import ScrollToTop from './ScrollToTop';
-import SumoResults from './sumo/SumoResults';
-import SumoForm from './sumo/SumoForm';
-import SumoSearch from './sumo/SumoSearch';
-import SumoPage from './sumo/SumoPage';
 
 /**
  * Main starting app component
@@ -102,10 +98,6 @@ class App extends Component {
           />
           <Route path="/showcase" component={Showcase} />
           <Route path="/home" component={Home} />
-          <Route path="/sumoresults" component={SumoResults} />
-          <Route path="/sumosearch" component={SumoSearch} />
-          <Route path="/sumoform" component={SumoForm} />
-          <Route path="/sumopage" component={SumoPage} />
           <Route exact path="/" component={Home} />
           <Route component={NotFound} />
         </Switch>
