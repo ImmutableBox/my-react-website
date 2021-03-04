@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // Note: some RSS feeds can't be loaded in the browser due to CORS security.
 // To get around this, you can use a proxy.
-const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
+const CORS_PROXY = 'http://cors-anywhere.herokuapp.com/';
 
 class SumoSearch extends Component {
   mounted = false;
