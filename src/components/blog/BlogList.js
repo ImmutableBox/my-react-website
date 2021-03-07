@@ -6,7 +6,7 @@ const RSSParser = require('rss-parser');
 const parser = new RSSParser();
 // Note: some RSS feeds can't be loaded in the browser due to CORS security.
 // To get around this, you can use a proxy.
-const CORS_PROXY = 'http://cors-anywhere.herokuapp.com/';
+const CORS_PROXY = 'https://infinite-brushlands-53854.herokuapp.com/';
 
 /**
  * Blog component. Contains my blog feed.
