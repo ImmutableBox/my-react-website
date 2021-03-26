@@ -19,7 +19,7 @@ class Footer extends Component {
           <div className="row">
             <div className="col-8">
               <div className="u-hide--small p-inline-list__item">
-                <p>© 2019-2020 Paul Luu</p>
+                <p>© 2019-2021 Paul Luu</p>
                 <a href="#top">
                   Back to top
                   <FaSortUp />

@@ -4,6 +4,6 @@ import App from '../components/App';
 
 test('renders copyright text', () => {
   const { getByText } = render(<App />);
-  const copyrightElement = getByText('© 2019-2020 Paul Luu');
+  const copyrightElement = getByText('© 2019-2021 Paul Luu');
   expect(copyrightElement).toBeInTheDocument();
 });
