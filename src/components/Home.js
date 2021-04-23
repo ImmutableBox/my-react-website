@@ -9,7 +9,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import GameSlider from './GameSlider';
 import BlogList from './blog/BlogList';
-import News from './News';
 
 /**
  * Home component page
@@ -36,7 +35,6 @@ class Home extends React.PureComponent {
             </div>
           </div>
         </div>
-        <News />
         <div
           className="p-strip is-bordered is-deep"
           style={{ background: '#2476ba', color: '#FFF' }}

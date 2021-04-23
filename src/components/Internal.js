@@ -4,7 +4,6 @@ import { UnControlled as CodeMirror } from 'react-codemirror2';
 import { fullColourHex, rgbToHex } from '../utils/colour';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
-import News from './News';
 
 require('codemirror/mode/xml/xml');
 require('codemirror/mode/javascript/javascript');
@@ -66,7 +65,6 @@ class Internal extends Component {
               </p>
             </div>
           </div>
-          <News />
           <div className="p-strip is-deep is-bordered" style={{ backgroundColor: `#${fullColourHex(...sliders)}` }}>
             <div className="row">
               <h2>
